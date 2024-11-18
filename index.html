@@ -1,12 +1,109 @@
 <!doctype html>
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kawaii donut</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header>
+      <img class="logo-image" 
+        src=""
+        alt=""
+        width=""
+        height=""
+        loading="eager">
+
+      <nav>
+        <span></span>
+        <span></span>
+        <span></span>
+      </nav>
+    </header>
+
+    <main>
+      <section class="navigation-page">
+        <ul>
+          <li><a href="#">Proukter</a></li>
+          <li><a href="#">Varukorg</a></li>
+        </ul>
+      </section>
+
+      <section class="product-page">
+        <p>Sortera efter:</p>
+        <button>Pris</button>
+        <button>Kategori</button>
+        <button>Rating</button>
+
+        <div id="products"></div>
+      </section>
+
+      <section class="product-info-page">
+        <div></div>
+      </section>
+
+      <section class="order-page">
+        <h2>Order</h2>
+        <div id="order-products"></div>
+        <input type="text">
+        <button>Rabattkod</button>
+        <p>Summa:</p>
+        <p>Frakt:</p>
+        <p>Eventuell rabatt</p>
+        <p>Total:</p>
+        <button>Gå vidare</button>
+      </section>
+
+      <section class="form-page">
+        <h2>Fyll i dina uppgifter</h2>
+        <form>
+          <label for="first-name">Förnamn</label>
+          <input type="text" id="first-name">
+
+          <label for="last-name">Efternamn</label>
+          <input type="text" id="last-name">
+
+          <label for="address">Adress</label>
+          <input type="text" id="address">
+
+          <label for="postal-address">Postadress</label>
+          <input type="text" id="postal-address">
+
+          <label for="entry-code">Postkod</label>
+          <input type="text" id="entry-code">
+
+          <label for="phone">Telefon</label>
+          <input type="number" id="phone">
+
+          <label for="email">E-post</label>
+          <input type="email" id="email">
+
+          <label for="accept-gdpr">Godkänn behandling av personuppgifter</label>
+          <input type="checkbox" id="accept-gdpr">
+
+          <label for="news-letter">Få vårat nyhetsbrev</label>
+          <input type="checkbox" id="news-letter">
+
+          <h3>Jag vill betala med</h3>
+          <label for="payment-invoice">Faktura</label>
+          <input type="checkbox" id="payment-invoice">
+
+          <label for="payment-card">Betalkort</label>
+          <input type="checkbox" id="payment-card">
+
+          <input type="submit" value="Lägg beställning">
+        </form>
+      </section>
+
+      <section class="successfull-order-page">
+        <div id="receiver-info"></div>
+        <div></div>
+        <img src="" alt="" width="" height="" loading="lazy">
+
+        <p>Välkommen åter!</p>
+      </section>
+    </main>  
     <script type="module" src="/main.js"></script>
   </body>
 </html>
+  
