@@ -9,11 +9,23 @@ h1 {
 
 header {
     nav {
-        span {
-            display: block;
-            width: rem(20);
-            height: rem(3);
-            background-color: #000;
+        button {
+            background-color: $primary-color;
+            border: none;
+            min-height: rem(48);
+            min-width: rem(48);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            span {
+                display: block;
+                width: rem(30);
+                height: rem(3);
+                background-color: #000;
+                border-radius: rem(6);
+                margin-bottom: rem(4);
+            }
         }
     }
 }
