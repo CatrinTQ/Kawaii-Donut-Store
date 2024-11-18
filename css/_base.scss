@@ -2,8 +2,6 @@ body {
     background-color: $primary-font-family;
 }
 
-
-
 header {
     display: flex;
     justify-content: space-between;
@@ -48,8 +46,21 @@ header {
     }
 }
 
+// PRODUCT PAGE
+
 .product-page {
     height: 100vh;
+
+    .sort-list {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        button {
+            border: none;
+            background-color: $primary-color;
+        }
+    }
 }
 
 .order-page {
@@ -116,4 +127,8 @@ form {
     appearance: textfield;
 }
 
+.successfull-order-page {
+    display: flex;
+    justify-content: center;
+}
 
