@@ -1,0 +1,13 @@
+@use 'vendor/_normalize';
+@use 'variables';
+@use 'helpers';
+@use 'base';
+
+@media screen and (min-width: 640px) {
+    @import 'tablet';
+}
+
+@media screen and (min-width: 1080px) {
+    @import 'desktop';
+}
+
