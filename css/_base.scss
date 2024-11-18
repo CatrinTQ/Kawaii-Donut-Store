@@ -1,3 +1,19 @@
 body {
-    background-color: hotpink;
+    background-color: $primary-font-family;
+}
+
+h1 {
+    font-family: $primary-font-family;
+
+}
+
+header {
+    nav {
+        span {
+            display: block;
+            width: rem(20);
+            height: rem(3);
+            background-color: #000;
+        }
+    }
 }
