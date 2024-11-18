@@ -10,11 +10,11 @@
   </head>
   <body>
     <header>
-      <h1 class="text-4xl">Kawaii donut</h1>
+      <!-- <h1 class="text-4xl">Kawaii donut</h1> -->
       <img class="logo-image" 
-        src=""
-        alt=""
-        width=""
+        src="/assets/photos/home-logo.png"
+        alt="tecknad munk med rosa frosting som ler."
+        width="120px"
         height=""
         loading="eager">
 
@@ -23,13 +23,14 @@
           <span></span>
           <span></span>
           <span></span>
-        </button>
-        
+        </button>  
+      </nav>
+      <div class="menu">
         <ul>
           <li><a href="#">Proukter</a></li>
           <li><a href="#">Varukorg</a></li>
         </ul>
-      </nav>
+      </div>
     </header>
 
     <main>
@@ -59,32 +60,71 @@
       </section>
 
       <section class="form-page">
-        <h2>Fyll i dina uppgifter</h2>
         <form>
-          <label for="first-name">Förnamn <input type="text" id="first-name"></label>
+          <ul>
+            <li class="form-row">
+              <h2>Fyll i dina uppgifter</h2>
+            </li>
+            <li class="form-row">
+              <label for="first-name">Förnamn </label>
+              <input type="text" id="first-name">
+            </li>
 
-          <label for="last-name">Efternamn <input type="text" id="last-name"></label>
+            <li class="form-row">
+              <label for="last-name">Efternamn </label>
+              <input type="text" id="last-name">
+            </li>
 
-          <label for="address">Adress <input type="text" id="address"></label>
+            <li class="form-row">
+              <label for="address">Adress</label>
+              <input type="text" id="address">
+            </li>
 
-          <label for="postal-address">Postadress <input type="text" id="postal-address"></label>
+            <li class="form-row">
+              <label for="postal-address">Postadress</label>
+              <input type="text" id="postal-address">
+            </li>
 
-          <label for="entry-code">Postkod <input type="text" id="entry-code"></label>
-        
-          <label for="phone">Telefon <input type="number" id="phone"></label>
-        
-          <label for="email">E-post <input type="email" id="email"></label>
+            <li class="form-row">
+              <label for="entry-code">Postkod</label>
+              <input type="text" id="entry-code">
+            </li>
 
-          <label for="accept-gdpr">Godkänn behandling av personuppgifter <input type="checkbox" id="accept-gdpr"></label>
-        
-          <label for="news-letter">Få vårat nyhetsbrev <input type="checkbox" id="news-letter"></label>
-        
-          <h3>Jag vill betala med</h3>
-          <label for="payment-invoice">Faktura <input type="checkbox" id="payment-invoice"></label>
-          
-          <label for="payment-card">Betalkort <input type="checkbox" id="payment-card"></label>
-        
-          <input type="submit" value="Lägg beställning">
+            <li class="form-row">
+              <label for="phone">Telefon</label>
+              <input type="number" id="phone">
+            </li>
+
+            <li class="form-row">
+              <label for="email">E-post</label>
+              <input type="email" id="email">
+            </li>
+
+            <li class="form-row">
+              <label for="accept-gdpr" class="lower-case">Godkänn behandling av personuppgifter</label>
+              <input type="checkbox" id="accept-gdpr">
+            </li>
+
+            <li class="form-row">
+              <label for="news-letter" class="lower-case">Få vårat nyhetsbrev</label>
+              <input type="checkbox" checked id="news-letter" class="checkbox-news-letter">
+            </li>
+
+            <li class="form-row">
+              <h3>Jag vill betala med</h3>
+            </li>
+
+            <li class="form-row">
+              <label for="payment-invoice">Faktura</label>
+              <input type="radio" id="payment-invoice">
+              <label for="payment-card">Betalkort</label>
+              <input type="radio" id="payment-card" class="checkbox-style">
+            </li>
+
+            <li class="button-row">
+              <input type="submit" value="Lägg beställning" class="basic-button">
+            </li>
+          </ul>
         </form>
       </section>
 

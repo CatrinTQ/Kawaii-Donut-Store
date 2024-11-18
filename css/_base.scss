@@ -2,12 +2,15 @@ body {
     background-color: $primary-font-family;
 }
 
-h1 {
-    font-family: $primary-font-family;
 
-}
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+        font-family: $primary-font-family;
+    }
     nav {
         button {
             background-color: $primary-color;
@@ -29,3 +32,88 @@ header {
         }
     }
 }
+
+.menu {
+    background-color: $forth-color;
+    display: none;
+    ul {
+        color: #fff;
+        li {
+            a {
+                color: #fff;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+.product-page {
+    height: 100vh;
+}
+
+.order-page {
+    height: 100vh;
+
+}
+
+// FORM PAGE 
+
+.form-page {
+    height: 100vh;
+    font-family: $primary-font-family;
+    font-weight: bold;
+    h2 {
+        font-size: rem(16);
+        text-transform: uppercase;
+    }
+}
+
+form {
+    margin: rem(15);
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: rem(15);
+    }
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+        text-transform: uppercase;
+        font-size: rem(12);
+        align-self: center;
+    }
+
+    .lower-case {
+        text-transform: initial;
+    }
+    input {
+        border: none;
+        background-color: #D9D9D9;
+        border-radius: rem(16);
+        appearance: textfield;
+    }
+    
+}
+.button-row{
+    display: flex;
+    justify-content: center;
+}
+.basic-button {
+    background-color: $secondary-color;
+    min-height: rem(30);
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: rem(10);
+    padding: rem(10);
+    border: none;
+    border-radius: rem(16);
+    appearance: textfield;
+}
+
+
