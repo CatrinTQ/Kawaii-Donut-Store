@@ -7,16 +7,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Kawaii donut</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart" />
   </head>
   <body>
     <header>
       <!-- <h1 class="text-4xl">Kawaii donut</h1> -->
+      
       <img class="logo-image" 
         src="/assets/photos/home-logo.png"
         alt="tecknad munk med rosa frosting som ler."
         width="120px"
         height=""
         loading="eager">
+
+      <span class="material-symbols-outlined">
+        shopping_cart
+      </span>
+      <span id="amount-in-cart">0 kr</span>
 
       <nav>
         <button aria-label="Open menu button" aria-expanded="false">
@@ -47,8 +54,7 @@
             <Button>Betyg</Button>
           </li>
         </ul>
-
-        <div id="products"></div>
+        <div id="product-list" class="product-div"></div>
       </section>
 
       <section class="product-info-page">
@@ -58,13 +64,6 @@
       <section class="order-page">
         <h2>Order</h2>
         <div id="order-products"></div>
-        <input type="text">
-        <button>Rabattkod</button>
-        <p>Summa:</p>
-        <p>Frakt:</p>
-        <p>Eventuell rabatt</p>
-        <p>Total:</p>
-        <button>Gå vidare</button>
       </section>
 
       <section class="form-page">
@@ -115,7 +114,7 @@
 
             <li class="form-row">
               <label for="news-letter" class="lower-case">Få vårat nyhetsbrev</label>
-              <input type="checkbox" checked id="news-letter" class="checkbox-news-letter">
+              <input type="checkbox" checked id="news-letter">
             </li>
 
             <li class="form-row">
@@ -126,7 +125,7 @@
               <label for="payment-invoice">Faktura</label>
               <input type="radio" id="payment-invoice">
               <label for="payment-card">Betalkort</label>
-              <input type="radio" id="payment-card" class="checkbox-style">
+              <input type="radio" id="payment-card">
             </li>
 
             <li class="button-row">
