@@ -87,6 +87,45 @@ cartBtn2.addEventListener('click', () => {
   }
 })
 
+sortPriceBtn.addEventListener('click', () => {
+  sortByPrice();
+  printDonuts(products);
+})
+
+sortRatingBtn.addEventListener('click', () => {
+  sortByRating();
+  printDonuts(products);
+})
+
+sortCategoryBtn.addEventListener('change', (e) => {
+  const category = e.target.value;
+  if (category === "Alla") {
+    printDonuts(products);
+  }
+  else if (category === "Djur") {
+    const optionOne = 'animal';
+    sortByCategory(optionOne);
+  }
+  else if (category === "Söt") {
+    const optionOne = 'sweet';
+    sortByCategory(optionOne);
+  }
+})
+// PRINT PRODUCTS
+
+function printRatingStar(rating) {
+  const isHalf = String(rating).indexOf('.');
+
+  let star = '';
+  for (let i = 0; i < rating; i++) {
+    star += `<img src="./assets/icons/rating-donut.png" width="20">`;
+  }
+  if (isHalf !== -1) {
+    star += `<img src="./assets/icons/rating-donut-half.png" width="20">`;
+  }
+  return star;
+}
+
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
   if (products[index].amount <= 0) {
@@ -147,23 +186,34 @@ function printCart() {
   console.log(cart);
 
   cart.forEach(product => {
-    orderDiv.innerHTML += `
-    <section class="product-card">
-      <img src="${product.img.url}" class="product-image"></img>
-      <h3>${product.name}</h3>
-      <p>${product.amount} st</p>
-      <p>${product.amount * product.price} kr</p>
-     </section>
-    `
-  });
-
-  orderDiv.innerHTML += `
-   <button class="basic-button" id="proceedCheckOutBtn">Gå vidare</button>
-  `
+    totalAmount += product.amount * product.price;
+  })
+  return totalAmount;
 }
 
+//SORT FUNCTIONS
 
-printDonuts();
+function sortByPrice() {
+  products.sort((product1, product2) => product1.price - product2.price);
+}
+
+function sortByRating() {
+  products.sort((product1, product2) => product2.rating - product1.rating);
+}
+
+function sortByCategory(category) {
+  
+  products.forEach(product => {
+    if (product.category === category) {
+      selectedProducts.push(product);
+    }
+    printDonuts(selectedProducts);
+  }) 
+}
+
+sortByCategory();
+
+printDonuts(products);
 
 
 
