@@ -20,27 +20,34 @@
         height=""
         loading="eager">
 
-      <span class="material-symbols-outlined">
+      <span id="cart-button" class="material-symbols-outlined">
         shopping_cart
       </span>
       <span id="amount-in-cart">0 kr</span>
 
       <nav>
-        <button aria-label="Open menu button" aria-expanded="false">
+        <button id="menu-button" aria-label="Open menu button" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
         </button>  
       </nav>
-      <div class="menu">
-        <ul>
-          <li><a href="#">Proukter</a></li>
-          <li><a href="#">Varukorg</a></li>
-        </ul>
-      </div>
+
     </header>
 
     <main>
+      <div class="menu" id="menu-div">
+        <ul>
+          <li><a href="#">Proukter</a></li>
+          <li><a href="#" id="cart-button-2">Varukorg</a></li>
+        </ul>
+      </div>
+
+      <section class="order-page" id="order">
+        <h2>Varukorgssammanställning</h2>
+        <div id="order-products"> Varukorgen är tom</div>
+      </section>
+
       <section class="product-page">
         <ul class="sort-list">
           Sortera efter:

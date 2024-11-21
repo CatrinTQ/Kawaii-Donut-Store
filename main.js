@@ -50,7 +50,42 @@ const cart = [];
 const productListDiv = document.querySelector('#product-list');
 const orderDiv = document.querySelector('#order-products');
 const cartSpan = document.querySelector('#amount-in-cart');
+const menuBtn = document.querySelector('#menu-button');
+const menu = document.querySelector('#menu-div');
+const cartBtn = document.querySelector('#cart-button');
+const orderPage = document.querySelector('#order');
+const cartBtn2 = document.querySelector('#cart-button-2');
+const sortPriceBtn = document.querySelector('#sort-price-button');
+const sortRatingBtn = document.querySelector('#sort-rating-button');
+const sortCategoryBtn = document.querySelector('#sort-category');
 
+menuBtn.addEventListener('click', () => {
+  const currentDisplay = getComputedStyle(menu).display;
+  if (currentDisplay === "none") {
+    menu.style.display = "block";
+  } else {
+    menu.style.display = "none";
+  }
+})
+
+cartBtn.addEventListener('click', () => {
+  const currentDisplay = getComputedStyle(orderPage).display;
+  if (currentDisplay === "none") {
+    orderPage.style.display = "block";
+  } else {
+    orderPage.style.display = "none";
+  }
+})
+
+cartBtn2.addEventListener('click', () => {
+  const currentDisplay = getComputedStyle(orderPage).display;
+  if (currentDisplay === "none") {
+    orderPage.style.display = "block";
+    menu.style.display = "none";
+  } else {
+    orderPage.style.display = "none";
+  }
+})
 
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
