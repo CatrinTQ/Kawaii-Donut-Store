@@ -3,13 +3,13 @@ import './css/style.scss'
 const products = [
   {
     id: 0,
-    name: 'Product 1',
+    name: 'Tiger',
     price: 35,
     rating: 4,
     amount: 0,
     category: 'sweet',
     img: {
-      url: '/assets/photos/home-logo.png',
+      url: './assets/photos/home-logo.png',
       width: 50,
       heigt: 50,
       alt: ''
@@ -23,7 +23,7 @@ const products = [
     amount: 0,
     category: 'animal',
     img: {
-      url: '/assets/photos/home-logo.png',
+      url: './assets/photos/home-logo.png',
       width: 100,
       heigt: 100,
       alt: ''
@@ -32,12 +32,12 @@ const products = [
   {
     id: 2,
     name: 'Blå tiger',
-    price: 25,
+    price: 250,
     rating: 2.5,
     amount: 0,
     category: 'animal',
     img: {
-      url: '/assets/photos/home-logo.png',
+      url: './assets/photos/home-logo.png',
       width: 100,
       heigt: 100,
       alt: ''
