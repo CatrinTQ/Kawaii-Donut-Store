@@ -45,7 +45,7 @@ const products = [
   },
 ];
 
-const selectedProducts = [];
+let selectedProducts = [];
 
 let cart = [];
 
@@ -233,7 +233,7 @@ function sortByRating() {
 }
 
 function sortByCategory(category) {
-  
+  selectedProducts = [];
   products.forEach(product => {
     if (product.category === category) {
       selectedProducts.push(product);
