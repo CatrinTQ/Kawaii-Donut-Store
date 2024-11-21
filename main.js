@@ -45,7 +45,9 @@ const products = [
   },
 ];
 
-const cart = [];
+const selectedProducts = [];
+
+let cart = [];
 
 const productListDiv = document.querySelector('#product-list');
 const orderDiv = document.querySelector('#order-products');
@@ -133,22 +135,24 @@ function decreaseAmount(e) {
   }
   else {
     products[index].amount -= 1;
-    printDonuts();
+    printDonuts(products);
     printCart();
+    printTotalAmount();
   }
 }
 
 function increaseAmount(e) {
   const index = e.currentTarget.dataset.id;
   products[index].amount += 1;
-  printDonuts();
+  printDonuts(products);
   printCart();
+  printTotalAmount();
 }
 
-function printDonuts() {
+function printDonuts(productArray) {
   productListDiv.innerHTML = "";
 
-  products.forEach((product, index) => {
+  productArray.forEach((product, index) => {
     productListDiv.innerHTML += `
     <section class="product-card">
       <img src="${product.img.url}" class="product-image"></img>
@@ -158,7 +162,7 @@ function printDonuts() {
       <p>${product.amount} st</p>
       <button data-id="${index}" class="basic-button minus">-</button>
       <button data-id="${index}" class="basic-button plus">+</button>
-      <p>${product.rating}</p>
+      <p>${printRatingStar(product.rating)}</p>
      </section>
     `;
   });
@@ -174,17 +178,44 @@ function printDonuts() {
   });
 }
 
+function getCart() {
+  cart = [];
+  products.forEach(product => {
+    if (product.amount > 0)
+    cart.push(product);
+  })
+}
+
 function printCart() {
+  getCart();
+  const totalAmount = getTotalAmount();
   orderDiv.innerHTML = "";
-  
-  products.forEach(product =>  {
+
+  products.forEach(product => {
     if (product.amount > 0) {
-      cart.push(product);
+      orderDiv.innerHTML+= `
+      <div>
+        <span>${product.name}</span>
+        <span>${product.amount}</span>
+        <span>${product.price * product.amount}</span>
+      </div>
+      `;
     }
   })
+  orderDiv.innerHTML += `<p>Totalt: ${totalAmount} kr</p>`;
+  orderDiv.innerHTML += `<button class=basic-button>Gå vidare</button>`;
+}
 
-  console.log(cart);
+function printTotalAmount() {  
+  getCart();
+  let amount = getTotalAmount();
+  cartSpan.innerHTML = "";
+  
+  cartSpan.innerHTML = amount + " kr";
+}
 
+function getTotalAmount() {
+  let totalAmount = 0;
   cart.forEach(product => {
     totalAmount += product.amount * product.price;
   })
