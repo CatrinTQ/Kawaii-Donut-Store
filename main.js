@@ -237,7 +237,21 @@ function printCart() {
       `;
     }
   })
-  orderDiv.innerHTML += `<p>Totalt: ${totalAmount} kr</p>`;
+  
+  orderDiv.innerHTML += `<p>Frakt: ${deliveryFee} kr</p>`;
+
+  checkDiscount();
+  if (activeDiscount === false) {
+    orderDiv.innerHTML += `<p>Totalt: ${totalAmount} kr</p>
+    `;
+  } else {
+    orderDiv.innerHTML += `
+    <p style="text-decoration: line-through;">Totalt: ${totalAmount} kr</p>
+    <p>${msg}</p>
+    <p>Totalt: ${discountTotalAmount} kr</p>
+    `;
+  }
+
   orderDiv.innerHTML += `<button class=basic-button>Gå vidare</button>`;
 }
 
