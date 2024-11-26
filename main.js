@@ -82,6 +82,8 @@ const sortNameBtn = document.querySelector('#sort-name-button');
 const sortPriceBtn = document.querySelector('#sort-price-button');
 const sortRatingBtn = document.querySelector('#sort-rating-button');
 const sortCategoryBtn = document.querySelector('#sort-category');
+const logo = document.querySelector('#logo');
+const today = new Date();
 
 logo.addEventListener('mouseover', () => {
   logo.src="./assets/photos/home-logo-blink.png";
@@ -99,6 +101,7 @@ menuBtn.addEventListener('click', () => {
     menu.style.display = "none";
   }
 })
+
 
 cartBtn.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(orderPage).display;
@@ -152,9 +155,9 @@ sortCategoryBtn.addEventListener('change', (e) => {
 
 function printRatingStar(rating) {
   const isHalf = String(rating).indexOf('.');
-
+  let ratingNumber = rating.toString().charAt(0);
   let star = '';
-  for (let i = 0; i < rating; i++) {
+  for (let i = 0; i < ratingNumber; i++) {
     star += `<img src="./assets/icons/rating-donut.png" width="20">`;
   }
   if (isHalf !== -1) {
@@ -213,6 +216,8 @@ function printDonuts(productArray) {
   });
 }
 
+//På måndagar innan kl 10 ska det ges 10% på beställningssumman. I varukorgen ska det stå 10% rabatt
+
 function getCart() {
   cart = [];
   products.forEach(product => {
@@ -223,8 +228,10 @@ function getCart() {
 
 function printCart() {
   getCart();
-  const totalAmount = getTotalAmount();
+  totalAmount = getTotalAmount();
   orderDiv.innerHTML = "";
+
+  calculateDeliveryFee();
 
   products.forEach(product => {
     if (product.amount > 0) {
@@ -264,7 +271,7 @@ function printTotalAmount() {
 }
 
 function getTotalAmount() {
-  let totalAmount = 0;
+  totalAmount = 0;
   cart.forEach(product => {
     totalAmount += product.amount * product.price;
   })
@@ -329,8 +336,13 @@ function sortByCategory(category) {
   }) 
 }
 
-sortByCategory();
+function checkInvoceAccess() {
+  if (totalAmount > 800 || discountTotalAmount > 800) {
 
+  }
+}
+
+checkWeekendPrice();
 printDonuts(products);
 
 
