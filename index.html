@@ -13,7 +13,7 @@
     <header>
       <!-- <h1 class="text-4xl">Kawaii donut</h1> -->
       
-      <img class="logo-image" 
+      <img id="logo" class="logo-image" 
         src="/assets/photos/home-logo.png"
         alt="tecknad munk med rosa frosting som ler."
         width="120px"
@@ -26,7 +26,7 @@
       <span id="amount-in-cart">0 kr</span>
 
       <nav>
-        <button id="menu-button" aria-label="Open menu button" aria-expanded="false">
+        <button id="menu-button" class="menu-class" aria-label="Open menu button" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -52,6 +52,9 @@
         <ul class="sort-list">
           Sortera efter:
           <li>
+            <button id="sort-name-button">Namn</button>
+          </li>
+          <li>
             <button id="sort-price-button">Pris</button>
           </li>
           <li>
@@ -72,8 +75,6 @@
       <section class="product-info-page">
         <div></div>
       </section>
-
-      
 
       <section class="form-page">
         <form>
@@ -138,6 +139,7 @@
             </li>
 
             <li class="button-row">
+              <input type="reset" value="Rensa" class="basic-button">
               <input type="submit" value="Lägg beställning" class="basic-button">
             </li>
           </ul>
