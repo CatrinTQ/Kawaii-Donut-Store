@@ -75,15 +75,21 @@ const orderDiv = document.querySelector('#order-products');
 const cartSpan = document.querySelector('#amount-in-cart');
 const menuBtn = document.querySelector('#menu-button');
 const menu = document.querySelector('#menu-div');
-const cartBtn = document.querySelector('#cart-button');
+const cartLink = document.querySelector('#cart-button');
 const orderPage = document.querySelector('#order');
-const cartBtn2 = document.querySelector('#cart-button-2');
+const cartBtnLogo = document.querySelector('#cart-button-2');
 const sortNameBtn = document.querySelector('#sort-name-button');
 const sortPriceBtn = document.querySelector('#sort-price-button');
 const sortRatingBtn = document.querySelector('#sort-rating-button');
 const sortCategoryBtn = document.querySelector('#sort-category');
 const logo = document.querySelector('#logo');
 const today = new Date();
+
+/* 
+###########################################
+########### LOGO EFFECT ##################
+###########################################
+*/
 
 logo.addEventListener('mouseover', () => {
   logo.src="./assets/photos/home-logo-blink.png";
@@ -92,6 +98,12 @@ logo.addEventListener('mouseover', () => {
 logo.addEventListener('mouseout', () => {
   logo.src="./assets/photos/home-logo.png";
 })
+
+/* 
+###########################################
+###########MENU TOGGLE####################
+###########################################
+*/
 
 menuBtn.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(menu).display;
@@ -103,7 +115,7 @@ menuBtn.addEventListener('click', () => {
 })
 
 
-cartBtn.addEventListener('click', () => {
+cartLink.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(orderPage).display;
   if (currentDisplay === "none") {
     orderPage.style.display = "block";
@@ -112,7 +124,7 @@ cartBtn.addEventListener('click', () => {
   }
 })
 
-cartBtn2.addEventListener('click', () => {
+cartBtnLogo.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(orderPage).display;
   if (currentDisplay === "none") {
     orderPage.style.display = "block";
@@ -151,7 +163,11 @@ sortCategoryBtn.addEventListener('change', (e) => {
     sortByCategory(optionOne);
   }
 })
-// PRINT PRODUCTS
+/* 
+###########################################
+###########PRINT PRODUCTS##################
+###########################################
+*/
 
 function printRatingStar(rating) {
   const isHalf = String(rating).indexOf('.');
@@ -216,8 +232,6 @@ function printDonuts(productArray) {
   });
 }
 
-//På måndagar innan kl 10 ska det ges 10% på beställningssumman. I varukorgen ska det stå 10% rabatt
-
 function getCart() {
   cart = [];
   products.forEach(product => {
@@ -278,6 +292,12 @@ function getTotalAmount() {
   return totalAmount;
 }
 
+/* 
+###########################################
+########### BUSINESS RULES ################
+###########################################
+*/
+
 function checkDiscount() {
   discountTotalAmount = 0;
   msg = '';
@@ -312,7 +332,11 @@ function calculateDeliveryFee() {
   }
 }
 
-//SORT FUNCTIONS
+/* 
+###########################################
+###########SORT FUNCTIONS##################
+###########################################
+*/
 
 function sortByName() {
   products.sort((product1, product2) => product1.name > product2.name);
