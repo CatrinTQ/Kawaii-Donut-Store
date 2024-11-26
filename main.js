@@ -82,6 +82,14 @@ const sortPriceBtn = document.querySelector('#sort-price-button');
 const sortRatingBtn = document.querySelector('#sort-rating-button');
 const sortCategoryBtn = document.querySelector('#sort-category');
 
+logo.addEventListener('mouseover', () => {
+  logo.src="./assets/photos/home-logo-blink.png";
+})
+
+logo.addEventListener('mouseout', () => {
+  logo.src="./assets/photos/home-logo.png";
+})
+
 menuBtn.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(menu).display;
   if (currentDisplay === "none") {
