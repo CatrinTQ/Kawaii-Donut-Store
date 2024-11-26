@@ -257,6 +257,17 @@ function getTotalAmount() {
   return totalAmount;
 }
 
+function checkDiscount() {
+  discountTotalAmount = 0;
+  msg = '';
+  activeDiscount = false;
+  if (today.getDay() === 1) {
+    discountTotalAmount = totalAmount * 0.9;
+    msg = "Du får måndagsrabatt, 10% på hela ordern!";
+    activeDiscount = true;
+  } 
+}
+
 function checkWeekendPrice() {
   products.forEach(product => {
     product.price *= 1;
