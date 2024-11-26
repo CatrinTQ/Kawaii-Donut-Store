@@ -63,6 +63,13 @@ let selectedProducts = [];
 
 let cart = [];
 
+let totalAmount = 0;
+let activeDiscount = false;
+let discountTotalAmount = 0;
+let msg = '';
+let deliveryFee = 25;
+
+
 const productListDiv = document.querySelector('#product-list');
 const orderDiv = document.querySelector('#order-products');
 const cartSpan = document.querySelector('#amount-in-cart');
