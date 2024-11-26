@@ -257,6 +257,17 @@ function getTotalAmount() {
   return totalAmount;
 }
 
+function checkWeekendPrice() {
+  products.forEach(product => {
+    product.price *= 1;
+  }) 
+  if (today.getDay() === 5 || today.getDate() === 6 || today.getDate() === 0 || today.getDate() === 1) {
+    products.forEach(product => {
+      product.price *= 1.15;
+    })
+  }
+}
+
 function calculateDeliveryFee() {
   let itemsInCart = 0;
 
