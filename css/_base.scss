@@ -28,6 +28,14 @@ header {
                 margin-bottom: rem(4);
             }
         }
+        button:hover {
+            span:nth-child(1) {
+                margin-right: rem(10);
+            }
+            span:nth-child(3) {
+                margin-right: rem(10);
+            }
+        }
     }
 }
 
@@ -45,7 +53,9 @@ header {
         }
     }
 }
-
+.logo-image {
+    padding: rem(10);
+}
 // PRODUCT PAGE
 
 .product-page {
@@ -69,32 +79,24 @@ header {
     }
 }
 
-.logo-image {
-    padding: rem(10);
-}
-
-// PRODUCT PAGE
-
-
 .basic-button {
-    background-color: $secondary-color;
+    background-color: rgb(65, 59, 59);
     min-height: rem(48);
+    min-width: rem(48);
     color: #FFF;
     text-transform: uppercase;
     font-weight: bold;
     margin: rem(10);
     padding: rem(10);
     border: none;
-    border-radius: rem(16);
 }
 
 .product-image {
-    width: 100px;
+    width: rem(90);
 }
 
 // ORDER PAGE
 .material-symbols-outlined {
-    background-color: lightblue;
     padding: rem(10);
     margin: rem(10);
 }
@@ -102,6 +104,11 @@ header {
 .order-page {
     background-color: lightblue;
     display: none;
+
+    button {
+        background-color: $secondary-color;
+        border-radius: rem(30);
+    }
 }
 
 // FORM PAGE 
@@ -110,7 +117,7 @@ header {
     font-family: $primary-font-family;
     font-weight: bold;
     background-color: pink;
-    display: none;
+    display: visible;
     h2 {
         font-size: rem(16);
         text-transform: uppercase;
@@ -150,18 +157,13 @@ form {
 .button-row{
     display: flex;
     justify-content: center;
+
+    input: {
+        background-color: red;
+        border-radius: rem(30);
+    }
 }
-.basic-button {
-    background-color: $secondary-color;
-    min-height: rem(30);
-    color: #FFF;
-    text-transform: uppercase;
-    font-weight: bold;
-    margin: rem(10);
-    padding: rem(10);
-    border: none;
-    border-radius: rem(16);
-}
+
 
 .successfull-order-page {
     display: none;
