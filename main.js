@@ -257,6 +257,18 @@ function getTotalAmount() {
   return totalAmount;
 }
 
+function calculateDeliveryFee() {
+  let itemsInCart = 0;
+
+  cart.forEach(item => {
+    itemsInCart += item.amount;
+  })
+
+  if (itemsInCart > 15) {
+    deliveryFee = "0";
+  }
+}
+
 //SORT FUNCTIONS
 
 function sortByName() {
