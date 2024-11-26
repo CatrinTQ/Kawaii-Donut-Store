@@ -9,7 +9,7 @@ const products = [
     amount: 0,
     category: 'sweet',
     img: {
-      url: './assets/photos/home-logo.png',
+      url: './assets/photos/product-image-1.png',
       width: 50,
       heigt: 50,
       alt: ''
@@ -23,9 +23,9 @@ const products = [
     amount: 0,
     category: 'animal',
     img: {
-      url: './assets/photos/home-logo.png',
-      width: 100,
-      heigt: 100,
+      url: './assets/photos/product-image-2.png',
+      width: 50,
+      heigt: 50,
       alt: ''
     },
   },
@@ -37,9 +37,23 @@ const products = [
     amount: 0,
     category: 'animal',
     img: {
-      url: './assets/photos/home-logo.png',
-      width: 100,
-      heigt: 100,
+      url: './assets/photos/product-image-3.png',
+      width: 50,
+      heigt: 50,
+      alt: ''
+    },
+  },
+  {
+    id: 3,
+    name: 'Kanin',
+    price: 40,
+    rating: 1.5,
+    amount: 0,
+    category: 'animal',
+    img: {
+      url: './assets/photos/product-image-4.png',
+      width: 50,
+      heigt: 50,
       alt: ''
     },
   },
