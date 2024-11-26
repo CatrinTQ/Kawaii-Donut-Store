@@ -78,6 +78,7 @@ const menu = document.querySelector('#menu-div');
 const cartBtn = document.querySelector('#cart-button');
 const orderPage = document.querySelector('#order');
 const cartBtn2 = document.querySelector('#cart-button-2');
+const sortNameBtn = document.querySelector('#sort-name-button');
 const sortPriceBtn = document.querySelector('#sort-price-button');
 const sortRatingBtn = document.querySelector('#sort-rating-button');
 const sortCategoryBtn = document.querySelector('#sort-category');
@@ -116,6 +117,11 @@ cartBtn2.addEventListener('click', () => {
   } else {
     orderPage.style.display = "none";
   }
+})
+
+sortNameBtn.addEventListener('click', () => {
+  sortByName();
+  printDonuts(products);
 })
 
 sortPriceBtn.addEventListener('click', () => {
@@ -252,6 +258,10 @@ function getTotalAmount() {
 }
 
 //SORT FUNCTIONS
+
+function sortByName() {
+  products.sort((product1, product2) => product1.name > product2.name);
+}
 
 function sortByPrice() {
   products.sort((product1, product2) => product1.price - product2.price);
