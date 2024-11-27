@@ -1,66 +1,10 @@
 import './css/style.scss'
+import products from './products.mjs';
 
-const products = [
-  {
-    id: 0,
-    name: 'Tiger',
-    price: 35,
-    rating: 4,
-    amount: 0,
-    category: 'sweet',
-    img: {
-      url: './assets/photos/product-image-1.png',
-      width: 50,
-      heigt: 50,
-      alt: ''
-    },
-  },
-  {
-    id: 1,
-    name: 'Snölejon',
-    price: 30,
-    rating: 5,
-    amount: 0,
-    category: 'animal',
-    img: {
-      url: './assets/photos/product-image-2.png',
-      width: 50,
-      heigt: 50,
-      alt: ''
-    },
-  },
-  {
-    id: 2,
-    name: 'Blå tiger',
-    price: 250,
-    rating: 2.5,
-    amount: 0,
-    category: 'animal',
-    img: {
-      url: './assets/photos/product-image-3.png',
-      width: 50,
-      heigt: 50,
-      alt: ''
-    },
-  },
-  {
-    id: 3,
-    name: 'Kanin',
-    price: 40,
-    rating: 1.5,
-    amount: 0,
-    category: 'animal',
-    img: {
-      url: './assets/photos/product-image-4.png',
-      width: 50,
-      heigt: 50,
-      alt: ''
-    },
-  },
-];
+/* 🦄🦄🦄🦄🦄🦄 JENNI: Kika gärna på varför jag inte får med css på live sidan, tack! */
+/* 🦄🦄🦄🦄🦄🦄 är också nyfiken på varför jag inte får use att fungera i sass... */
 
-let selectedProducts = [];
-
+let selectedProducts = [...products];
 let cart = [];
 
 let totalAmount = 0;
@@ -68,7 +12,6 @@ let activeDiscount = false;
 let discountTotalAmount = 0;
 let msg = '';
 let deliveryFee = 25;
-
 
 const productListDiv = document.querySelector('#product-list');
 const orderDiv = document.querySelector('#order-products');
@@ -84,6 +27,8 @@ const sortRatingBtn = document.querySelector('#sort-rating-button');
 const sortCategoryBtn = document.querySelector('#sort-category');
 const logo = document.querySelector('#logo');
 const today = new Date();
+const formPage = document.querySelector('#form');
+const invoiceInput = document.querySelector('#payment-invoice');
 
 /* 
 ###########################################
@@ -114,7 +59,6 @@ menuBtn.addEventListener('click', () => {
   }
 })
 
-
 cartLink.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(orderPage).display;
   if (currentDisplay === "none") {
@@ -134,35 +78,35 @@ cartBtnLogo.addEventListener('click', () => {
   }
 })
 
+function resetProductList() {
+  selectedProducts = [...products];
+}
+
 sortNameBtn.addEventListener('click', () => {
+  resetProductList();
   sortByName();
-  printDonuts(products);
+  printDonuts();
 })
 
 sortPriceBtn.addEventListener('click', () => {
+  resetProductList();
   sortByPrice();
-  printDonuts(products);
+  printDonuts();
 })
 
 sortRatingBtn.addEventListener('click', () => {
+  resetProductList();
   sortByRating();
-  printDonuts(products);
+  printDonuts();
 })
 
 sortCategoryBtn.addEventListener('change', (e) => {
   const category = e.target.value;
-  if (category === "Alla") {
-    printDonuts(products);
-  }
-  else if (category === "Djur") {
-    const optionOne = 'animal';
-    sortByCategory(optionOne);
-  }
-  else if (category === "Söt") {
-    const optionOne = 'sweet';
-    sortByCategory(optionOne);
-  }
+  resetProductList();
+  sortByCategory(category);
+  printDonuts();
 })
+
 /* 
 ###########################################
 ###########PRINT PRODUCTS##################
@@ -184,12 +128,12 @@ function printRatingStar(rating) {
 
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-  if (products[index].amount <= 0) {
-    products[index].amount = 0;
+  if (selectedProducts[index].amount <= 0) {
+    selectedProducts[index].amount = 0;
   }
   else {
-    products[index].amount -= 1;
-    printDonuts(products);
+    selectedProducts[index].amount -= 1;
+    printDonuts();
     printCart();
     printTotalAmount();
   }
@@ -197,16 +141,16 @@ function decreaseAmount(e) {
 
 function increaseAmount(e) {
   const index = e.currentTarget.dataset.id;
-  products[index].amount += 1;
-  printDonuts(products);
+  selectedProducts[index].amount += 1;
+  printDonuts();
   printCart();
   printTotalAmount();
 }
 
-function printDonuts(productArray) {
+function printDonuts() {
   productListDiv.innerHTML = "";
 
-  productArray.forEach((product, index) => {
+  selectedProducts.forEach((product, index) => {
     productListDiv.innerHTML += `
     <section class="product-card">
       <img src="${product.img.url}" class="product-image"></img>
@@ -244,7 +188,10 @@ function printCart() {
   getCart();
   totalAmount = getTotalAmount();
   orderDiv.innerHTML = "";
-
+   if (cart  < 1) {
+    orderDiv.innerHTML = "varukorgen är tom";
+    return;
+   }
   calculateDeliveryFee();
 
   products.forEach(product => {
@@ -273,7 +220,20 @@ function printCart() {
     `;
   }
 
-  orderDiv.innerHTML += `<button class=basic-button>Gå vidare</button>`;
+  orderDiv.innerHTML += `<button id="proceed-to-check-out" class=basic-button>Gå vidare</button>`;
+  
+  const checkoutBtn = document.querySelector('#proceed-to-check-out');
+  
+  checkoutBtn.addEventListener('click', () => {
+    const currentDisplay = getComputedStyle(formPage).display;
+    // const display = formPage.style.display;
+    console.log(currentDisplay);
+    if (currentDisplay === "none") {
+      formPage.style.display = "block";
+    }
+
+    checkInvoceAccess();
+  })
 }
 
 function printTotalAmount() {  
@@ -332,6 +292,12 @@ function calculateDeliveryFee() {
   }
 }
 
+function checkInvoceAccess() {
+  if (totalAmount > 800 || discountTotalAmount > 800) {
+    invoiceInput.disabled = true;
+  }
+}
+
 /* 
 ###########################################
 ###########SORT FUNCTIONS##################
@@ -339,35 +305,32 @@ function calculateDeliveryFee() {
 */
 
 function sortByName() {
-  products.sort((product1, product2) => product1.name > product2.name);
+  selectedProducts.sort((product1, product2) => product1.name > product2.name);
 }
 
 function sortByPrice() {
-  products.sort((product1, product2) => product1.price - product2.price);
+  selectedProducts.sort((product1, product2) => product1.price - product2.price);
 }
 
 function sortByRating() {
-  products.sort((product1, product2) => product2.rating - product1.rating);
+  selectedProducts.sort((product1, product2) => product2.rating - product1.rating);
 }
 
 function sortByCategory(category) {
-  selectedProducts = [];
-  products.forEach(product => {
-    if (product.category === category) {
-      selectedProducts.push(product);
-    }
-    printDonuts(selectedProducts);
-  }) 
-}
-
-function checkInvoceAccess() {
-  if (totalAmount > 800 || discountTotalAmount > 800) {
-
+  if (category === 'all') {
+    return;
+  } else {
+    selectedProducts = selectedProducts.filter(product => product.category === category);
   }
 }
 
+/* 
+###########################################
+###########FORM FUNCTIONS##################
+###########################################
+*/
+
+
+
 checkWeekendPrice();
-printDonuts(products);
-
-
-
+printDonuts();
