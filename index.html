@@ -43,40 +43,7 @@
         </ul>
       </div>
 
-      <section class="order-page" id="order">
-        <h2>Varukorgssammanställning</h2>
-        <div id="order-products"> Varukorgen är tom</div>
-      </section>
-
-      <section class="product-page">
-        <ul class="sort-list">
-          Sortera efter:
-          <li>
-            <button id="sort-name-button">Namn</button>
-          </li>
-          <li>
-            <button id="sort-price-button">Pris</button>
-          </li>
-          <li>
-            <select name="category" id="sort-category">
-              <option>Kategori:</option>
-              <option>Alla</option>
-              <option>Djur</option>
-              <option>Söt</option>
-            </select>
-          </li>
-          <li>
-            <Button id="sort-rating-button">Betyg</Button>
-          </li>
-        </ul>
-        <div id="product-list" class="product-div"></div>
-      </section>
-
-      <section class="product-info-page">
-        <div></div>
-      </section>
-
-      <section class="form-page">
+      <section id="form" class="form-page">
         <form>
           <ul>
             <li class="form-row">
@@ -146,6 +113,39 @@
         </form>
       </section>
 
+      <section class="order-page" id="order">
+        <h2>Varukorgssammanställning</h2>
+        <div id="order-products"> Varukorgen är tom</div>
+      </section>
+
+      <section class="product-page">
+        <ul class="sort-list">
+          Sortera efter:
+          <li>
+            <button id="sort-name-button">Namn</button>
+          </li>
+          <li>
+            <button id="sort-price-button">Pris</button>
+          </li>
+          <li>
+            <select name="category" id="sort-category">
+              <option value="all">Kategori:</option>
+              <option value="all">Alla</option>
+              <option value="animal">Djur</option>
+              <option value="sweet">Söt</option>
+            </select>
+          </li>
+          <li>
+            <Button id="sort-rating-button">Betyg</Button>
+          </li>
+        </ul>
+        <div id="product-list" class="product-div"></div>
+      </section>
+
+      <section class="product-info-page">
+        <div></div>
+      </section>
+
       <section class="successfull-order-page">
         <div id="receiver-info"></div>
         <div></div>
@@ -154,7 +154,7 @@
         <p>Välkommen åter!</p>
       </section>
     </main>  
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/main.mjs"></script>
   </body>
 </html>
   
