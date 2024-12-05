@@ -115,55 +115,11 @@ header {
 
 .form-page {
     font-family: $primary-font-family;
-    font-weight: bold;
     background-color: pink;
-    display: none;
     h2 {
         font-size: rem(16);
-        text-transform: uppercase;
     }
 }
-
-form {
-    margin: rem(15);
-    ul {
-        display: flex;
-        flex-direction: column;
-        gap: rem(15);
-    }
-}
-
-.form-row {
-    display: flex;
-    justify-content: space-between;
-
-    label {
-        text-transform: uppercase;
-        font-size: rem(12);
-        align-self: center;
-    }
-
-    .lower-case {
-        text-transform: initial;
-    }
-    input {
-        border: none;
-        background-color: #D9D9D9;
-        border-radius: rem(16);
-        appearance: textfield;
-    }
-    
-}
-.button-row{
-    display: flex;
-    justify-content: center;
-
-    input: {
-        background-color: red;
-        border-radius: rem(30);
-    }
-}
-
 
 .successfull-order-page {
     display: none;

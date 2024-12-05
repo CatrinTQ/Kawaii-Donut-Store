@@ -5,26 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Kawaii donut</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart" />
+    <title>Kawaii donut</title>
+    <link rel="stylesheet" href="/css/style.scss" type="text/css" >
   </head>
   <body>
     <header>
-      <!-- <h1 class="text-4xl">Kawaii donut</h1> -->
       
       <img id="logo" class="logo-image" 
-        src="/assets/photos/home-logo.png"
-        alt="tecknad munk med rosa frosting som ler."
-        width="120px"
-        height=""
-        loading="eager">
-
-      <span id="cart-button" class="material-symbols-outlined">
-        shopping_cart
-      </span>
+      src="/assets/photos/home-logo.png"
+      alt="tecknad munk med rosa frosting som ler."
+      width="120"
+      height=""
+      loading="eager">
+      
+      <button>
+        <span id="cart-button" class="material-symbols-outlined">
+          <div id="number-of-donuts" class="hidden bg-red-400 rounded-full"></div>
+          shopping_cart
+        </span>
+      </button>
       <span id="amount-in-cart">0 kr</span>
-
+      
       <nav>
         <button id="menu-button" class="menu-class" aria-label="Open menu button" aria-expanded="false">
           <span></span>
@@ -32,7 +35,8 @@
           <span></span>
         </button>  
       </nav>
-
+      
+      <!-- <h1 class="">Kawaii donut</h1> -->
     </header>
 
     <main>
@@ -43,73 +47,97 @@
         </ul>
       </div>
 
-      <section id="form" class="form-page">
-        <form>
-          <ul>
-            <li class="form-row">
-              <h2>Fyll i dina uppgifter</h2>
-            </li>
-            <li class="form-row">
-              <label for="first-name">Förnamn </label>
-              <input type="text" id="first-name">
-            </li>
+      <section class="successfull-order-page" id="confirmation-page">
+        <h2>Tack för din order!</h2>
+        <p>Vi har mottagit följande information:</p>
+        <div id="receiver-info"></div>
+        <img src="" alt="" width="" height="" loading="lazy">
 
-            <li class="form-row">
-              <label for="last-name">Efternamn </label>
-              <input type="text" id="last-name">
-            </li>
+        <p>Välkommen åter!</p>
+      </section>
 
-            <li class="form-row">
-              <label for="address">Adress</label>
-              <input type="text" id="address">
-            </li>
+      <section id="form" class="hidden form-page">
+        <form id="order-form" class="grid grid-cols-3 gap-4 p-4">
+          <h2 class="uppercase col-span-2">Fyll i dina uppgifter</h2>
+              <label for="first-name" class="text-right col-start-1 col-1">Förnamn </label>
+              <input type="text" id="first-name" required aria-required="true" class="col-span-2">
+              
+              <p id="msg-first-name"></p>
 
-            <li class="form-row">
-              <label for="postal-address">Postadress</label>
-              <input type="text" id="postal-address">
-            </li>
+              <label for="last-name" class="text-right col-start-1 col-1">Efternamn </label>
+              <input type="text" id="last-name" required class="col-span-2">
+              <p id="msg-last-name"></p>
 
-            <li class="form-row">
-              <label for="entry-code">Postkod</label>
-              <input type="text" id="entry-code">
-            </li>
+              <label for="address" class="text-right col-start-1 col-1">Adress</label>
+              <input type="text" id="address" required class="col-span-2">
+              <p id="msg-address"></p>
 
-            <li class="form-row">
-              <label for="phone">Telefon</label>
-              <input type="number" id="phone">
-            </li>
+              <label for="postal-number" class="text-right col-start-1 col-1">Postnummer</label>
+              <input type="number" id="postal-number" required class="col-span-2">
+              <p id="msg-postal-number"></p>
 
-            <li class="form-row">
-              <label for="email">E-post</label>
-              <input type="email" id="email">
-            </li>
+              <label for="postal-address" class="text-right col-start-1 col-1">Postadress</label>
+              <input type="text" id="postal-address" required class="col-span-2">
+              <p id="msg-postal-address"></p>
 
-            <li class="form-row">
-              <label for="accept-gdpr" class="lower-case">Godkänn behandling av personuppgifter</label>
-              <input type="checkbox" id="accept-gdpr">
-            </li>
+              <label for="entry-code" class="text-right col-start-1 col-1">Portkod</label>
+              <input type="text" id="entry-code" class="col-span-2">
 
-            <li class="form-row">
-              <label for="news-letter" class="lower-case">Få vårat nyhetsbrev</label>
-              <input type="checkbox" checked id="news-letter">
-            </li>
+              <label for="phone" class="text-right col-start-1 col-1 ">Telefon</label>
+              <input type="number" id="phone" required class="col-span-2">
+              <p id="msg-phone"></p>
 
-            <li class="form-row">
-              <h3>Jag vill betala med</h3>
-            </li>
+              <label for="email" class="text-right col-start-1 col-1">E-post</label>
+              <input type="email" id="email" required class="col-span-2">
+              <p id="msg-email"></p>
 
-            <li class="form-row">
-              <label for="payment-invoice">Faktura</label>
-              <input type="radio" id="payment-invoice">
-              <label for="payment-card">Betalkort</label>
-              <input type="radio" id="payment-card">
-            </li>
+              <div class="col-span-4 grid grid-cols-5 gap-4 items-start">
+                <!-- Godkänn behandling av personuppgifter -->
+                <label for="accept-gdpr" class="col-span-4">Godkänn behandling av personuppgifter</label>
+                <input type="checkbox" id="accept-gdpr" required class="col-start-5 self-center">
+                <p id="msg-accept-gdpr" class="col-span-5"></p>
+                
+                <!-- Få vårt nyhetsbrev -->
+                <label for="news-letter" class="col-start-1 col-span-3">Få vårat nyhetsbrev</label>
+                <input type="checkbox" checked id="news-letter" class="col-start-5 self-center">
+              </div>
 
-            <li class="button-row">
-              <input type="reset" value="Rensa" class="basic-button">
-              <input type="submit" value="Lägg beställning" class="basic-button">
-            </li>
-          </ul>
+              <div class="col-span-4 grid grid-cols-5 gap-4">
+                <h3 class="col-span-5">Jag vill betala med</h3>
+               
+                <label for="payment-invoice" class="col-start-1">Faktura</label>
+                <input type="radio" id="invoice-radio-button" name="payment" class="">
+                
+                <label for="payment-card" class="">Betalkort</label>
+                <input type="radio" id="card-radio-button" name="payment" class="">
+              </div>
+              
+              <div class="hidden col-span-4 grid grid-cols-3 gap-4" id="invoice-field">
+                <label for="personal-number" class=" text-right col-start-1 col-1">Personnummer</label>
+                <input type="number" id="personal-number" class="col-start-2 col-span-2">
+                <p id="msg-personal-number"></p>
+              </div>
+
+              <div class="hidden col-span-4 grid grid-cols-3 gap-4" id="card-field">
+                <!-- Kortnummer -->
+                <label for="card-info" class="text-right col-start-1">Kortnummer</label>
+                <input type="number" id="card-info" class="col-start-2 col-span-2">
+                <p id="msg-card-info" class="col-span-3"></p>
+                
+                <!-- Datum -->
+                <label for="month-year" class="text-right col-start-1">Datum</label>
+                <input type="number" id="month-year" class="col-start-2 col-span-2">
+                <p id="msg-month-year" class="col-span-3"></p>
+                
+                <!-- CVC -->
+                <label for="cvc-code" class="text-right col-start-1 uppercase">Cvc</label>
+                <input type="number" id="cvc-code" class="col-start-2 col-span-2">
+                <p id="msg-cvc-code" class="col-span-3"></p>
+              </div>
+
+              <input type="reset" value="Rensa" class="basic-button col-start-1 col-span-1">
+              <input type="submit" id="place-order-button" value="Lägg beställning" disabled="true" class="basic-button col-start-2 col-span-2">
+              
         </form>
       </section>
 
@@ -145,14 +173,7 @@
       <section class="product-info-page">
         <div></div>
       </section>
-
-      <section class="successfull-order-page">
-        <div id="receiver-info"></div>
-        <div></div>
-        <img src="" alt="" width="" height="" loading="lazy">
-
-        <p>Välkommen åter!</p>
-      </section>
+      
     </main>  
     <script type="module" src="/main.mjs"></script>
   </body>
