@@ -53,11 +53,11 @@ const highlightnumberofItems = document.querySelector('#number-of-donuts');
 */
 
 logo.addEventListener('mouseover', () => {
-  logo.src="assets/photos/home-logo-blink.png";
+  logo.src="photos/home-logo-blink.png";
 })
 
 logo.addEventListener('mouseout', () => {
-  logo.src="./assets/photos/home-logo.png";
+  logo.src="photos/home-logo.png";
 })
 
 /* 
@@ -69,7 +69,7 @@ logo.addEventListener('mouseout', () => {
 menuBtn.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(menu).display;
   if (currentDisplay === "none") {
-    menu.style.display = "block";
+    menu.style.display = "flex";
   } else {
     menu.style.display = "none";
   }
@@ -78,7 +78,7 @@ menuBtn.addEventListener('click', () => {
 cartLink.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(orderPage).display;
   if (currentDisplay === "none") {
-    orderPage.style.display = "block";
+    orderPage.style.display = "flex";
   } else {
     orderPage.style.display = "none";
   }
@@ -87,7 +87,7 @@ cartLink.addEventListener('click', () => {
 cartBtnLogo.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(orderPage).display;
   if (currentDisplay === "none") {
-    orderPage.style.display = "block";
+    orderPage.style.display = "flex";
     menu.style.display = "none";
   } else {
     orderPage.style.display = "none";
@@ -183,15 +183,20 @@ function printDonuts() {
 
   selectedProducts.forEach((product, index) => {
     productListDiv.innerHTML += `
-    <section class="product-card">
+    <section class="flex items-center content-center gap-4">
       <img src="${product.img.url}" class="product-image"></img>
-      <h3>${product.name}</h3>
-      <p>Pris: ${product.price} kr</p>
-      <p>Kategori: ${product.category}</p>
-      <p>${product.amount} st</p>
-      <button data-id="${index}" class="basic-button minus">-</button>
-      <button data-id="${index}" class="basic-button plus">+</button>
-      <p>${printRatingStar(product.rating)}</p>
+      <div class="gap-1">
+        <h3>${product.name}</h3>
+        <p>Pris: ${product.price} kr</p>
+        <p class="flex flex-row">Betyg: ${printRatingStar(product.rating)}</p>
+        <p>Kategori: ${product.category}</p>
+
+        <div class="flex items-center">
+          <button data-id="${index}" class="basic-button minus">-</button>
+          <p>${product.amount} st</p>
+          <button data-id="${index}" class="basic-button plus">+</button>
+        </div>
+      </div>
      </section>
     `;
   });

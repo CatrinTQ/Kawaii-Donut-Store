@@ -1,82 +1,31 @@
 body {
     background-color: $primary-color;
+    font-family: $primary-font-family;
+
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    h1 {
-        font-family: $primary-font-family;
-    }
-    nav {
-        button {
-            background-color: $primary-color;
-            border: none;
-            min-height: rem(48);
-            min-width: rem(48);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            span {
-                display: block;
-                width: rem(30);
-                height: rem(3);
-                background-color: $fifth-color;
-                border-radius: rem(6);
-                margin-bottom: rem(4);
-            }
-        }
-        button:hover {
-            span:nth-child(1) {
-                margin-right: rem(10);
-            }
-            span:nth-child(3) {
-                margin-right: rem(10);
-            }
+nav {
+    button {
+        background-color: $primary-color;
+        min-height: rem(48);
+        min-width: rem(48);
+        span {
+            display: block;
+            width: rem(30);
+            height: rem(3);
+            background-color: $fifth-color;
+            border-radius: rem(6);
+            margin-bottom: rem(4);
         }
     }
 }
 
 .menu {
     background-color: $forth-color;
-    display: none;
-    ul {
-        color: #fff;
-        li {
-            a {
-                color: #fff;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-        }
-    }
+    min-height: 100vh;
 }
 .logo-image {
     padding: rem(10);
-}
-// PRODUCT PAGE
-
-.product-page {
-    display: flex;
-    flex-direction: column;
-    gap: rem(25);
-    .sort-list {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-
-        button {
-            border: none;
-            background-color: $primary-color;
-        }
-    }
-
-    h2 {
-        font-size: rem(32);
-        font-family: $primary-font-family;
-    }
 }
 
 .basic-button {
@@ -92,18 +41,20 @@ header {
 }
 
 .product-image {
-    width: rem(90);
+    width: rem(120);
 }
 
 // ORDER PAGE
 .material-symbols-outlined {
     padding: rem(10);
     margin: rem(10);
+    font-size: 2rem;
 }
 
-.order-page {
+.cart {
     background-color: lightblue;
-    display: none;
+    min-height: rem(500);
+    overflow: hidden;
 
     button {
         background-color: $secondary-color;
@@ -114,17 +65,11 @@ header {
 // FORM PAGE 
 
 .form-page {
-    font-family: $primary-font-family;
     background-color: pink;
-    h2 {
-        font-size: rem(16);
-    }
 }
 
 .successfull-order-page {
     display: none;
-    // display: flex;
-    justify-content: center;
     background-color: yellow;
 }
 

@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="/css/style.scss" type="text/css" >
   </head>
   <body>
-    <header>
+    <header class="flex justify-between items-center">
       
       <img id="logo" class="logo-image" 
-      src="assets/photos/home-logo.png"
+      src="photos/home-logo.png"
       alt="tecknad munk med rosa frosting som ler."
-      width="120"
+      width="150"
       height=""
       loading="eager">
       
@@ -36,17 +36,19 @@
         </button>  
       </nav>
       
-      <!-- <h1 class="">Kawaii donut</h1> -->
     </header>
+    <h1 class="flex justify-center uppercase">Kawaii donut</h1>
 
     <main>
-      <div class="menu" id="menu-div">
-        <ul>
-          <li><a href="#">Proukter</a></li>
-          <li><a href="#" id="cart-button-2">Varukorg</a></li>
+      <!-- MENU PAGE -->
+      <div class="menu flex justify-center items-center h-52 gap-8" id="menu-div">
+        <ul class="uppercase text-white flex flex-col justify-center items-center gap-8">
+          <li><a class="" href="#">Proukter</a></li>
+          <li><a class="" href="#" id="cart-button-2">Varukorg</a></li>
         </ul>
       </div>
 
+      <!-- ORDER CONFIRMATION PAGE -->
       <section class="successfull-order-page" id="confirmation-page">
         <h2>Tack för din order!</h2>
         <p>Vi har mottagit följande information:</p>
@@ -56,6 +58,7 @@
         <p>Välkommen åter!</p>
       </section>
 
+      <!-- FORM PAGE  -->
       <section id="form" class="hidden form-page">
         <form id="order-form" class="grid grid-cols-3 gap-4 p-4">
           <h2 class="uppercase col-span-2">Fyll i dina uppgifter</h2>
@@ -141,13 +144,19 @@
         </form>
       </section>
 
-      <section class="order-page" id="order">
-        <h2>Varukorgssammanställning</h2>
-        <div id="order-products"> Varukorgen är tom</div>
+
+      <!-- CART -->
+      <section class="cart hidden flex justify-center items-center p-10" id="order">
+        <fieldset class="flex justify-center items-center border-dotted border-2 w-4/5 h-52">
+          <legend class="text-center m-auto">Varukorgssammanställning</legend>
+          <div id="order-products">Varukorgen är tom</div>
+        </fieldset>
       </section>
 
-      <section class="product-page">
-        <ul class="sort-list">
+
+      <!-- PRODUCT PAGE  -->
+      <section class="product-page flex flex-col gap-8">
+        <ul class="sort-list flex flex-row justify-end gap-2">
           Sortera efter:
           <li>
             <button id="sort-name-button">Namn</button>
@@ -157,7 +166,7 @@
           </li>
           <li>
             <select name="category" id="sort-category">
-              <option value="all">Kategori:</option>
+              <option value="all" selected>Kategori:</option>
               <option value="all">Alla</option>
               <option value="animal">Djur</option>
               <option value="sweet">Söt</option>
@@ -167,11 +176,7 @@
             <Button id="sort-rating-button">Betyg</Button>
           </li>
         </ul>
-        <div id="product-list" class="product-div"></div>
-      </section>
-
-      <section class="product-info-page">
-        <div></div>
+        <div id="product-list" class="product-div flex flex-col items-center gap-4"></div>
       </section>
       
     </main>  
