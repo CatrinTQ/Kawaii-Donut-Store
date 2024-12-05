@@ -1,17 +1,31 @@
 import './css/style.scss'
 import products from './products.mjs';
 
-/* 🦄🦄🦄🦄🦄🦄 JENNI: Kika gärna på varför jag inte får med css på live sidan, tack! */
-/* 🦄🦄🦄🦄🦄🦄 är också nyfiken på varför jag inte får use att fungera i sass... */
-
 let selectedProducts = [...products];
 let cart = [];
+
+let customer = [
+  {
+    firstName: '',
+    lastName: '',
+    address: '',
+    postalNumber: '',
+    postAddress: '',
+    entryCode: '',
+    phone: '',
+    email: ''
+  },
+];
+console.log(customer);
 
 let totalAmount = 0;
 let activeDiscount = false;
 let discountTotalAmount = 0;
 let msg = '';
 let deliveryFee = 25;
+let customerTimer = setTimeout(timeoutCustomer, 1000 * 60 * 15);
+console.log(customerTimer);
+let highlightNumber = 0;
 
 const productListDiv = document.querySelector('#product-list');
 const orderDiv = document.querySelector('#order-products');
@@ -26,9 +40,11 @@ const sortPriceBtn = document.querySelector('#sort-price-button');
 const sortRatingBtn = document.querySelector('#sort-rating-button');
 const sortCategoryBtn = document.querySelector('#sort-category');
 const logo = document.querySelector('#logo');
-const today = new Date();
 const formPage = document.querySelector('#form');
 const invoiceInput = document.querySelector('#payment-invoice');
+const highlightnumberofItems = document.querySelector('#number-of-donuts');
+
+// const cartAmount = document.querySelector('#number-of-donuts');
 
 /* 
 ###########################################
@@ -193,7 +209,7 @@ function printDonuts() {
 
 function getCart() {
   cart = [];
-  products.forEach(product => {
+  selectedProducts.forEach(product => {
     if (product.amount > 0)
     cart.push(product);
   })
@@ -208,8 +224,8 @@ function printCart() {
     return;
    }
   calculateDeliveryFee();
-
-  products.forEach(product => {
+  checkDiscount();
+  cart.forEach(product => {
     if (product.amount > 0) {
       orderDiv.innerHTML+= `
       <div>
@@ -223,7 +239,8 @@ function printCart() {
   
   orderDiv.innerHTML += `<p>Frakt: ${deliveryFee} kr</p>`;
 
-  checkDiscount();
+  
+  checkMondayDiscount();
   if (activeDiscount === false) {
     orderDiv.innerHTML += `<p>Totalt: ${totalAmount} kr</p>
     `;
