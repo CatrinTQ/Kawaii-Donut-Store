@@ -136,6 +136,7 @@ function decreaseAmount(e) {
     printDonuts();
     printCart();
     printTotalAmount();
+    highlightItemInCart();
   }
 }
 
@@ -145,6 +146,20 @@ function increaseAmount(e) {
   printDonuts();
   printCart();
   printTotalAmount();
+  highlightItemInCart();
+}
+
+function highlightItemInCart() {
+  highlightNumber = 0;
+  cart.forEach(product => {
+    highlightNumber += product.amount;
+  })
+  if (highlightNumber > 0) {
+    highlightnumberofItems.innerHTML = highlightNumber;
+    highlightnumberofItems.classList.remove('hidden');
+  } else {
+    highlightnumberofItems.innerHTML = '';
+  }
 }
 
 function printDonuts() {
