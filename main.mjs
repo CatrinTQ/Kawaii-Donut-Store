@@ -53,7 +53,7 @@ const highlightnumberofItems = document.querySelector('#number-of-donuts');
 */
 
 logo.addEventListener('mouseover', () => {
-  logo.src="./assets/photos/home-logo-blink.png";
+  logo.src="assets/photos/home-logo-blink.png";
 })
 
 logo.addEventListener('mouseout', () => {
