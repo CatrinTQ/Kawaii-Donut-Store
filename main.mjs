@@ -274,9 +274,15 @@ function getTotalAmount() {
 */
 
 function checkDiscount() {
+
+}
+
+function checkMondayDiscount() {
+  const today = new Date();
   discountTotalAmount = 0;
   msg = '';
   activeDiscount = false;
+  // fram till 10 på morgonen men innan klockan 3
   if (today.getDay() === 1) {
     discountTotalAmount = totalAmount * 0.9;
     msg = "Du får måndagsrabatt, 10% på hela ordern!";
@@ -285,10 +291,12 @@ function checkDiscount() {
 }
 
 function checkWeekendPrice() {
+  //Ska gälla från freddag kl ?? till måndag kl 03
+  const today = new Date();
   products.forEach(product => {
     product.price *= 1;
   }) 
-  if (today.getDay() === 5 || today.getDate() === 6 || today.getDate() === 0 || today.getDate() === 1) {
+  if (today.getDay() === 5 && today.getHours > 15 || today.getDate() === 6 || today.getDate() === 0 || today.getDate() === 1 && today.getHours < 10) {
     products.forEach(product => {
       product.price *= 1.15;
     })
