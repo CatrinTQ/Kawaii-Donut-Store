@@ -313,6 +313,11 @@ function checkInvoceAccess() {
   }
 }
 
+function timeoutCustomer() {
+  alert('Du är för långsam');
+  location.reload();
+}
+
 /* 
 ###########################################
 ###########SORT FUNCTIONS##################
