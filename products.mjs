@@ -7,7 +7,7 @@ const products = [
       amount: 0,
       category: 'sweet',
       img: {
-        url: '/photos/product-image-1.png',
+        url: 'photos/product-image-1.png',
         width: 50,
         heigt: 50,
         alt: ''
