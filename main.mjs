@@ -1,4 +1,4 @@
-import './css/style.scss'
+import '/css/style.scss'
 import products from './products.mjs';
 
 let selectedProducts = [...products];
@@ -32,9 +32,9 @@ const orderDiv = document.querySelector('#order-products');
 const cartSpan = document.querySelector('#amount-in-cart');
 const menuBtn = document.querySelector('#menu-button');
 const menu = document.querySelector('#menu-div');
-const cartLink = document.querySelector('#cart-button');
+const cartBtnLogo = document.querySelector('#cart-button');
 const orderPage = document.querySelector('#order');
-const cartBtnLogo = document.querySelector('#cart-button-2');
+const cartLink = document.querySelector('#cart-button-2');
 const sortNameBtn = document.querySelector('#sort-name-button');
 const sortPriceBtn = document.querySelector('#sort-price-button');
 const sortRatingBtn = document.querySelector('#sort-rating-button');
@@ -43,6 +43,7 @@ const logo = document.querySelector('#logo');
 const formPage = document.querySelector('#form');
 const invoiceInput = document.querySelector('#payment-invoice');
 const highlightnumberofItems = document.querySelector('#number-of-donuts');
+const closeForm = document.querySelector('#close-form');
 
 // const cartAmount = document.querySelector('#number-of-donuts');
 
@@ -67,30 +68,30 @@ logo.addEventListener('mouseout', () => {
 */
 
 menuBtn.addEventListener('click', () => {
-  const currentDisplay = getComputedStyle(menu).display;
-  if (currentDisplay === "none") {
-    menu.style.display = "flex";
+  if (menu.classList.contains('hidden')) {
+    menu.classList.remove('hidden');
+    orderPage.classList.add('hidden');
   } else {
-    menu.style.display = "none";
+    menu.classList.add('hidden');
   }
 })
 
 cartLink.addEventListener('click', () => {
-  const currentDisplay = getComputedStyle(orderPage).display;
-  if (currentDisplay === "none") {
-    orderPage.style.display = "flex";
+  if (orderPage.classList.contains('hidden')) {
+    orderPage.classList.remove('hidden');
+    menu.classList.add('hidden');
   } else {
-    orderPage.style.display = "none";
+    orderPage.classList.add('hidden');
   }
 })
 
 cartBtnLogo.addEventListener('click', () => {
-  const currentDisplay = getComputedStyle(orderPage).display;
-  if (currentDisplay === "none") {
-    orderPage.style.display = "flex";
-    menu.style.display = "none";
+  if (orderPage.classList.contains('hidden')) {
+    orderPage.classList.remove('hidden');
+    menu.classList.add('hidden');
+    
   } else {
-    orderPage.style.display = "none";
+    orderPage.classList.add('hidden');
   }
 })
 
@@ -121,6 +122,11 @@ sortCategoryBtn.addEventListener('change', (e) => {
   resetProductList();
   sortByCategory(category);
   printDonuts();
+})
+
+closeForm.addEventListener('click', () => {
+  formPage.classList.add('hidden');
+  orderPage.classList.remove('hidden');
 })
 
 /* 
@@ -192,9 +198,9 @@ function printDonuts() {
         <p>Kategori: ${product.category}</p>
 
         <div class="flex items-center">
-          <button data-id="${index}" class="basic-button minus">-</button>
+          <button data-id="${index}" class="basic-button minus" aria-label="Minska antal ${product.name}">-</button>
           <p>${product.amount} st</p>
-          <button data-id="${index}" class="basic-button plus">+</button>
+          <button data-id="${index}" class="basic-button plus" aria-label="Öka antal ${product.name}">+</button>
         </div>
       </div>
      </section>
@@ -241,8 +247,15 @@ function printCart() {
       `;
     }
   })
-  
-  orderDiv.innerHTML += `<p>Frakt: ${deliveryFee} kr</p>`;
+  orderDiv.innerHTML += 
+  `
+  <p>Frakt: ${deliveryFee} kr</p>
+  <div class="flex">
+    <label>Rabattkod</label>
+    <input id="discount-field" type="text">
+    <button>Aktivera</button>
+  </div>
+  `;
 
   
   checkMondayDiscount();
@@ -262,12 +275,9 @@ function printCart() {
   const checkoutBtn = document.querySelector('#proceed-to-check-out');
   
   checkoutBtn.addEventListener('click', () => {
-    const currentDisplay = getComputedStyle(formPage).display;
-    // const display = formPage.style.display;
-    console.log(currentDisplay);
-    if (currentDisplay === "none") {
-      formPage.style.display = "block";
-    }
+    formPage.classList.remove('hidden');
+    orderPage.classList.add('hidden');
+    checkValidForm();
 
     checkInvoceAccess();
   })
@@ -287,6 +297,12 @@ function getTotalAmount() {
     totalAmount += product.amount * product.price;
   })
   return totalAmount;
+}
+
+function clearCart() {
+  selectedProducts.forEach(product => {
+    product.amount = 0;
+  });
 }
 
 /* 
@@ -313,7 +329,7 @@ function checkMondayDiscount() {
 }
 
 function checkWeekendPrice() {
-  //Ska gälla från freddag kl ?? till måndag kl 03
+  //Ska gälla från freddag kl 15 till måndag kl 03
   const today = new Date();
   products.forEach(product => {
     product.price *= 1;
@@ -442,6 +458,7 @@ const customerInfo = document.querySelector('#receiver-info');
 
 placeOrderBtn.addEventListener('click', () => {
   const currentDisplay = getComputedStyle(orderConfirmation).display;
+
   if (currentDisplay === "none") {
     orderConfirmation.style.display = "block";
 
@@ -452,11 +469,15 @@ placeOrderBtn.addEventListener('click', () => {
       <p>${phoneInput.value}</p>
       <p>${emailInput.value}</p>
     `
-
+    
   } else {
     orderConfirmation.style.display = "none";
   }
-
+  clearCart();
+  printCart();
+  highlightItemInCart();
+  printTotalAmount();
+  formPage.classList.add('hidden');
   const form = document.querySelector('#order-form');
   form.reset();
 });

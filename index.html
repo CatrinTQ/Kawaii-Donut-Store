@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart" />
     <title>Kawaii donut</title>
-    <link rel="stylesheet" href="/css/style.scss" type="text/css" >
+    <!-- <link rel="stylesheet" href="/css/style.scss" type="text/css" > -->
   </head>
   <body>
     <header class="flex justify-between items-center">
@@ -41,7 +41,7 @@
 
     <main>
       <!-- MENU PAGE -->
-      <div class="menu flex justify-center items-center h-52 gap-8" id="menu-div">
+      <div class="menu hidden flex justify-center items-center h-52 gap-8" id="menu-div">
         <ul class="uppercase text-white flex flex-col justify-center items-center gap-8">
           <li><a class="" href="#">Proukter</a></li>
           <li><a class="" href="#" id="cart-button-2">Varukorg</a></li>
@@ -60,6 +60,7 @@
 
       <!-- FORM PAGE  -->
       <section id="form" class="hidden form-page">
+        <button id="close-form">STÄNG</button>
         <form id="order-form" class="grid grid-cols-3 gap-4 p-4">
           <h2 class="uppercase col-span-2">Fyll i dina uppgifter</h2>
               <label for="first-name" class="text-right col-start-1 col-1">Förnamn </label>
