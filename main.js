@@ -1,4 +1,4 @@
-import './css/style.scss';
+import '/css/style.scss';
 import products from '/products.js';
 
 let selectedProducts = [...products];
@@ -44,8 +44,6 @@ const formPage = document.querySelector('#form');
 const invoiceInput = document.querySelector('#payment-invoice');
 const highlightnumberofItems = document.querySelector('#number-of-donuts');
 const closeForm = document.querySelector('#close-form');
-
-// const cartAmount = document.querySelector('#number-of-donuts');
 
 /* 
 ###########################################
