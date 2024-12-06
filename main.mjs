@@ -1,5 +1,5 @@
 import '/css/style.scss'
-import products from './products.mjs';
+import products from '/products.mjs';
 
 let selectedProducts = [...products];
 let cart = [];
