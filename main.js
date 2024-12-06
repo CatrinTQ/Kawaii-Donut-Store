@@ -1,4 +1,4 @@
-import 'css/style.scss';
+import './css/style.scss';
 import products from '/products.js';
 
 let selectedProducts = [...products];
