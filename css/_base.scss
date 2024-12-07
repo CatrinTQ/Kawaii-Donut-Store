@@ -19,7 +19,10 @@ nav {
         }
     }
 }
-
+.material-symbols-outlined {
+    padding: 0;
+    margin: 0;
+}
 .menu {
     background-color: $forth-color;
 }
@@ -44,11 +47,15 @@ nav {
 }
 
 // ORDER PAGE
-.material-symbols-outlined {
-    padding: rem(10);
-    margin: rem(10);
-    font-size: 2rem;
-}
+// .material-symbols-outlined {
+//     padding: rem(10);
+//     margin: rem(10);
+//     font-size: 2rem;
+// }
+
+input[type=number] {
+    appearance: textfield;
+} 
 
 .cart {
     background-color: lightblue;
