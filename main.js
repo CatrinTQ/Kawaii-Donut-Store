@@ -1,6 +1,9 @@
 import '/css/style.scss';
 import products from '/products.js';
 
+// HEJ JENNI! Jag har fortfarande inte fått min sida att publicera korrekt på live server, 
+// tänker att jag bokar in handledning för det nästa vecka...
+
 let selectedProducts = [...products];
 let cart = [];
 
@@ -31,6 +34,7 @@ const invoiceInput = document.querySelector('#invoice-radio-button');
 const highlightnumberofItems = document.querySelector('#number-of-donuts');
 const closeForm = document.querySelector('#close-form');
 const productPage = document.querySelector('#product-page');
+const closeConfirmation = document.querySelector('#close-confirmation');
 
 
 
@@ -53,9 +57,7 @@ logo.addEventListener('click', () => {
   cardDiv.classList.add('hidden');
   orderPage.classList.add('hidden');
   formPage.classList.add('hidden');
-  orderConfirmation.classList.add('hidden');
   menu.classList.add('hidden');
-
 })
 
 /* 
@@ -106,6 +108,10 @@ cartBtnLogo.addEventListener('click', () => {
   } else {
     orderPage.classList.add('hidden');
   }
+})
+
+closeConfirmation.addEventListener('click', () => {
+  orderConfirmation.classList.add('hidden');
 })
 
 function resetProductList() {
@@ -358,7 +364,7 @@ function checkWeekendPrice() {
   products.forEach(product => {
     product.price *= 1;
   }) 
-  if (today.getDay() === 5 && today.getHours > 15 || today.getDate() === 6 || today.getDate() === 0 || today.getDate() === 1 && today.getHours < 10) {
+  if (today.getDay() === 5 && today.getHours > 15 || today.getDay() === 6 || today.getDay() === 0 || today.getDate() === 1 && today.getHours < 10) {
     products.forEach(product => {
       product.price *= 1.15;
     })
