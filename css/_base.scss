@@ -46,13 +46,6 @@ nav {
     width: rem(120);
 }
 
-// ORDER PAGE
-// .material-symbols-outlined {
-//     padding: rem(10);
-//     margin: rem(10);
-//     font-size: 2rem;
-// }
-
 input[type=number] {
     appearance: textfield;
 } 
@@ -66,16 +59,5 @@ input[type=number] {
         background-color: $secondary-color;
         border-radius: rem(30);
     }
-}
-
-// FORM PAGE 
-
-.form-page {
-    background-color: pink;
-}
-
-.successfull-order-page {
-    display: none;
-    background-color: yellow;
 }
 

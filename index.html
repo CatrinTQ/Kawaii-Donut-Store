@@ -49,22 +49,24 @@
       </div>
 
       <!-- ORDER CONFIRMATION PAGE -->
-      <section class="successfull-order-page" id="confirmation-page">
+      <section class="hidden successfull-order-page flex flex-col justify-center items-center p-10 bg-yellow-300" id="confirmation-page">
         <button id="close-confirmation" class="relative w-8 h-8 flex items-center justify-center ml-auto">
           <span class="absolute w-6 h-0.5 bg-black transform rotate-45"></span>
           <span class="absolute w-6 h-0.5 bg-black transform -rotate-45"></span>
         </button>
-        <h2>Tack för din order!</h2>
-        <p>Vi har mottagit följande information:</p>
-        <div id="receiver-info"></div>
-        <img src="" alt="" width="" height="" loading="lazy">
 
-        <p>Vi kommer att skicka din order om 1-3 dagar!</p>
-        <p>Välkommen åter!</p>
+        <fieldset class="flex flex-col gap-4 justify-center items-center border-dotted border-2 w-4/5 h-52">
+          <legend class="text-center m-auto">Tack för din order!</legend>
+          <p>Vi har mottagit följande information:</p>
+          <div id="receiver-info"></div>
+          <img src="" alt="" width="" height="" loading="lazy">
+          <p>Vi kommer att skicka din order om 1-3 dagar!</p>
+          <p>Välkommen åter!</p>
+        </fieldset>
       </section>
 
       <!-- FORM PAGE  -->
-      <section id="form" class="form-page flex flex-col">
+      <section id="form" class="form-page flex flex-col bg-pink-200">
         <button id="close-form" class="relative w-8 h-8 flex items-center justify-center ml-4">
           <span id="bar" class="block absolute top-1/2 left-0 w-3 h-0.5 bg-white transform -translate-y-1/2 rotate-45 origin-left"></span>
           <span id="bar-two" class="block absolute top-1/2 left-0 w-3 h-0.5 bg-white transform -translate-y-1/2 -rotate-45 origin-left"></span>
@@ -73,7 +75,7 @@
         <form id="order-form" class="grid grid-cols-8 gap-4 p-4">
           <h2 class="uppercase col-span-6">Fyll i dina uppgifter</h2>
               <label for="first-name" class="text-right col-start-1 col-span-2 max-h-6">Förnamn *</label>
-              <input type="text" id="first-name" required aria-required="true" class="col-span-5 max-h-6">
+              <input type="text" id="first-name" placeholder="Anna" required aria-required="true" class="col-span-5 max-h-6">
               
               <div class="col-1">
                 <span id="accept-name" class="hidden material-symbols-outlined text-green-500">check</span>
@@ -81,14 +83,14 @@
               </div>
 
               <label for="last-name" class="text-right col-start-1 col-span-2">Efternamn *</label>
-              <input type="text" id="last-name" required class="col-span-5">
+              <input type="text" id="last-name" placeholder="Andresson" required class="col-span-5">
               <div class="col-1">
                 <span id="accept-last-name" class="hidden material-symbols-outlined text-green-500">check</span>
                 <span id="error-last-name" class="hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <label for="address" class="text-right col-start-1 col-span-2">Gatuadress *</label>
-              <input type="text" id="address" required class="col-span-5">
+              <input type="text" id="address" placeholder="Storgatan 1" required class="col-span-5">
               <div class="col-1">
                 <span id="accept-address" class="hidden material-symbols-outlined text-green-500">check</span>
                 <span id="error-address" class="hidden material-symbols-outlined text-red-500">error</span>
@@ -102,14 +104,14 @@
               </div>
 
               <label for="postal-address" class="text-right col-start-1 col-span-2">Postadress *</label>
-              <input type="text" id="postal-address" required class="col-span-5">
+              <input type="text" id="postal-address" placeholder="Stockholm" required class="col-span-5">
               <div class="col-1">
                 <span id="accept-postal" class="hidden material-symbols-outlined text-green-500">check</span>
                 <span id="error-postal" class="hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <label for="entry-code" class="text-right col-start-1 col-span-2">Portkod</label>
-              <input type="text" id="entry-code" class="col-span-5">
+              <input type="text" id="entry-code" placeholder="#1234" class="col-span-5">
 
               <label for="phone" class="text-right col-start-1 col-span-2 ">Telefon *</label>
               <input type="number" placeholder="0721234567" id="phone" required class="col-span-5">

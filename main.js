@@ -425,15 +425,13 @@ function sortByCategory(category) {
 ###########FORM FUNCTIONS##################
 ###########################################
 */
-
-
 const regexFirstName = RegExp(/^[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+(\s[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+)*$/);
 const regexLastName = new RegExp(/^[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+(\s[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+)*$/);
-const regexPhone = new RegExp(/^0\d{9}$/); 
-const regexEmail = new RegExp(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/);
-const regexAddress = RegExp(/^[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+(\s[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+)*$/);
+const regexAddress = RegExp(/^[A-Za-zåäöÅÄÖéÉèÈóÓçÇüÜß\- ]+(\s\d+[A-Za-z]?)?(,\s?\d{3}\s?\d{2}\s[A-Za-zåäöÅÄÖéÉèÈóÓçÇüÜß\- ]+)?$/);
 const regexPostalNumber = new RegExp(/^[0-9]{3}\s?[0-9]{2}$/);
 const regexPostalAddress = new RegExp(/^^[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+(\s[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+)*$/);
+const regexPhone = new RegExp(/^0\d{9}$/); 
+const regexEmail = new RegExp(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/);
 const regexPersonalNumber = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
 
 const firstNameInput = document.querySelector('#first-name');
@@ -527,6 +525,63 @@ lastNameInput.addEventListener('input', (event) => {
   checkValidForm();
 });
 
+/***************** ADRESS ***********************/
+addressInput.addEventListener('input', (event) => {
+  const writtenValue = event.target.value; 
+  
+  const accept = document.querySelector('#accept-address');
+  const error = document.querySelector('#error-address');
+  addresRegexResult = regexAddress.test(writtenValue);
+
+  if (!addresRegexResult) {
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
+  } else {
+    accept.classList.remove('hidden');
+    error.classList.add('hidden');
+  }
+  checkValidForm();
+})
+
+/***************** POSTNUMMER ***********************/
+postalNumberInput.addEventListener('input', (event) => {
+  const writtenValue = event.target.value; 
+
+  const accept = document.querySelector('#accept-postal-number');
+  const error = document.querySelector('#error-postal-number');
+
+  postalNumberRegexResult = regexPostalNumber.test(writtenValue);
+
+  if (!postalNumberRegexResult) {
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
+  } else {
+    accept.classList.remove('hidden');
+    error.classList.add('hidden');
+  }
+  checkValidForm();
+})
+
+/***************** POSTADRESS ***********************/
+postalAddressInput.addEventListener('input', (event) => {
+  const writtenValue = event.target.value;
+
+  const accept = document.querySelector('#accept-postal');
+  const error = document.querySelector('#error-postal');
+
+  postalAddressRegexResult = regexPostalAddress.test(writtenValue);
+
+  if (!postalAddressRegexResult) {
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
+  } else {
+    accept.classList.remove('hidden');
+    error.classList.add('hidden');
+
+  }
+  checkValidForm();
+})
+
 /******************* TELEFON ***********************/
 phoneInput.addEventListener('input', (event) =>{
     const inputValue = event.target.value;
@@ -564,68 +619,12 @@ emailInput.addEventListener('input', (event) => {
     checkValidForm();
 }); 
 
-addressInput.addEventListener('input', (event) => {
-  const writtenValue = event.target.value; 
-  
-  const accept = document.querySelector('#accept-address');
-  const error = document.querySelector('#error-address');
-  addresRegexResult = regexAddress.test(writtenValue);
-
-  if (!addresRegexResult) {
-    accept.classList.add('hidden');
-    error.classList.remove('hidden');
-  } else {
-    accept.classList.add('hidden');
-    error.classList.remove('hidden');
-  }
-  checkValidForm();
-})
-
-postalNumberInput.addEventListener('input', (event) => {
-  const writtenValue = event.target.value; 
-
-  const accept = document.querySelector('#accept-postal-number');
-  const error = document.querySelector('#error-postal-number');
-
-  postalNumberRegexResult = regexPostalNumber.test(writtenValue);
-
-  if (!postalNumberRegexResult) {
-    accept.classList.add('hidden');
-    error.classList.remove('hidden');
-  } else {
-    accept.classList.remove('hidden');
-    error.classList.add('hidden');
-  }
-  checkValidForm();
-})
-
-postalAddressInput.addEventListener('input', (event) => {
-  const writtenValue = event.target.value;
-
-  const accept = document.querySelector('#accept-postal');
-  const error = document.querySelector('#error-postal');
-
-  postalAddressRegexResult = regexPostalAddress.test(writtenValue);
-
-  if (!postalAddressRegexResult) {
-    accept.classList.add('hidden');
-    error.classList.remove('hidden');
-  } else {
-    accept.classList.remove('hidden');
-    error.classList.add('hidden');
-
-  }
-  checkValidForm();
-})
-
-
 /******************* CHECKBOX GDPR ***********************/
 acceptGdpr.addEventListener('change', () => {
   checkValidForm();
 });
 
 /******************* CHECK PAYMENT  ***********************/
-
 invoiceRadioBtn.addEventListener('click', () => {
   if (invoiceRadioBtn.checked) {
     if (invoiceDiv.classList.contains('hidden')) {
@@ -636,6 +635,7 @@ invoiceRadioBtn.addEventListener('click', () => {
   checkValidForm();
 });
 
+/***************** PERSONNUMMER ***********************/
 personalNumber.addEventListener('input', (event) => {
   const writtenValue = event.target.value;
 
@@ -678,5 +678,6 @@ function checkValidForm() {
     placeOrderBtn.style.color = 'black';
     }
 }  
+checkValidForm();
 checkWeekendPrice();
 printDonuts();
