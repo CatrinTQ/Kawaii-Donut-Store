@@ -21,7 +21,7 @@
       loading="eager">
       
       <button>
-          <div id="number-of-donuts" class="hidden bg-red-400 rounded-full"></div>
+        <div id="number-of-donuts" class="hidden bg-red-400 rounded-full"></div>
         <span id="cart-button" class="material-symbols-outlined text-4xl">
           shopping_cart
         </span>
@@ -50,64 +50,94 @@
 
       <!-- ORDER CONFIRMATION PAGE -->
       <section class="successfull-order-page" id="confirmation-page">
+        <button id="close-confirmation" class="relative w-8 h-8 flex items-center justify-center ml-auto">
+          <span class="absolute w-6 h-0.5 bg-black transform rotate-45"></span>
+          <span class="absolute w-6 h-0.5 bg-black transform -rotate-45"></span>
+        </button>
         <h2>Tack för din order!</h2>
         <p>Vi har mottagit följande information:</p>
         <div id="receiver-info"></div>
         <img src="" alt="" width="" height="" loading="lazy">
 
+        <p>Vi kommer att skicka din order om 1-3 dagar!</p>
         <p>Välkommen åter!</p>
       </section>
 
       <!-- FORM PAGE  -->
-      <section id="form" class="hidden form-page">
-        <button id="close-form">STÄNG</button>
-        <form id="order-form" class="grid grid-cols-3 gap-4 p-4">
-          <h2 class="uppercase col-span-2">Fyll i dina uppgifter</h2>
-              <label for="first-name" class="text-right col-start-1 col-1">Förnamn </label>
-              <input type="text" id="first-name" required aria-required="true" class="col-span-2">
+      <section id="form" class="form-page flex flex-col">
+        <button id="close-form" class="relative w-8 h-8 flex items-center justify-center ml-4">
+          <span id="bar" class="block absolute top-1/2 left-0 w-3 h-0.5 bg-white transform -translate-y-1/2 rotate-45 origin-left"></span>
+          <span id="bar-two" class="block absolute top-1/2 left-0 w-3 h-0.5 bg-white transform -translate-y-1/2 -rotate-45 origin-left"></span>
+          <span id="bar-three" class="block absolute top-1/2 left-2 w-4 h-0.5 bg-white transform -translate-y-1/2"></span>
+        </button>
+        <form id="order-form" class="grid grid-cols-8 gap-4 p-4">
+          <h2 class="uppercase col-span-6">Fyll i dina uppgifter</h2>
+              <label for="first-name" class="text-right col-start-1 col-span-2 max-h-6">Förnamn *</label>
+              <input type="text" id="first-name" required aria-required="true" class="col-span-5 max-h-6">
               
-              <p id="msg-first-name"></p>
+              <div class="col-1">
+                <span id="accept-name" class="hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-name" class="hidden material-symbols-outlined text-red-500">error</span>
+              </div>
 
-              <label for="last-name" class="text-right col-start-1 col-1">Efternamn </label>
-              <input type="text" id="last-name" required class="col-span-2">
-              <p id="msg-last-name"></p>
+              <label for="last-name" class="text-right col-start-1 col-span-2">Efternamn *</label>
+              <input type="text" id="last-name" required class="col-span-5">
+              <div class="col-1">
+                <span id="accept-last-name" class="hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-last-name" class="hidden material-symbols-outlined text-red-500">error</span>
+              </div>
 
-              <label for="address" class="text-right col-start-1 col-1">Adress</label>
-              <input type="text" id="address" required class="col-span-2">
-              <p id="msg-address"></p>
+              <label for="address" class="text-right col-start-1 col-span-2">Gatuadress *</label>
+              <input type="text" id="address" required class="col-span-5">
+              <div class="col-1">
+                <span id="accept-address" class="hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-address" class="hidden material-symbols-outlined text-red-500">error</span>
+              </div>
 
-              <label for="postal-number" class="text-right col-start-1 col-1">Postnummer</label>
-              <input type="number" id="postal-number" required class="col-span-2">
-              <p id="msg-postal-number"></p>
+              <label for="postal-number" class="text-right col-start-1 col-span-2">Postnummer *</label>
+              <input type="number" id="postal-number" placeholder="12345" required class="col-span-5">
+              <div class="col-1">
+                <span id="accept-postal-number" class="hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-postal-number" class="hidden material-symbols-outlined text-red-500">error</span>
+              </div>
 
-              <label for="postal-address" class="text-right col-start-1 col-1">Postadress</label>
-              <input type="text" id="postal-address" required class="col-span-2">
-              <p id="msg-postal-address"></p>
+              <label for="postal-address" class="text-right col-start-1 col-span-2">Postadress *</label>
+              <input type="text" id="postal-address" required class="col-span-5">
+              <div class="col-1">
+                <span id="accept-postal" class="hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-postal" class="hidden material-symbols-outlined text-red-500">error</span>
+              </div>
 
-              <label for="entry-code" class="text-right col-start-1 col-1">Portkod</label>
-              <input type="text" id="entry-code" class="col-span-2">
+              <label for="entry-code" class="text-right col-start-1 col-span-2">Portkod</label>
+              <input type="text" id="entry-code" class="col-span-5">
 
-              <label for="phone" class="text-right col-start-1 col-1 ">Telefon</label>
-              <input type="number" id="phone" required class="col-span-2">
-              <p id="msg-phone"></p>
+              <label for="phone" class="text-right col-start-1 col-span-2 ">Telefon *</label>
+              <input type="number" placeholder="0721234567" id="phone" required class="col-span-5">
+              <div class="col-1">
+                <span id="accept-phone" class="hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-phone" class="hidden material-symbols-outlined text-red-500">error</span>
+              </div>
 
-              <label for="email" class="text-right col-start-1 col-1">E-post</label>
-              <input type="email" id="email" required class="col-span-2">
-              <p id="msg-email"></p>
+              <label for="email" class="text-right col-start-1 col-span-2">E-post *</label>
+              <input type="email" id="email" placeholder="info@kawaii.com" required class="col-span-5">
+              <div class="col-1">
+                <span id="accept-email" class="hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-email" class="hidden material-symbols-outlined text-red-500">error</span>
+              </div>
 
-              <div class="col-span-4 grid grid-cols-5 gap-4 items-start">
+              <div class="col-span-8 grid grid-cols-5 gap-4 items-start">
                 <!-- Godkänn behandling av personuppgifter -->
-                <label for="accept-gdpr" class="col-span-4">Godkänn behandling av personuppgifter</label>
+                <label for="accept-gdpr" class="col-start-1 col-span-4">Godkänn behandling av personuppgifter *</label>
                 <input type="checkbox" id="accept-gdpr" required class="col-start-5 self-center">
                 <p id="msg-accept-gdpr" class="col-span-5"></p>
                 
                 <!-- Få vårt nyhetsbrev -->
-                <label for="news-letter" class="col-start-1 col-span-3">Få vårat nyhetsbrev</label>
+                <label for="news-letter" class="col-start-1 col-span-4">Få vårat nyhetsbrev</label>
                 <input type="checkbox" checked id="news-letter" class="col-start-5 self-center">
               </div>
 
-              <div class="col-span-4 grid grid-cols-5 gap-4">
-                <h3 class="col-span-5">Jag vill betala med</h3>
+              <div class="col-span-8 grid col-start-1 grid-span-5 gap-4">
+                <h3 class="col-span-5">Jag vill betala med *</h3>
                
                 <label for="payment-invoice" class="col-start-1">Faktura</label>
                 <input type="radio" id="invoice-radio-button" name="payment" class="">
@@ -116,31 +146,33 @@
                 <input type="radio" id="card-radio-button" name="payment" class="">
               </div>
               
-              <div class="hidden col-span-4 grid grid-cols-3 gap-4" id="invoice-field">
-                <label for="personal-number" class=" text-right col-start-1 col-1">Personnummer</label>
-                <input type="number" id="personal-number" class="col-start-2 col-span-2">
-                <p id="msg-personal-number"></p>
+              <div class="hidden col-span-8 grid grid-cols-8 gap-4" id="invoice-field">
+                <label for="personal-number" class="col-start-1 col-span-3">Personnummer</label>
+                <input type="number" id="personal-number" placeholder="8501010123" class="col-span-4">
+                <div class="col-1">
+                  <span id="accept-personal" class="hidden material-symbols-outlined text-green-500">check</span>
+                  <span id="error-personal" class="hidden material-symbols-outlined text-red-500">error</span>
+                </div>
               </div>
 
-              <div class="hidden col-span-4 grid grid-cols-3 gap-4" id="card-field">
+              <div class="hidden col-span-8 grid grid-cols-4 gap-2" id="card-field">
                 <!-- Kortnummer -->
-                <label for="card-info" class="text-right col-start-1">Kortnummer</label>
-                <input type="number" id="card-info" class="col-start-2 col-span-2">
-                <p id="msg-card-info" class="col-span-3"></p>
+                <label for="card-info" class="text-right col-start-1 col-span-1">Kortnummer</label>
+                <input type="number" id="card-info" class="col-span-2">
+                <p id="msg-card-info" class="col-span-1"></p>
                 
                 <!-- Datum -->
-                <label for="month-year" class="text-right col-start-1">Datum</label>
-                <input type="number" id="month-year" class="col-start-2 col-span-2">
-                <p id="msg-month-year" class="col-span-3"></p>
+                <label for="month-year" class="text-right col-start-1 col-span-1">År/månad</label>
+                <input type="number" id="month-year" class="col-span-1">
+                <input type="number" id="month" class="col-span-1">
                 
                 <!-- CVC -->
-                <label for="cvc-code" class="text-right col-start-1 uppercase">Cvc</label>
-                <input type="number" id="cvc-code" class="col-start-2 col-span-2">
-                <p id="msg-cvc-code" class="col-span-3"></p>
+                <label for="cvc-code" class="text-right col-start-1 col-span-1 uppercase">Cvc</label>
+                <input type="number" id="cvc-code" class="col-span-2">
               </div>
 
-              <input type="reset" value="Rensa" class="basic-button col-start-1 col-span-1">
-              <input type="submit" id="place-order-button" value="Lägg beställning" disabled="true" class="basic-button col-start-2 col-span-2">
+              <input type="reset" value="Rensa" class="basic-button col-start-1 col-span-3">
+              <input type="submit" id="place-order-button" value="Lägg beställning" disabled="true" class="basic-button col-start-4 col-span-5">
               
         </form>
       </section>

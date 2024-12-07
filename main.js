@@ -101,6 +101,7 @@ cartBtnLogo.addEventListener('click', () => {
   if (orderPage.classList.contains('hidden')) {
     orderPage.classList.remove('hidden');
     menu.classList.add('hidden');
+    productPage.classList.add('hidden');
     
   } else {
     orderPage.classList.add('hidden');
@@ -136,7 +137,18 @@ sortCategoryBtn.addEventListener('change', (e) => {
   printDonuts();
 })
 
+closeForm.addEventListener('mouseover', () => {
+  closeForm.classList.remove('ml-4');
+  closeForm.classList.add('ml-2');
+})
+
+closeForm.addEventListener('mouseout', () => {
+  closeForm.classList.add('ml-4');
+  closeForm.classList.remove('ml-2');
+})
+
 closeForm.addEventListener('click', () => {
+  console.log('test');
   formPage.classList.add('hidden');
   orderPage.classList.remove('hidden');
 })
@@ -211,7 +223,7 @@ function printDonuts() {
 
         <div class="flex items-center">
           <button data-id="${index}" class="basic-button minus" aria-label="Minska antal ${product.name}">-</button>
-          <p>${product.amount} st</p>
+          <p class="min-w-32">${product.amount} st</p>
           <button data-id="${index}" class="basic-button plus" aria-label="Öka antal ${product.name}">+</button>
         </div>
       </div>
@@ -411,15 +423,12 @@ function sortByCategory(category) {
 
 const regexFirstName = RegExp(/^[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+(\s[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+)*$/);
 const regexLastName = new RegExp(/^[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+(\s[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+)*$/);
-const regexPhone = new RegExp(/^07([0-9][ -]*){7}[0-9]$/); 
+const regexPhone = new RegExp(/^0\d{9}$/); 
 const regexEmail = new RegExp(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/);
-const regexAddress = new RegExp(/^(?=.*[A-Za-zÅÄÖåäö])(?=.*\d)[A-Za-zÅÄÖåäö\d\s\-./']+$/);
-const regexPostalNumber = new RegExp(/^\d{3}\s?\d{2}$/);
-const regexPostalAddress = new RegExp(/^[A-Za-zåäöÅÄÖ\s]+$/);
-const regexPersonalNumber = new RegExp(/^(\d{6}|\d{2}\d{2}\d{2})[-]?\d{4}$/);
-const regexCardNumber = new RegExp(/^4[0-9]{12}(?:[0-9]{3})?$/);
-const regexMonthYear = new RegExp(/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/);
-const regexCvc = new RegExp(/^\d{3,4}$/);
+const regexAddress = RegExp(/^[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+(\s[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+)*$/);
+const regexPostalNumber = new RegExp(/^[0-9]{3}\s?[0-9]{2}$/);
+const regexPostalAddress = new RegExp(/^^[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+(\s[A-Za-zåäöÅÄÖéèêëáàâäåîïìíóòôöùüûùÿčćşź-]+)*$/);
+const regexPersonalNumber = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
 
 const firstNameInput = document.querySelector('#first-name');
 const lastNameInput = document.querySelector('#last-name');
@@ -431,25 +440,9 @@ const postalAddressInput = document.querySelector('#postal-address');
 const acceptGdpr = document.querySelector('#accept-gdpr');
 const invoiceRadioBtn = document.querySelector('#invoice-radio-button');
 const cardRadioBtn = document.querySelector('#card-radio-button');
-// const payementInfo = document.querySelector('#payment-info');
 const invoiceDiv = document.querySelector('#invoice-field');
 const cardDiv = document.querySelector('#card-field');
 const personalNumber = document.querySelector('#personal-number');
-const cardInfo = document.querySelector('#card-info');
-const monthYear = document.querySelector('#month-year');
-const cvcCode = document.querySelector('#cvc-code');
-
-let msgFirstName = document.querySelector('#msg-first-name');
-let msgLastName = document.querySelector('#msg-last-name');
-let msgPhone = document.querySelector('#msg-phone');
-let msgEmail = document.querySelector('#msg-email');
-let msgAddress =  document.querySelector('#msg-address');
-let msgPostalNumber = document.querySelector('#msg-postal-number');
-let msgPostalAddress = document.querySelector('#msg-postal-address');
-let msgPersonalNumber = document.querySelector('#msg-personal-number');
-let msgCardInfo = document.querySelector('#msg-card-info');
-let msgMonthYear = document.querySelector('#msg-month-year');
-let msgCvcCode = document.querySelector('#msg-cvc-code');
 
 let firstNameRegexResult;
 let lastNameRegexResult;
@@ -459,10 +452,6 @@ let addresRegexResult;
 let postalNumberRegexResult;
 let postalAddressRegexResult;
 let personalNumberRegexResult;
-let cardInfoRegexResult;
-let monthYearRegexResult;
-let cvcCodeRegexResult;
-
 
 const placeOrderBtn = document.querySelector('#place-order-button');
 const orderConfirmation = document.querySelector('#confirmation-page');
@@ -493,16 +482,59 @@ placeOrderBtn.addEventListener('click', () => {
   const form = document.querySelector('#order-form');
   form.reset();
 });
- 
+
+/**************FIRST NAME **************** */
+firstNameInput.addEventListener('input', (event) => {
+  const writtenValue = event.target.value;
+
+  const accept = document.querySelector('#accept-name');
+  const error = document.querySelector('#error-name');
+
+  firstNameRegexResult = regexFirstName.test(writtenValue);
+
+  if (!firstNameRegexResult) {
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
+  } else {
+    accept.classList.remove('hidden');
+    error.classList.add('hidden');
+  }
+  checkValidForm();
+});
+
+/**************LAST NAME **************** */
+lastNameInput.addEventListener('input', (event) => {
+  const writtenValue = event.target.value;
+
+  const accept = document.querySelector('#accept-last-name');
+  const error = document.querySelector('#error-last-name');
+
+  lastNameRegexResult = regexLastName.test(writtenValue);
+
+  if (!lastNameRegexResult) {
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
+  } else {
+    accept.classList.remove('hidden');
+    error.classList.add('hidden');
+  }
+  checkValidForm();
+});
+
 /******************* TELEFON ***********************/
 phoneInput.addEventListener('input', (event) =>{
     const inputValue = event.target.value;
+    const accept = document.querySelector('#accept-phone');
+    const error = document.querySelector('#error-phone');
+
     phoneRegexResult = regexPhone.test(inputValue);
 
     if(!phoneRegexResult) {
-        msgPhone.innerHTML = 'Ogiltigt inmatning';
+      accept.classList.add('hidden');
+      error.classList.remove('hidden');
     } else {
-        msgPhone.innerHTML = '';
+      accept.classList.remove('hidden');
+      error.classList.add('hidden');
     }
     checkValidForm();
 });
@@ -510,76 +542,76 @@ phoneInput.addEventListener('input', (event) =>{
 /***************** EMAIL ***********************/
 emailInput.addEventListener('input', (event) => {
     const writtenValue = event.target.value; 
-
+    
+    const acceptEmail = document.querySelector('#accept-email');
+    const errorEmail = document.querySelector('#error-email');
+    
     emailRegexResult = regexEmail.test(writtenValue);
 
     if(!emailRegexResult) {
-        msgEmail.innerHTML = 'Ogiltig inmatning';
+      acceptEmail.classList.add('hidden');
+      errorEmail.classList.remove('hidden');
     } else {
-        msgEmail.innerHTML = '';
+      acceptEmail.classList.remove('hidden');
+      errorEmail.classList.add('hidden');
     }
     checkValidForm();
 }); 
 
 addressInput.addEventListener('input', (event) => {
   const writtenValue = event.target.value; 
+  
+  const accept = document.querySelector('#accept-address');
+  const error = document.querySelector('#error-address');
   addresRegexResult = regexAddress.test(writtenValue);
 
   if (!addresRegexResult) {
-    msgAddress.innerHTML = 'Ogiltigt inmatning';
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
   } else {
-    msgAddress.innerHTML = '';
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
   }
   checkValidForm();
 })
 
 postalNumberInput.addEventListener('input', (event) => {
   const writtenValue = event.target.value; 
+
+  const accept = document.querySelector('#accept-postal-number');
+  const error = document.querySelector('#error-postal-number');
+
   postalNumberRegexResult = regexPostalNumber.test(writtenValue);
 
   if (!postalNumberRegexResult) {
-    msgPostalNumber.innerHTML = 'Ogiltigt inmatning';
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
   } else {
-    msgPostalNumber.innerHTML = '';
+    accept.classList.remove('hidden');
+    error.classList.add('hidden');
   }
   checkValidForm();
 })
 
 postalAddressInput.addEventListener('input', (event) => {
   const writtenValue = event.target.value;
+
+  const accept = document.querySelector('#accept-postal');
+  const error = document.querySelector('#error-postal');
+
   postalAddressRegexResult = regexPostalAddress.test(writtenValue);
 
   if (!postalAddressRegexResult) {
-    msgPostalAddress.innerHTML = 'Ogiltigt inmatning';
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
   } else {
-    msgPostalAddress.innerHTML = '';
+    accept.classList.remove('hidden');
+    error.classList.add('hidden');
+
   }
   checkValidForm();
 })
 
-firstNameInput.addEventListener('input', (event) => {
-  const writtenValue = event.target.value;
-  firstNameRegexResult = regexFirstName.test(writtenValue);
-
-  if (!firstNameRegexResult) {
-    msgFirstName.innerHTML = 'Ogiltigt inmatning';
-  } else {
-    msgFirstName.innerHTML = '';
-  }
-  checkValidForm();
-})
-
-lastNameInput.addEventListener('input', (event) => {
-  const writtenValue = event.target.value;
-  lastNameRegexResult = regexLastName.test(writtenValue);
-
-  if (!lastNameRegexResult) {
-    msgLastName.innerHTML = 'Ogiltig inmatning';
-  } else {
-    msgLastName.innerHTML = '';
-  }
-  checkValidForm();
-})
 
 /******************* CHECKBOX GDPR ***********************/
 acceptGdpr.addEventListener('change', () => {
@@ -600,12 +632,18 @@ invoiceRadioBtn.addEventListener('click', () => {
 
 personalNumber.addEventListener('input', (event) => {
   const writtenValue = event.target.value;
+
+  const accept = document.querySelector('#accept-personal');
+  const error = document.querySelector('#error-personal');
+
   personalNumberRegexResult = regexPersonalNumber.test(writtenValue);
 
   if (!personalNumberRegexResult) {
-    msgPersonalNumber.innerHTML = 'Ogiltigt format';
+    accept.classList.add('hidden');
+    error.classList.remove('hidden');
   } else {
-    msgPersonalNumber.innerHTML = '';
+    accept.classList.remove('hidden');
+    error.classList.add('hidden');
   }
   checkValidForm();
 })
@@ -620,56 +658,19 @@ cardRadioBtn.addEventListener('click', () => {
   checkValidForm();
 });
 
-cardInfo.addEventListener('input', (event) => {
-  const writtenValue = event.target.value;
-  cardInfoRegexResult = regexCardNumber.test(writtenValue);
-
-  if (!cardInfoRegexResult) {
-    msgCardInfo.innerHTML = 'Ogiltigt format';
-  } else {
-    msgCardInfo.innerHTML = '';
-  }
-  checkValidForm();
-});
-
-monthYear.addEventListener('input', (event) => {
-  const writtenValue = event.target.value;
-  monthYearRegexResult = regexMonthYear.test(writtenValue);
-
-  if (!monthYearRegexResult) {
-    msgMonthYear.innerHTML = 'Ogiltigt format';
-  } else {
-    msgMonthYear.innerHTML = '';
-  }
-  checkValidForm();
-})
-
-cvcCode.addEventListener('input', (event) => {
-  const writtenValue = event.target.value;
-  cvcCodeRegexResult = regexCvc.test(writtenValue);
-
-  if (!cvcCodeRegexResult) {
-    msgCvcCode.innerHTML = 'Ogiltigt format';
-  } else {
-    msgCvcCode.innerHTML = '';
-  }
-  checkValidForm();
-})
 
 /******************* SUBMIT-BUTTON ***********************/
 function checkValidForm() {
   if (firstNameRegexResult && lastNameRegexResult && addresRegexResult && emailRegexResult && phoneRegexResult && postalNumberInput 
     && postalAddressRegexResult && acceptGdpr.checked && invoiceRadioBtn.checked && personalNumberRegexResult ||
     firstNameRegexResult && lastNameRegexResult && addresRegexResult && emailRegexResult && phoneRegexResult && postalNumberInput 
-    && postalAddressRegexResult && acceptGdpr.checked && cardRadioBtn.checked && cardInfoRegexResult && monthYearRegexResult && cvcCodeRegexResult) {
+    && postalAddressRegexResult && acceptGdpr.checked && cardRadioBtn.checked) {
     placeOrderBtn.disabled = false;
     placeOrderBtn.style.color = 'green';
     } else {
     placeOrderBtn.disabled = true;
     placeOrderBtn.style.color = 'black';
-    // console.log(firstNameRegexResult, lastNameRegexResult, addresRegexResult, emailRegexResult, phoneRegexResult, postalNumberInput,
-    // postalAddressRegexResult, acceptGdpr.checked, invoiceRadioBtn.checked, personalNumberRegexResult);
-  }
+    }
 }  
 checkWeekendPrice();
 printDonuts();
