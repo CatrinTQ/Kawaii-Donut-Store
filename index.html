@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&" />
     <title>Kawaii donut</title>
     <link rel="stylesheet" href="/css/style.scss" type="text/css" >
   </head>
@@ -21,18 +21,18 @@
       loading="eager">
       
       <button>
-        <span id="cart-button" class="material-symbols-outlined">
           <div id="number-of-donuts" class="hidden bg-red-400 rounded-full"></div>
+        <span id="cart-button" class="material-symbols-outlined text-4xl">
           shopping_cart
         </span>
       </button>
       <span id="amount-in-cart">0 kr</span>
       
       <nav>
-        <button id="menu-button" class="menu-class" aria-label="Open menu button" aria-expanded="false">
+        <button id="menu-button" class="" aria-label="Open menu button" aria-expanded="false">
+          <span id="bar-one"></span>
           <span></span>
-          <span></span>
-          <span></span>
+          <span id="bar-three"></span>
         </button>  
       </nav>
       
@@ -156,7 +156,7 @@
 
 
       <!-- PRODUCT PAGE  -->
-      <section class="product-page flex flex-col gap-8">
+      <section class="flex flex-col gap-8" id="product-page">
         <ul class="sort-list flex flex-row justify-end gap-2">
           Sortera efter:
           <li>
@@ -174,7 +174,7 @@
             </select>
           </li>
           <li>
-            <Button id="sort-rating-button">Betyg</Button>
+            <Button id="sort-rating-button" class="mr-5">Betyg</Button>
           </li>
         </ul>
         <div id="product-list" class="product-div flex flex-col items-center gap-4"></div>

@@ -4,20 +4,6 @@ import products from '/products.js';
 let selectedProducts = [...products];
 let cart = [];
 
-let customer = [
-  {
-    firstName: '',
-    lastName: '',
-    address: '',
-    postalNumber: '',
-    postAddress: '',
-    entryCode: '',
-    phone: '',
-    email: ''
-  },
-];
-console.log(customer);
-
 let totalAmount = 0;
 let activeDiscount = false;
 let discountTotalAmount = 0;
@@ -41,9 +27,12 @@ const sortRatingBtn = document.querySelector('#sort-rating-button');
 const sortCategoryBtn = document.querySelector('#sort-category');
 const logo = document.querySelector('#logo');
 const formPage = document.querySelector('#form');
-const invoiceInput = document.querySelector('#payment-invoice');
+const invoiceInput = document.querySelector('#invoice-radio-button');
 const highlightnumberofItems = document.querySelector('#number-of-donuts');
 const closeForm = document.querySelector('#close-form');
+const productPage = document.querySelector('#product-page');
+
+
 
 /* 
 ###########################################
@@ -59,18 +48,43 @@ logo.addEventListener('mouseout', () => {
   logo.src="photos/home-logo.png";
 })
 
+logo.addEventListener('click', () => {
+  productPage.classList.remove('hidden');
+  cardDiv.classList.add('hidden');
+  orderPage.classList.add('hidden');
+  formPage.classList.add('hidden');
+  orderConfirmation.classList.add('hidden');
+  menu.classList.add('hidden');
+
+})
+
 /* 
 ###########################################
 ###########MENU TOGGLE####################
 ###########################################
 */
+const barOne = document.querySelector('#bar-one');
+const barThree = document.querySelector('#bar-three');
+
+menuBtn.addEventListener('mouseover', () => {
+  barOne.classList.add('ml-4');
+  barThree.classList.add('ml-4');
+})
+
+menuBtn.addEventListener('mouseout', () => {
+  barOne.classList.remove('ml-4');
+  barThree.classList.remove('ml-4');
+})
 
 menuBtn.addEventListener('click', () => {
   if (menu.classList.contains('hidden')) {
     menu.classList.remove('hidden');
     orderPage.classList.add('hidden');
+    productPage.classList.add('hidden');
+    formPage.classList.add('hidden');
   } else {
     menu.classList.add('hidden');
+    productPage.classList.remove('hidden');
   }
 })
 
