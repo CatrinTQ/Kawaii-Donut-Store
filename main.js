@@ -238,7 +238,7 @@ function printDonuts() {
       <img src="${product.img.url}" class="product-image"></img>
       <div class="gap-1">
         <h3>${product.name}</h3>
-        <p>Pris: ${product.price} kr</p>
+        <p>Pris: ${Math.round(product.price)} kr</p>
         <p class="flex flex-row">Betyg: ${printRatingStar(product.rating)}</p>
         <p>Kategori: ${product.category}</p>
 
@@ -279,16 +279,28 @@ function printCart() {
     orderDiv.innerHTML = "varukorgen är tom";
     return;
    }
+
   calculateDeliveryFee();
   checkDiscount();
+
   cart.forEach(product => {
     if (product.amount > 0) {
       orderDiv.innerHTML+= `
-      <div>
+    <div class="flex bg-yellow-300 gap-4 items-around">
+      <img src="${product.img.url}" class="cart-image" />
+      
+      <div class="flex flex-col">
         <span>${product.name}</span>
-        <span>${product.amount}</span>
-        <span>${product.price * product.amount}</span>
+        <span>${product.amount}st à ${product.price}</span>
+        <span>${Math.round(product.price * product.amount)} kr</span>
       </div>
+      
+      <!-- Flytta knappen till höger -->
+      <button id="delete-from-cart" class="">
+        <span class="bg-black transform rotate-45"></span>
+        <span class="bg-black transform -rotate-45"></span>
+      </button>
+    </div>
       `;
     }
   })
@@ -301,7 +313,6 @@ function printCart() {
     <button>Aktivera</button>
   </div>
   `;
-
   
   checkMondayDiscount();
   if (activeDiscount === false) {
@@ -327,10 +338,33 @@ function printCart() {
     checkInvoceAccess();
   })
 }
+  checkMondayDiscount();
+  if (activeDiscount === false) {
+    orderDiv.innerHTML += `<p>Totalt: ${totalAmount} kr</p>
+    `;
+  } else {
+    orderDiv.innerHTML += `
+    <p style="text-decoration: line-through;">Totalt: ${totalAmount} kr</p>
+    <p>${msg}</p>
+    <p>Totalt: ${discountTotalAmount} kr</p>
+    `;
+  }
+
+  orderDiv.innerHTML += `<button id="proceed-to-check-out" class=basic-button>Gå vidare</button>`;
+  
+  const checkoutBtn = document.querySelector('#proceed-to-check-out');
+  
+  checkoutBtn.addEventListener('click', () => {
+    formPage.classList.remove('hidden');
+    orderPage.classList.add('hidden');
+    checkValidForm();
+
+    checkInvoceAccess();
+  })
 
 function printTotalAmount() {  
   getCart();
-  let amount = getTotalAmount();
+  let amount = Math.round(getTotalAmount());
   cartSpan.innerHTML = "";
   
   cartSpan.innerHTML = amount + " kr";
@@ -379,7 +413,7 @@ function checkWeekendPrice() {
   products.forEach(product => {
     product.price *= 1;
   }) 
-  if (today.getDay() === 5 && today.getHours > 15 || today.getDay() === 6 || today.getDay() === 0 || today.getDate() === 1 && today.getHours < 10) {
+  if (today.getDay() === 5 && today.getHours > 15 || today.getDay() === 6 || today.getDay() === 0 || today.getday() === 1 && today.getHours < 10) {
     products.forEach(product => {
       product.price *= 1.15;
     })
@@ -478,14 +512,14 @@ const customerInfo = document.querySelector('#receiver-info');
 
 placeOrderBtn.addEventListener('click', () => {
   orderConfirmation.classList.remove('hidden');
-    customerInfo.innerHTML = `
-      <p>${firstNameInput.value} ${lastNameInput.value}</p>
-      <p>${addressInput.value}</p>
-      <p>${postalNumberInput.value} ${postalAddressInput.value}</p>
-      <p>${phoneInput.value}</p>
-      <p>${emailInput.value}</p>
-    `
-    
+  customerInfo.innerHTML = `
+    <p>${firstNameInput.value} ${lastNameInput.value}</p>
+    <p>${addressInput.value}</p>
+    <p>${postalNumberInput.value} ${postalAddressInput.value}</p>
+    <p>${phoneInput.value}</p>
+    <p>${emailInput.value}</p>
+  `
+  
   clearCart();
   printCart();
   highlightItemInCart();
