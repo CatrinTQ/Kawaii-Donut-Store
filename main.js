@@ -477,11 +477,7 @@ const orderConfirmation = document.querySelector('#confirmation-page');
 const customerInfo = document.querySelector('#receiver-info');
 
 placeOrderBtn.addEventListener('click', () => {
-  const currentDisplay = getComputedStyle(orderConfirmation).display;
-
-  if (currentDisplay === "none") {
-    orderConfirmation.style.display = "block";
-
+  orderConfirmation.classList.remove('hidden');
     customerInfo.innerHTML = `
       <p>${firstNameInput.value} ${lastNameInput.value}</p>
       <p>${addressInput.value}</p>
@@ -490,9 +486,6 @@ placeOrderBtn.addEventListener('click', () => {
       <p>${emailInput.value}</p>
     `
     
-  } else {
-    orderConfirmation.style.display = "none";
-  }
   clearCart();
   printCart();
   highlightItemInCart();
