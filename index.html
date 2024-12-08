@@ -19,21 +19,27 @@
       width="150"
       height=""
       loading="eager">
-      
-      <button>
-        <div id="number-of-donuts" class="hidden bg-red-400 rounded-full"></div>
-        <span id="cart-button" class="material-symbols-outlined text-4xl">
+
+      <button id="cart-button" class="relative hover:scale-110 transition-transform duration-300 absolute">
+        <div id="number-of-donuts" class="hidden absolute -top-2 -right-2 bg-red-400 text-white text-sm w-6 h-6 flex items-center justify-center rounded-full">
+          0
+        </div>
+        <span class="material-symbols-outlined text-4xl">
           shopping_cart
         </span>
       </button>
-      <span id="amount-in-cart">0 kr</span>
+      
+      <span id="amount-in-cart" class=" text-lg">
+        0 kr
+      </span>
+      
       
       <nav>
-        <button id="menu-button" class="" aria-label="Open menu button" aria-expanded="false">
-          <span id="bar-one"></span>
-          <span></span>
-          <span id="bar-three"></span>
-        </button>  
+        <button id="menu-button" class="group relative mr-8" aria-label="Open menu button" aria-expanded="false">
+          <span id="bar-one" class="block h-1 w-6 bg-pink transition-transform duration-300 group-hover:-translate-x-2"></span>
+          <span class="block h-1 w-6 bg-pink mt-1 transition-opacity duration-300"></span>
+          <span id="bar-three" class="block h-1 w-6 bg-pink mt-1 transition-transform duration-300 group-hover:-translate-x-4"></span>
+        </button>
       </nav>
       
     </header>
@@ -66,7 +72,7 @@
       </section>
 
       <!-- FORM PAGE  -->
-      <section id="form" class="form-page flex flex-col bg-pink-200">
+      <section id="form" class="hidden form-page flex flex-col bg-pink-200">
         <button id="close-form" class="relative w-8 h-8 flex items-center justify-center ml-4">
           <span id="bar" class="block absolute top-1/2 left-0 w-3 h-0.5 bg-white transform -translate-y-1/2 rotate-45 origin-left"></span>
           <span id="bar-two" class="block absolute top-1/2 left-0 w-3 h-0.5 bg-white transform -translate-y-1/2 -rotate-45 origin-left"></span>
@@ -179,16 +185,14 @@
         </form>
       </section>
 
-
       <!-- CART -->
-      <section class="cart hidden flex justify-center items-center p-10" id="order">
-        <fieldset class="flex justify-center items-center border-dotted border-2 w-4/5 h-52">
+      <section class="cart flex justify-center items-center gap-4 p-10 bg-blue-200" id="order">
+        <fieldset id="order-fieldset" class="flex flex-col justify-center items-center border-dotted border-2 w-4/5 min-h-52">
           <legend class="text-center m-auto">Varukorgssammanställning</legend>
-          <div id="order-products">Varukorgen är tom</div>
+          <div id="order-products" class="flex flex-col gap-4">Varukorgen är tom</div>
         </fieldset>
       </section>
-
-
+    
       <!-- PRODUCT PAGE  -->
       <section class="flex flex-col gap-8" id="product-page">
         <ul class="sort-list flex flex-row justify-end gap-2">
