@@ -6,7 +6,6 @@ import products from '/products.js';
 
 let selectedProducts = [...products];
 let cart = [];
-
 let totalAmount = 0;
 let activeDiscount = false;
 let discountTotalAmount = 0;
@@ -31,12 +30,9 @@ const sortCategoryBtn = document.querySelector('#sort-category');
 const logo = document.querySelector('#logo');
 const formPage = document.querySelector('#form');
 const invoiceInput = document.querySelector('#invoice-radio-button');
-const highlightnumberofItems = document.querySelector('#number-of-donuts');
 const closeForm = document.querySelector('#close-form');
 const productPage = document.querySelector('#product-page');
 const closeConfirmation = document.querySelector('#close-confirmation');
-
-
 
 /* 
 ###########################################
@@ -65,19 +61,6 @@ logo.addEventListener('click', () => {
 ###########MENU TOGGLE####################
 ###########################################
 */
-const barOne = document.querySelector('#bar-one');
-const barThree = document.querySelector('#bar-three');
-
-menuBtn.addEventListener('mouseover', () => {
-  barOne.classList.add('ml-4');
-  barThree.classList.add('ml-4');
-})
-
-menuBtn.addEventListener('mouseout', () => {
-  barOne.classList.remove('ml-4');
-  barThree.classList.remove('ml-4');
-})
-
 menuBtn.addEventListener('click', () => {
   if (menu.classList.contains('hidden')) {
     menu.classList.remove('hidden');
@@ -203,14 +186,46 @@ function increaseAmount(e) {
 
 function highlightItemInCart() {
   highlightNumber = 0;
+
+  // Beräkna totalen av produkter i varukorgen
   cart.forEach(product => {
     highlightNumber += product.amount;
-  })
+  });
+
+  // Hämta din badge (den röda div:en)
+  const highlightnumberofItems = document.getElementById('number-of-donuts');
+
   if (highlightNumber > 0) {
+    // Uppdatera innehållet i badgen
     highlightnumberofItems.innerHTML = highlightNumber;
-    highlightnumberofItems.classList.remove('hidden');
+    highlightnumberofItems.classList.remove('hidden'); // Visa badgen
+
+    // Gör en "pop"-effekt genom att skala upp
+    highlightnumberofItems.classList.remove('scale-100');
+    highlightnumberofItems.classList.add('scale-125');
+
+    // Lägg till en färgändring (t.ex. gul)
+    highlightnumberofItems.classList.add('bg-yellow-400');
+
+    // Återställ skalning och bakgrundsfärg efter en kort paus
+    setTimeout(() => {
+      highlightnumberofItems.classList.remove('scale-125'); // Återgå till originalstorlek
+      highlightnumberofItems.classList.add('scale-100');
+
+      // Återgå till röd bakgrund
+      highlightnumberofItems.classList.remove('bg-yellow-400');
+      highlightnumberofItems.classList.add('bg-red-400');
+    }, 500); // Återställ till originalstorlek och färg efter 300 ms
   } else {
-    highlightnumberofItems.innerHTML = '';
+    // Om varukorgen är tom, ge en smidig övergång innan vi döljer badgen
+    highlightnumberofItems.classList.remove('scale-100');  // Ta bort eventuellt tidigare skala
+    highlightnumberofItems.classList.add('scale-90'); // Minska storleken till 90%
+
+    // Efter att ha minskat storleken, döljer vi badgen och återställer storleken
+    setTimeout(() => {
+      highlightnumberofItems.classList.add('hidden'); // Dölja badgen när den inte används
+      highlightnumberofItems.classList.remove('scale-90'); // Ta bort minskad storlek
+    }, 500); // Vänta på att övergången ska slutföras innan diven döljs
   }
 }
 
