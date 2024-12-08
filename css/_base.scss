@@ -6,9 +6,6 @@ body {
 
 nav {
     button {
-        background-color: $primary-color;
-        min-height: rem(48);
-        min-width: rem(48);
         span {
             display: block;
             width: rem(30);
@@ -23,9 +20,7 @@ nav {
     padding: 0;
     margin: 0;
 }
-.menu {
-    background-color: $forth-color;
-}
+
 .logo-image {
     padding: rem(10);
 }
@@ -46,17 +41,18 @@ nav {
     width: rem(120);
 }
 
+.cart-image {
+    width: rem(100);
+}
+
 input[type=number] {
     appearance: textfield;
 } 
 
 .cart {
-    background-color: lightblue;
     min-height: rem(500);
-    overflow: hidden;
 
     button {
-        background-color: $secondary-color;
         border-radius: rem(30);
     }
 }
