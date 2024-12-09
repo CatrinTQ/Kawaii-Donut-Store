@@ -33,6 +33,7 @@ const invoiceInput = document.querySelector('#invoice-radio-button');
 const closeForm = document.querySelector('#close-form');
 const productPage = document.querySelector('#product-page');
 const closeConfirmation = document.querySelector('#close-confirmation');
+const productLink = document.querySelector('#product-link');
 
 /* 
 ###########################################
@@ -82,6 +83,15 @@ cartLink.addEventListener('click', () => {
   }
 })
 
+productLink.addEventListener('click', () => {
+  if (productPage.classList.contains('hidden')) {
+    productPage.classList.remove('hidden');
+    menu.classList.add('hidden');
+  } else {
+    productPage.classList.add('hidden');
+  }
+})
+
 cartBtnLogo.addEventListener('click', () => {
   if (orderPage.classList.contains('hidden')) {
     orderPage.classList.remove('hidden');
@@ -95,6 +105,7 @@ cartBtnLogo.addEventListener('click', () => {
 
 closeConfirmation.addEventListener('click', () => {
   orderConfirmation.classList.add('hidden');
+  productPage.classList.remove('hidden');
 })
 
 function resetProductList() {
@@ -271,60 +282,60 @@ function printCart() {
     orderDiv.innerHTML = "varukorgen är tom";
     return;
    } else {
-  calculateDeliveryFee();
+    calculateDeliveryFee();
 
-  cart.forEach(product => {
-    if (product.amount > 0) {
-      orderDiv.innerHTML+= `
+    cart.forEach(product => {
+      if (product.amount > 0) {
+        orderDiv.innerHTML+= `
             <div class="flex bg-yellow-500 p-5 pr-20 gap-4 relative">
-      <img src="${product.img.url}" class="cart-image" />
-      
+              <img src="${product.img.url}" class="cart-image" />
+              
               <div class="flex flex-col justify-center gap-2">
-        <span>${product.name}</span>
+                <span>${product.name}</span>
                 <span>${product.amount}st à ${product.price}kr</span>
                 <span>${product.amount * product.price}kr</span>
-      </div>
+              </div>   
+            </div>
+        `;
+      }
+    })
+    orderDiv.innerHTML += 
+    `
+    <p>Frakt: ${deliveryFee} kr</p>
+    <div class="flex">
+      <label>Rabattkod</label>
+      <input id="discount-field" type="text">
+      <button>Aktivera</button>
     </div>
-      `;
-    }
-  })
-  orderDiv.innerHTML += 
-  `
-  <p>Frakt: ${deliveryFee} kr</p>
-  <div class="flex">
-    <label>Rabattkod</label>
-    <input id="discount-field" type="text">
-    <button>Aktivera</button>
-  </div>
-  `;
+    `;
     checkDiscount();
     orderDiv.innerHTML += `<p>${discount}</p>`;
-  checkMondayDiscount();
-  if (activeDiscount === false) {
+    checkMondayDiscount();
+    if (activeDiscount === false) {
       orderDiv.innerHTML += `<p>Totalt: ${totalAmount + deliveryFee - discount} kr</p>
-    `;
-  } else {
-    orderDiv.innerHTML += `
+      `;
+    } else {
+      orderDiv.innerHTML += `
       <p style="text-decoration: line-through;">Totalt: ${totalAmount - discount} kr</p>
-    <p>${msg}</p>
-    <p>Totalt: ${discountTotalAmount} kr</p>
-    `;
-  }
-
+      <p>${msg}</p>
+      <p>Totalt: ${discountTotalAmount} kr</p>
+      `;
+    }
     
+    
+    
+    orderDiv.innerHTML += `<button id="proceed-to-check-out" class=basic-button>Gå vidare</button>`;
+    
+    const checkoutBtn = document.querySelector('#proceed-to-check-out');
+    
+    checkoutBtn.addEventListener('click', () => {
+      formPage.classList.remove('hidden');
+      orderPage.classList.add('hidden');
 
-  orderDiv.innerHTML += `<button id="proceed-to-check-out" class=basic-button>Gå vidare</button>`;
-  
-  const checkoutBtn = document.querySelector('#proceed-to-check-out');
-  
-  checkoutBtn.addEventListener('click', () => {
-    formPage.classList.remove('hidden');
-    orderPage.classList.add('hidden');
+      checkValidForm();
+      checkInvoceAccess();
 
-    checkValidForm();
-    checkInvoceAccess();
-
-  })
+    })
   }
 }
 
