@@ -1,2 +1,41 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/P54kDXVP)
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=17086627&assignment_repo_type=AssignmentRepo)
+🧁 Kawaii Donut Webshop
+
+Kawaii Donut är en responsiv och interaktiv webbshop för fiktiva sötsaker, med fokus på modern design och användarupplevelse. Projektet inkluderar validerad kod, prestandaoptimering och implementering av dark mode.
+
+🌐 Live-version
+🔗 Besök Kawaii Donut här
+
+📸 Skärmdumpar och analyser
+✅ Valideringsrapporter
+
+Alla HTML- och CSS-filer har validerats enligt W3C-standarder. Se valideringsrapporterna nedan:
+
+    HTML Validator
+
+    CSS Validator
+
+🚀 Lighthouse-analys
+
+Prestanda, tillgänglighet och SEO har analyserats med hjälp av Google Lighthouse.
+
+    Desktop Lighthouse Score
+
+    Mobile Lighthouse Score
+
+🛠️ Teknikstack
+
+Projektet är byggt med följande teknologier och verktyg:
+
+    HTML5: Semantisk och validerad strukturering av innehåll.
+    CSS3 & Tailwind CSS: Modern och responsiv styling.
+    JavaScript (ES6): Dynamisk funktionalitet.
+    Node.js: För utvecklingsmiljön.
+    Git & GitHub: Versionshantering och distribution.
+
+✨ Funktioner
+
+    Dynamisk Varukorg: Lägg till, ta bort och redigera produkter.
+    Dark Mode: Automatisk eller manuell växling mellan ljus och mörk design.
+    Responsiv Design: Anpassar sig till alla skärmstorlekar.
+    Optimerad Prestanda: Snabb laddningstid och användarvänlighet.
+
