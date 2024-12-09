@@ -351,14 +351,25 @@ function clearCart() {
   });
 }
 
+// function deleteItemInCart(id) {
+//   cart = cart.filter(item => item.id !== id);
+// }
+
 /* 
 ###########################################
 ########### BUSINESS RULES ################
 ###########################################
 */
 
-function checkDiscount() {
+let discount = 0;
 
+function checkDiscount() {
+  cart.forEach(item => {
+    if (item.amount > 9) {
+      discount += (item.price * item.amount) * 0.1; 
+      console.log(discount);
+    }
+  });
 }
 
 function checkMondayDiscount() {
