@@ -1,11 +1,11 @@
 const products = [
     {
-      id: 0,
+      id: 1,
       name: 'Tiger',
       price: 35,
       rating: 4,
       amount: 0,
-      category: 'sweet',
+      category: 'animal',
       img: {
         url: 'photos/product-image-1.png',
         width: 50,
@@ -14,7 +14,7 @@ const products = [
       },
     },
     {
-      id: 1,
+      id: 2,
       name: 'Snölejon',
       price: 30,
       rating: 5,
@@ -28,7 +28,7 @@ const products = [
       },
     },
     {
-      id: 2,
+      id: 3,
       name: 'Blå tiger',
       price: 250,
       rating: 2.5,
@@ -42,7 +42,7 @@ const products = [
       },
     },
     {
-      id: 3,
+      id: 4,
       name: 'Kanin',
       price: 40,
       rating: 1.5,
@@ -56,7 +56,7 @@ const products = [
       },
     },
     {
-      id: 4,
+      id: 5,
       name: 'Matcha',
       price: 40,
       rating: 3.5,
@@ -70,7 +70,7 @@ const products = [
       },
     },
     {
-      id: 5,
+      id: 6,
       name: 'Dino',
       price: 40,
       rating: 5,
@@ -84,7 +84,7 @@ const products = [
       },
     },
     {
-      id: 6,
+      id: 7,
       name: 'Persika',
       price: 40,
       rating: 4.5,
@@ -98,7 +98,7 @@ const products = [
       },
     },
     {
-      id: 7,
+      id: 8,
       name: 'Spöke',
       price: 30,
       rating: 3.5,
@@ -112,7 +112,7 @@ const products = [
       },
     },
     {
-      id: 8,
+      id: 9,
       name: 'Gris',
       price: 25,
       rating: 3.5,
@@ -126,7 +126,7 @@ const products = [
       },
     },
     {
-      id: 9,
+      id: 10,
       name: 'Pokemon',
       price: 40,
       rating: 4.5,
@@ -140,7 +140,7 @@ const products = [
       },
     },
     {
-      id: 10,
+      id: 11,
       name: 'Nebulosa',
       price: 40,
       rating: 5,
@@ -154,7 +154,7 @@ const products = [
       },
     },
     {
-      id: 11,
+      id: 12,
       name: 'Björn',
       price: 35,
       rating: 2.5,
@@ -168,7 +168,7 @@ const products = [
       },
     },
     {
-      id: 12,
+      id: 13,
       name: 'Vintergatan',
       price: 45,
       rating: 4.5,
@@ -182,7 +182,7 @@ const products = [
       },
     },
     {
-      id: 13,
+      id: 14,
       name: 'Meteorregn',
       price: 40,
       rating: 3.5,
