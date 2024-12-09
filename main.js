@@ -196,36 +196,29 @@ function highlightItemInCart() {
   const highlightnumberofItems = document.getElementById('number-of-donuts');
 
   if (highlightNumber > 0) {
-    // Uppdatera innehållet i badgen
     highlightnumberofItems.innerHTML = highlightNumber;
-    highlightnumberofItems.classList.remove('hidden'); // Visa badgen
+    highlightnumberofItems.classList.remove('hidden'); 
 
-    // Gör en "pop"-effekt genom att skala upp
     highlightnumberofItems.classList.remove('scale-100');
     highlightnumberofItems.classList.add('scale-125');
 
-    // Lägg till en färgändring (t.ex. gul)
     highlightnumberofItems.classList.add('bg-yellow-400');
 
-    // Återställ skalning och bakgrundsfärg efter en kort paus
     setTimeout(() => {
-      highlightnumberofItems.classList.remove('scale-125'); // Återgå till originalstorlek
+      highlightnumberofItems.classList.remove('scale-125');
       highlightnumberofItems.classList.add('scale-100');
 
-      // Återgå till röd bakgrund
       highlightnumberofItems.classList.remove('bg-yellow-400');
       highlightnumberofItems.classList.add('bg-red-400');
-    }, 500); // Återställ till originalstorlek och färg efter 300 ms
+    }, 500); 
   } else {
-    // Om varukorgen är tom, ge en smidig övergång innan vi döljer badgen
-    highlightnumberofItems.classList.remove('scale-100');  // Ta bort eventuellt tidigare skala
-    highlightnumberofItems.classList.add('scale-90'); // Minska storleken till 90%
+    highlightnumberofItems.classList.remove('scale-100'); 
+    highlightnumberofItems.classList.add('scale-90');
 
-    // Efter att ha minskat storleken, döljer vi badgen och återställer storleken
     setTimeout(() => {
-      highlightnumberofItems.classList.add('hidden'); // Dölja badgen när den inte används
-      highlightnumberofItems.classList.remove('scale-90'); // Ta bort minskad storlek
-    }, 500); // Vänta på att övergången ska slutföras innan diven döljs
+      highlightnumberofItems.classList.add('hidden');
+      highlightnumberofItems.classList.remove('scale-90');
+    }, 500); 
   }
 }
 
