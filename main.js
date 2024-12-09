@@ -137,7 +137,6 @@ closeForm.addEventListener('mouseout', () => {
 })
 
 closeForm.addEventListener('click', () => {
-  console.log('test');
   formPage.classList.add('hidden');
   orderPage.classList.remove('hidden');
 })
@@ -187,12 +186,10 @@ function increaseAmount(e) {
 function highlightItemInCart() {
   highlightNumber = 0;
 
-  // Beräkna totalen av produkter i varukorgen
   cart.forEach(product => {
     highlightNumber += product.amount;
   });
 
-  // Hämta din badge (den röda div:en)
   const highlightnumberofItems = document.getElementById('number-of-donuts');
 
   if (highlightNumber > 0) {
@@ -244,6 +241,8 @@ function printDonuts() {
      </section>
     `;
   });
+
+
   const minusBtn = document.querySelectorAll('button.minus');
   const plusBtn = document.querySelectorAll('button.plus');
 
