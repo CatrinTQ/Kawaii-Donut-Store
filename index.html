@@ -42,7 +42,7 @@
     <header class="flex justify-between items-center">
       
       <img id="logo" class="logo-image hover:scale-105 cursor-pointer" 
-      src="public/photos/home-logo.png"
+      src="/photos/home-logo.png"
       alt="tecknad munk med rosa frosting som ler."
       width="150"
       height=""
@@ -63,9 +63,9 @@
       
       <nav>
         <button id="menu-button" class="group relative mr-8" aria-label="Open menu button" aria-expanded="false">
-          <span id="bar-one" class="block h-1 w-6 bg-pink transition-transform duration-300 group-hover:-translate-x-2"></span>
-          <span class="block h-1 w-6 bg-pink mt-1 transition-opacity duration-300"></span>
-          <span id="bar-three" class="block h-1 w-6 bg-pink mt-1 transition-transform duration-300 group-hover:-translate-x-4"></span>
+          <span id="bar-one" class="menu-span block h-1 w-6 bg-pink transition-transform duration-300 group-hover:-translate-x-2"></span>
+          <span class="menu-span block h-1 w-6 bg-pink mt-1 transition-opacity duration-300"></span>
+          <span id="bar-three" class="menu-span block h-1 w-6 bg-pink mt-1 transition-transform duration-300 group-hover:-translate-x-4"></span>
         </button>
       </nav>
       
@@ -104,14 +104,15 @@
             <Button id="sort-rating-button" class="mr-5">Betyg</Button>
           </li>
         </ul>
-        <div id="product-list" class="product-div flex flex-col items-center gap-4"></div>
+        <div id="product-list" class="product-div grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center mx-auto max-w-screen-lg"></div>
+
       </section>
 
       <!-- CART -->
-      <section class="hidden cart flex justify-center items-center gap-4 p-10 bg-blue-200" id="order">
-        <fieldset id="order-fieldset" class="flex flex-col justify-center items-center border-dotted border-2 w-4/5 min-h-52">
+      <section class="hidden flex cart justify-center items-center gap-4 p-10 bg-blue-200" id="order">
+        <fieldset id="order-fieldset" class="grid grid-cols-4 justify-center items-center border-dotted border-2 w-4/5 min-h-52">
           <legend class="text-center m-auto">Varukorgssammanställning</legend>
-          <div id="order-products" class="flex flex-col gap-4">Varukorgen är tom</div>
+          <div id="order-products" class="grid place-items-center col-start-2 col-span-2 min-h-full">Varukorgen är tom</div>
         </fieldset>
       </section>
 
