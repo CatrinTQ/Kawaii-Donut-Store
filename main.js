@@ -7,12 +7,12 @@ import products from '/products.js';
 let selectedProducts = [...products];
 let cart = [];
 let totalAmount = 0;
+let oldTotalAmount = 0;
 let activeDiscount = false;
-let discountTotalAmount = 0;
 let msg = '';
-let deliveryFee = 25;
+let deliveryFee = 0;
 let customerTimer = setTimeout(timeoutCustomer, 1000 * 60 * 15);
-console.log(customerTimer);
+customerTimer;
 let highlightNumber = 0;
 
 const productListDiv = document.querySelector('#product-list');
@@ -100,6 +100,7 @@ cartBtnLogo.addEventListener('click', () => {
     
   } else {
     orderPage.classList.add('hidden');
+    productPage.classList.remove('hidden');
   }
 })
 
@@ -274,19 +275,16 @@ function getCart() {
 }
 
 function printCart() {
-  getCart();
-  totalAmount = getTotalAmount();
   orderDiv.innerHTML = "";
+  getCart();
    if (cart  < 1) {
     orderDiv.innerHTML = "varukorgen är tom";
     return;
    } else {
-    calculateDeliveryFee();
-
     cart.forEach(product => {
       if (product.amount > 0) {
         orderDiv.innerHTML+= `
-            <div class="flex bg-yellow-500 p-5 pr-20 gap-4 relative">
+            <div class="col-start-1 ">
               <img src="${product.img.url}" class="cart-image" />
               
               <div class="flex flex-col justify-center gap-2">
@@ -298,9 +296,34 @@ function printCart() {
         `;
       }
     })
+
+    totalAmount = getTotalAmount();
+    checkDiscount();
+    checkMondayDiscount();
+    calculateDeliveryFee();
+
+    if (activeDiscount) {
+      orderDiv.innerHTML += `
+      <p style="text-decoration: line-through;">Summa: ${oldTotalAmount} kr</p>
+      <p>${msg}</p>
+      <p>Ny summa: ${totalAmount} kr</p>
+      `;
+    } else if (discount > 0 && !activeDiscount) {
+      orderDiv.innerHTML += `
+      <p style="text-decoration: line-through;">Summa: ${totalAmount} kr</p>
+      <p>Rabatt: ${discount}kr</p>
+      <p>${msg}</p>
+      `;
+    } else {
+      orderDiv.innerHTML += 
+    `
+      <p>Summa: ${totalAmount}</p>
+      `
+    }
     orderDiv.innerHTML += 
     `
-    <p>Frakt: ${deliveryFee} kr</p>
+    <p class="">Frakt: ${Math.round(deliveryFee)} kr</p>
+    <p>Summa att betala: ${Math.round(totalAmount + deliveryFee)}</p>
     <div class="flex gap-2">
       <label>Rabattkod</label>
       <input id="discount-field" type="text" class="w-20">
@@ -308,27 +331,7 @@ function printCart() {
     </div>
     `;
     
-    checkDiscount();
-    checkMondayDiscount();
-    if (activeDiscount) {
-      orderDiv.innerHTML += `
-      <p style="text-decoration: line-through;">Totalt: ${totalAmount} kr</p>
-      <p>${msg}</p>
-      <p>Att betala: ${discountTotalAmount} kr</p>
-      `;
-    } else if (discount > 0 && !activeDiscount) {
-      orderDiv.innerHTML += `
-      <p style="text-decoration: line-through;">Totalt: ${totalAmount} kr</p>
-      <p>Rabatt: ${discount}kr</p>
-      <p>Du får 10% mängdrabatt på munkar som du beställt 10 eller mer av 😊</p>
-      <p>Att betala: ${totalAmount + deliveryFee - discount} kr</p>
-      `;
-    } else {
-      orderDiv.innerHTML += `<p>Att betala: ${totalAmount + deliveryFee - discount} kr</p>
-      `;
-    }
-    
-    orderDiv.innerHTML += `<button id="proceed-to-check-out" class=basic-button>Gå vidare</button>`;
+    orderDiv.innerHTML += `<button id="proceed-to-check-out" class=basic-button cart-button>Gå vidare</button>`;
     
     const checkoutBtn = document.querySelector('#proceed-to-check-out');
     
@@ -364,10 +367,6 @@ function clearCart() {
   });
 }
 
-// function deleteItemInCart(id) {
-//   cart = cart.filter(item => item.id !== id);
-// }
-
 /* 
 ###########################################
 ########### BUSINESS RULES ################
@@ -381,20 +380,20 @@ function checkDiscount() {
     discount = 0;
     if (item.amount >= 10) {
       discount += (item.price * item.amount) * 0.1; 
-      console.log(discount);
+      msg = "Du får 10% mängdrabatt på munkar som du beställt 10 eller mer av 😊";
     }
   });
 }
 
 function checkMondayDiscount() {
   const today = new Date();
-  discountTotalAmount = 0;
   msg = '';
   activeDiscount = false;
   // fram till 10 på morgonen men innan klockan 3
-  if (today.getDay() === 2) {
-    discountTotalAmount = totalAmount * 0.9;
-    msg = "Du får måndagsrabatt, 10% på hela ordern!";
+  if (today.getDay() === 1 ) {
+    oldTotalAmount = totalAmount;
+    totalAmount = totalAmount * 0.9;
+    msg = "Du får måndagsrabatt, 10% på hela ordern 😊";
     activeDiscount = true;
   } 
 }
@@ -421,11 +420,14 @@ function calculateDeliveryFee() {
 
   if (itemsInCart > 15) {
     deliveryFee = "0";
+  } else {
+    deliveryFee = 0;
+    deliveryFee = 25 + (totalAmount * 0.1);
   }
 }
 
 function checkInvoceAccess() {
-  if (totalAmount > 800 || discountTotalAmount > 800) {
+  if (totalAmount > 800) {
     invoiceInput.disabled = true;
   }
 }
