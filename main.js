@@ -253,7 +253,6 @@ function printDonuts() {
     `;
   });
 
-
   const minusBtn = document.querySelectorAll('button.minus');
   const plusBtn = document.querySelectorAll('button.plus');
 
@@ -302,27 +301,32 @@ function printCart() {
     orderDiv.innerHTML += 
     `
     <p>Frakt: ${deliveryFee} kr</p>
-    <div class="flex">
+    <div class="flex gap-2">
       <label>Rabattkod</label>
-      <input id="discount-field" type="text">
+      <input id="discount-field" type="text" class="w-20">
       <button>Aktivera</button>
     </div>
     `;
+    
     checkDiscount();
-    orderDiv.innerHTML += `<p>${discount}</p>`;
     checkMondayDiscount();
-    if (activeDiscount === false) {
-      orderDiv.innerHTML += `<p>Totalt: ${totalAmount + deliveryFee - discount} kr</p>
+    if (activeDiscount) {
+      orderDiv.innerHTML += `
+      <p style="text-decoration: line-through;">Totalt: ${totalAmount} kr</p>
+      <p>${msg}</p>
+      <p>Att betala: ${discountTotalAmount} kr</p>
+      `;
+    } else if (discount > 0 && !activeDiscount) {
+      orderDiv.innerHTML += `
+      <p style="text-decoration: line-through;">Totalt: ${totalAmount} kr</p>
+      <p>Rabatt: ${discount}kr</p>
+      <p>Du får 10% mängdrabatt på munkar som du beställt 10 eller mer av 😊</p>
+      <p>Att betala: ${totalAmount + deliveryFee - discount} kr</p>
       `;
     } else {
-      orderDiv.innerHTML += `
-      <p style="text-decoration: line-through;">Totalt: ${totalAmount - discount} kr</p>
-      <p>${msg}</p>
-      <p>Totalt: ${discountTotalAmount} kr</p>
+      orderDiv.innerHTML += `<p>Att betala: ${totalAmount + deliveryFee - discount} kr</p>
       `;
     }
-    
-    
     
     orderDiv.innerHTML += `<button id="proceed-to-check-out" class=basic-button>Gå vidare</button>`;
     
@@ -334,7 +338,6 @@ function printCart() {
 
       checkValidForm();
       checkInvoceAccess();
-
     })
   }
 }
@@ -375,7 +378,8 @@ let discount = 0;
 
 function checkDiscount() {
   cart.forEach(item => {
-    if (item.amount > 9) {
+    discount = 0;
+    if (item.amount >= 10) {
       discount += (item.price * item.amount) * 0.1; 
       console.log(discount);
     }
@@ -388,7 +392,7 @@ function checkMondayDiscount() {
   msg = '';
   activeDiscount = false;
   // fram till 10 på morgonen men innan klockan 3
-  if (today.getDay() === 1) {
+  if (today.getDay() === 2) {
     discountTotalAmount = totalAmount * 0.9;
     msg = "Du får måndagsrabatt, 10% på hela ordern!";
     activeDiscount = true;
@@ -401,7 +405,7 @@ function checkWeekendPrice() {
   products.forEach(product => {
     product.price *= 1;
   }) 
-  if (today.getDay() === 5 && today.getHours > 15 || today.getDay() === 6 || today.getDay() === 0 || today.getday() === 1 && today.getHours < 10) {
+  if (today.getDay() === 5 && today.getHours > 15 || today.getDay() === 6 || today.getDay() === 0 || today.getDay() === 1 && today.getHours < 10) {
     products.forEach(product => {
       product.price *= 1.15;
     })

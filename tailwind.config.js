@@ -15,6 +15,7 @@ export default {
     'transform', // Säkerställ att transformeringar behålls
     'bg-yellow-400',
     'bg-red-400',
+    'w-20',
   ],
 }
 
