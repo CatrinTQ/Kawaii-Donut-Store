@@ -235,7 +235,7 @@ function printDonuts() {
 
   selectedProducts.forEach((product, index) => {
     productListDiv.innerHTML += `
-    <section class="flex items-center content-center gap-4">
+    <section class="flex items-center content-center gap-4 hover:bg-yellow-100">
       <img src="${product.img.url}" class="product-image"></img>
       <div class="gap-1">
         <h3>${product.name}</h3>
@@ -244,9 +244,9 @@ function printDonuts() {
         <p>Kategori: ${product.category}</p>
 
         <div class="flex items-center">
-          <button data-id="${index}" class="basic-button minus" aria-label="Minska antal ${product.name}">-</button>
+          <button data-id="${index}" class="basic-button minus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Minska antal ${product.name}">-</button>
           <p class="min-w-32">${product.amount} st</p>
-          <button data-id="${index}" class="basic-button plus" aria-label="Öka antal ${product.name}">+</button>
+          <button data-id="${index}" class="basic-button plus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Öka antal ${product.name}">+</button>
         </div>
       </div>
      </section>
