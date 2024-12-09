@@ -16,6 +16,8 @@ export default {
     'bg-yellow-400',
     'bg-red-400',
     'w-20',
+    'rounded-md',
+    'hover:bg-yellow-100',
   ],
 }
 
