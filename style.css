@@ -49,7 +49,10 @@ table {
 body {
     background-color: #FFFEF8;
     font-family: 'Montserrat', sans-serif;
+}
 
+header {
+    background-color: #FFFEF8;
 }
 
 .menu-span {

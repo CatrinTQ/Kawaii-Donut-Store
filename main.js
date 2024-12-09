@@ -35,6 +35,19 @@ const productPage = document.querySelector('#product-page');
 const closeConfirmation = document.querySelector('#close-confirmation');
 const productLink = document.querySelector('#product-link');
 
+const toggleButton = document.getElementById('dark-mode-toggle');
+const html = document.documentElement;
+
+toggleButton.addEventListener('click', () => {
+  if (toggleButton.innerHTML == 'Dark mode') {
+    html.classList.toggle('dark');
+    toggleButton.innerHTML = 'Light mode';
+  } else {
+    html.classList.toggle('dark');
+    toggleButton.innerHTML = 'Dark mode';
+  }
+});
+
 /* 
 ###########################################
 ########### LOGO EFFECT ##################
@@ -236,7 +249,7 @@ function printDonuts() {
 
   selectedProducts.forEach((product, index) => {
     productListDiv.innerHTML += `
-    <section class="flex items-center content-center gap-4 hover:bg-yellow-100">
+    <section class="flex items-center content-center gap-4 hover:bg-yellow-100 dark:hover:bg-gray-500">
       <img src="${product.img.url}" class="product-image"></img>
       <div class="gap-1">
         <h3>${product.name}</h3>
@@ -284,7 +297,7 @@ function printCart() {
     cart.forEach(product => {
       if (product.amount > 0) {
         orderDiv.innerHTML+= `
-            <div class="col-start-1 ">
+            <div class="flex gap-4">
               <img src="${product.img.url}" class="cart-image" />
               
               <div class="flex flex-col justify-center gap-2">
@@ -305,14 +318,15 @@ function printCart() {
     if (activeDiscount) {
       orderDiv.innerHTML += `
       <p style="text-decoration: line-through;">Summa: ${oldTotalAmount} kr</p>
-      <p>${msg}</p>
+      <p class="pb-5 pt-5">${msg}</p>
       <p>Ny summa: ${totalAmount} kr</p>
       `;
     } else if (discount > 0 && !activeDiscount) {
       orderDiv.innerHTML += `
-      <p style="text-decoration: line-through;">Summa: ${totalAmount} kr</p>
-      <p>Rabatt: ${discount}kr</p>
-      <p>${msg}</p>
+      <p style="text-decoration: line-through;">Summa: ${totalAmount + discount} kr</p>
+      <p>Rabatt: ${discount}</p>
+      <p>Ny summa: ${totalAmount} kr</p>
+      <p>Du får 10% mängdrabatt på munkar som du beställt 10 eller mer av 😊</p>
       `;
     } else {
       orderDiv.innerHTML += 
@@ -323,7 +337,7 @@ function printCart() {
     orderDiv.innerHTML += 
     `
     <p class="">Frakt: ${Math.round(deliveryFee)} kr</p>
-    <p>Summa att betala: ${Math.round(totalAmount + deliveryFee)}</p>
+    <p>Summa att betala: ${Number(totalAmount) + Number(deliveryFee)}</p>
     <div class="flex gap-2">
       <label>Rabattkod</label>
       <input id="discount-field" type="text" class="w-20">
@@ -376,13 +390,14 @@ function clearCart() {
 let discount = 0;
 
 function checkDiscount() {
+  discount = 0;
   cart.forEach(item => {
-    discount = 0;
     if (item.amount >= 10) {
       discount += (item.price * item.amount) * 0.1; 
       msg = "Du får 10% mängdrabatt på munkar som du beställt 10 eller mer av 😊";
     }
   });
+  totalAmount -= discount;
 }
 
 function checkMondayDiscount() {
@@ -390,7 +405,7 @@ function checkMondayDiscount() {
   msg = '';
   activeDiscount = false;
   // fram till 10 på morgonen men innan klockan 3
-  if (today.getDay() === 1 ) {
+  if (today.getDay() === 1 && today.getHours < 10) {
     oldTotalAmount = totalAmount;
     totalAmount = totalAmount * 0.9;
     msg = "Du får måndagsrabatt, 10% på hela ordern 😊";
