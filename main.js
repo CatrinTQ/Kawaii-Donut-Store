@@ -197,10 +197,10 @@ function printRatingStar(rating) {
   let ratingNumber = rating.toString().charAt(0);
   let star = '';
   for (let i = 0; i < ratingNumber; i++) {
-    star += `<img src="photos/rating-donut.png" width="20">`;
+    star += `<img src="photos/rating-donut.png" width="20" height="20" alt="rating star shaped like a donut">`;
   }
   if (isHalf !== -1) {
-    star += `<img src="photos/rating-donut-half.png" width="20">`;
+    star += `<img src="photos/rating-donut-half.png" width="20" height="20" alt="rating star shaped like a donut">`;
   }
   return star;
 }
@@ -271,15 +271,15 @@ function printDonuts() {
     <section class="flex items-center content-center gap-4 hover:bg-yellow-100 dark:hover:bg-gray-500">
       <img src="${product.img.url}" class="product-image" alt="${product.img.alt}" width="${product.img.width}" height="${product.img.height}"></img>
       <div class="gap-1">
-        <h3>${product.name}</h3>
+        <h2>${product.name}</h2>
         <p>Pris: ${Math.round(product.price)} kr</p>
         <p class="flex flex-row">Betyg: ${printRatingStar(product.rating)}</p>
         <p>Kategori: ${product.category}</p>
 
         <div class="flex items-center">
-          <button data-id="${index}" class="basic-button minus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Minska antal ${product.name}">-</button>
+          <button data-id="${index}" class="bg-gray-800 text-white uppercase font-bold py-2 px-4 rounded m-2 minus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Minska antal ${product.name}">-</button>
           <p class="min-w-32">${product.amount} st</p>
-          <button data-id="${index}" class="basic-button plus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Öka antal ${product.name}">+</button>
+          <button data-id="${index}" class="bg-gray-800 text-white uppercase font-bold py-2 px-4 rounded m-2 plus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Öka antal ${product.name}">+</button>
         </div>
       </div>
      </section>
@@ -317,7 +317,7 @@ function printCart() {
       if (product.amount > 0) {
         orderDiv.innerHTML+= `
             <div class="flex gap-4">
-              <img src="${product.img.url}" class="cart-image" />
+              <img src="${product.img.url}" class="cart-image" alt="${product.img.alt}" width="${product.img.width}" height="${product.img.height}" />
               
               <div class="flex flex-col justify-center gap-2">
                 <span>${product.name}</span>
@@ -364,7 +364,7 @@ function printCart() {
     </div>
     `;
     
-    orderDiv.innerHTML += `<button id="proceed-to-check-out" class=basic-button cart-button>Gå vidare</button>`;
+    orderDiv.innerHTML += `<button id="proceed-to-check-out" class="flex justify-center mt-5 bg-gray-800 text-white m-auto uppercase font-bold py-2 px-4 rounded m-2 minus rounded-md hover:scale-105 hover:shadow-lg">Gå vidare</button>`;
     
     const checkoutBtn = document.querySelector('#proceed-to-check-out');
     
@@ -555,6 +555,7 @@ placeOrderBtn.addEventListener('click', () => {
   formPage.classList.add('hidden');
   const form = document.querySelector('#order-form');
   form.reset();
+  printDonuts();
 });
 
 /**************FIRST NAME **************** */
@@ -734,7 +735,6 @@ cardRadioBtn.addEventListener('click', () => {
   checkValidForm();
 });
 
-
 /******************* SUBMIT-BUTTON ***********************/
 function checkValidForm() {
   if (firstNameRegexResult && lastNameRegexResult && addresRegexResult && emailRegexResult && phoneRegexResult && postalNumberInput 
@@ -742,10 +742,10 @@ function checkValidForm() {
     firstNameRegexResult && lastNameRegexResult && addresRegexResult && emailRegexResult && phoneRegexResult && postalNumberInput 
     && postalAddressRegexResult && acceptGdpr.checked && cardRadioBtn.checked) {
     placeOrderBtn.disabled = false;
-    placeOrderBtn.style.color = 'green';
+    placeOrderBtn.classList.add('text-white');
     } else {
     placeOrderBtn.disabled = true;
-    placeOrderBtn.style.color = 'black';
+    placeOrderBtn.classList.add('text-black');
     }
 }  
 checkValidForm();
