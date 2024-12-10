@@ -34,9 +34,29 @@ const closeForm = document.querySelector('#close-form');
 const productPage = document.querySelector('#product-page');
 const closeConfirmation = document.querySelector('#close-confirmation');
 const productLink = document.querySelector('#product-link');
+const resetOrder = document.querySelector('#reset-order')
 
 const toggleButton = document.getElementById('dark-mode-toggle');
 const html = document.documentElement;
+
+resetOrder.addEventListener('click', resetCart);
+const spans = document.querySelectorAll('span.info');
+
+function removeInfoMessage() {
+  spans.forEach(span => {
+    span.classList.add('hidden');
+  });
+}
+
+function resetCart() {
+  clearCart();
+  printDonuts();
+  printCart();
+  highlightItemInCart();
+  printTotalAmount();
+  removeInfoMessage();
+  console.log('test');
+}
 
 toggleButton.addEventListener('click', () => {
   if (toggleButton.innerHTML == 'Dark mode') {
@@ -249,7 +269,7 @@ function printDonuts() {
   selectedProducts.forEach((product, index) => {
     productListDiv.innerHTML += `
     <section class="flex items-center content-center gap-4 hover:bg-yellow-100 dark:hover:bg-gray-500">
-      <img src="${product.img.url}" class="product-image"></img>
+      <img src="${product.img.url}" class="product-image" alt="${product.img.alt}" width="${product.img.width}" height="${product.img.height}"></img>
       <div class="gap-1">
         <h3>${product.name}</h3>
         <p>Pris: ${Math.round(product.price)} kr</p>
