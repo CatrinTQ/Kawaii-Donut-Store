@@ -8,8 +8,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-1.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'donut looking lika tiger'
       },
     },
@@ -22,8 +22,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-2.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'donut looking lika snow lion'
       },
     },
@@ -36,8 +36,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-3.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'donut looking lika blue tiger'
       },
     },
@@ -50,8 +50,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-4.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'donut looking lika rabit'
       },
     },
@@ -64,8 +64,8 @@ const products = [
       category: 'special',
       img: {
         url: 'photos/product-image-5.png',
-        width: 100,
-        height: 100,
+        width: 140,
+        height: 140,
         alt: 'donut with matcha flavor'
       },
     },
@@ -78,8 +78,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-6.png',
-        width: 100,
-        height: 100,
+        width: 140,
+        height: 140,
         alt: 'donut looking lika dinosaure'
       },
     },
@@ -92,8 +92,8 @@ const products = [
       category: 'special',
       img: {
         url: 'photos/product-image-7.png',
-        width: 100,
-        height: 100,
+        width: 140,
+        height: 140,
         alt: 'donut with peach flavor'
       },
     },
@@ -106,8 +106,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-8.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'donut looking lika a ghost'
       },
     },
@@ -120,8 +120,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-9.png',
-        width: 100,
-        height: 100,
+        width: 140,
+        height: 140,
         alt: 'donut looking lika pig'
       },
     },
@@ -134,8 +134,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-10.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'pokémon inspired donut'
       },
     },
@@ -148,8 +148,8 @@ const products = [
       category: 'space',
       img: {
         url: 'photos/product-image-11.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'donut looking lika a nebula'
       },
     },
@@ -162,8 +162,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-12.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'donut looking lika bear'
       },
     },
@@ -176,8 +176,8 @@ const products = [
       category: 'space',
       img: {
         url: 'photos/product-image-13.png',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         alt: 'donut looking lika milky way'
       },
     },
@@ -190,8 +190,8 @@ const products = [
       category: 'space',
       img: {
         url: 'photos/product-image-14.png',
-        width: 100,
-        height: 100,
+        width: 140,
+        height: 140,
         alt: 'donut looking lika a meteor rain'
       },
     },
