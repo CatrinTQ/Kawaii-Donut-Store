@@ -1,5 +1,5 @@
-import './styles.css';
-import products from './products.js';
+import '/styles.css';
+import products from '/products.js';
 
 // HEJ JENNI! Jag har fortfarande inte fått min sida att publicera korrekt på live server, 
 // tänker att jag bokar in handledning för det nästa vecka...
