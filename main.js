@@ -177,14 +177,13 @@ function printRatingStar(rating) {
   let ratingNumber = rating.toString().charAt(0);
   let star = '';
   for (let i = 0; i < ratingNumber; i++) {
-    star += `<img src="./assets/icons/rating-donut.png" width="20">`;
+    star += `<img src="photos/rating-donut.png" width="20">`;
   }
   if (isHalf !== -1) {
-    star += `<img src="./assets/icons/rating-donut-half.png" width="20">`;
+    star += `<img src="photos/rating-donut-half.png" width="20">`;
   }
   return star;
 }
-
 function decreaseAmount(e) {
   const index = e.currentTarget.dataset.id;
   if (selectedProducts[index].amount <= 0) {
