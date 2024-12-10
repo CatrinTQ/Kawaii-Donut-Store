@@ -7,6 +7,10 @@ export default {
   theme: {
     extend: {},
   },
+  colors: {
+    lightBackground: '#FFFEF8',
+    pinkAccent: '#F977CA',
+  },
   plugins: [],
   safelist: [
     'scale-100',
@@ -21,6 +25,12 @@ export default {
     'pt-5',
     'pb-5',
     'dark:hover:bg-gray-500',
+    'bg-gray-600',
+    'text-white',
+    'text-black',
+    'uppercase',
+    'm-auto',
+    'mt-5',
   ],
   darkMode: 'class',
 }
