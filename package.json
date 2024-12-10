@@ -3,13 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-"scripts": {
-  "dev": "vite",
-  "build": "vite build", 
-  "postcss-build": "postcss src/styles.css -o dist/styles.css",
-  "deploy": "npm run postcss-build && git add dist && git commit -m 'Deploy' && git subtree push --prefix dist origin gh-pages",
-  "preview": "vite preview"
-},
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "postcss-build": "postcss src/styles.css -o dist/styles.css",
+    "deploy": "npm run postcss-build && git add dist && git commit -m 'Deploy' && git subtree push --prefix dist origin gh-pages",
+    "preview": "vite preview"
+  },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
     "autoprefixer": "^10.4.20",
@@ -17,8 +17,7 @@
     "globals": "^15.12.0",
     "postcss": "^8.4.49",
     "prettier": "3.3.3",
-    "sass": "^1.81.0",
-    "tailwindcss": "^3.4.15",
+    "tailwindcss": "^3.4.16",
     "vite": "^5.4.10"
   }
 }

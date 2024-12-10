@@ -1,4 +1,4 @@
-import '/style.css';
+import '/styles.css';
 import products from '/products.js';
 
 // HEJ JENNI! Jag har fortfarande inte fått min sida att publicera korrekt på live server, 
