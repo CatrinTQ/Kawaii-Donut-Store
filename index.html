@@ -45,7 +45,7 @@
       </h1>
     
       <!-- Dark Mode Toggle -->
-      <button id="dark-mode-toggle" class="absolute top-4 right-4 sm:top-2 sm:right-2 bg-gray-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-00 transition">Dark mode</button>
+      <button id="dark-mode-toggle" class="absolute top-8 right-4 sm:top-2 sm:right-2 bg-gray-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-00 transition">Dark mode</button>
       
     
       <!-- Header Navigation -->
@@ -87,9 +87,9 @@
 
     </header>
 
-    <main class="flex-grow">
+    <main class="flex flex-col">
       <!-- MENU PAGE -->
-      <div class="menu hidden flex justify-center items-center h-52 gap-8 bg-pink-300 dark:bg-gray-900" id="menu-div">
+      <div class="menu hidden flex justify-center items-center min-h-96 gap-8 bg-pink-300 dark:bg-gray-900" id="menu-div">
         <ul class="uppercase text-white flex flex-col justify-center items-center gap-8">
           <li><a href="#" id="product-link">Proukter</a></li>
           <li><a href="#" id="cart-button-2">Varukorg</a></li>
@@ -124,8 +124,8 @@
       </section>
 
       <!-- CART -->
-      <section class="hidden flex cart justify-center gap-4 p-10 bg-blue-200 dark:bg-gray-900 dark:text-white " id="order">
-        <fieldset id="order-fieldset" class="flex justify-center items-center border-dotted border-2 w-4/5 min-h-52">
+      <section class="hidden flex cart justify-center gap-4 p-10 bg-blue-200 min-h-full dark:bg-gray-900 dark:text-white " id="order">
+        <fieldset id="order-fieldset" class="flex justify-center items-center border-dotted border-2 w-4/5 ">
           <legend class="text-center m-auto">Varukorgssammanställning</legend>
           <div id="order-products" class="grid-2">Varukorgen är tom</div>
         </fieldset>
@@ -145,36 +145,36 @@
               <input type="text" id="first-name" placeholder="Anna"  aria-required="true" class="col-span-7 max-h-6 sm:col-span-5 dark:text-black">
               
               <div class="col-1">
-                <span id="accept-name" class="hidden material-symbols-outlined text-green-500">check</span>
-                <span id="error-name" class="hidden material-symbols-outlined text-red-500">error</span>
+                <span id="accept-name" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-name" class="info hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <label for="last-name" class="col-span-8 col-span-2 sm:text-right sm:col-start-1 sm:col-span-2">Efternamn *</label>
               <input type="text" id="last-name" placeholder="Andresson"  class="col-span-7 sm:col-span-5  dark:text-black">
               <div class="col-1">
-                <span id="accept-last-name" class="hidden material-symbols-outlined text-green-500">check</span>
-                <span id="error-last-name" class="hidden material-symbols-outlined text-red-500">error</span>
+                <span id="accept-last-name" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-last-name" class="info hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <label for="address" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Gatuadress *</label>
               <input type="text" id="address" placeholder="Storgatan 1"  class="col-span-7 sm:col-span-5  dark:text-black">
               <div class="col-1">
-                <span id="accept-address" class="hidden material-symbols-outlined text-green-500">check</span>
-                <span id="error-address" class="hidden material-symbols-outlined text-red-500">error</span>
+                <span id="accept-address" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-address" class="info hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <label for="postal-number" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Postnummer *</label>
               <input type="number" id="postal-number" placeholder="12345"  class="col-span-7 sm:col-span-5  dark:text-black">
               <div class="col-1">
-                <span id="accept-postal-number" class="hidden material-symbols-outlined text-green-500">check</span>
-                <span id="error-postal-number" class="hidden material-symbols-outlined text-red-500">error</span>
+                <span id="accept-postal-number" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-postal-number" class="info hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <label for="postal-address" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Postadress *</label>
               <input type="text" id="postal-address" placeholder="Stockholm"  class="col-span-7 sm:col-span-5  dark:text-black">
               <div class="col-1">
-                <span id="accept-postal" class="hidden material-symbols-outlined text-green-500">check</span>
-                <span id="error-postal" class="hidden material-symbols-outlined text-red-500">error</span>
+                <span id="accept-postal" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-postal" class="info hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <label for="entry-code" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Portkod</label>
@@ -183,15 +183,15 @@
               <label for="phone" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Telefon *</label>
               <input type="number" placeholder="0721234567" id="phone"  class="col-span-7 sm:col-span-5 dark:text-black">
               <div class="col-1">
-                <span id="accept-phone" class="hidden material-symbols-outlined text-green-500">check</span>
-                <span id="error-phone" class="hidden material-symbols-outlined text-red-500">error</span>
+                <span id="accept-phone" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-phone" class="info hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <label for="email" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">E-post *</label>
               <input type="email" id="email" placeholder="info@kawaii.com"  class="col-span-7 sm:col-span-5 dark:text-black">
               <div class="col-1">
-                <span id="accept-email" class="hidden material-symbols-outlined text-green-500">check</span>
-                <span id="error-email" class="hidden material-symbols-outlined text-red-500">error</span>
+                <span id="accept-email" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-email" class="info hidden material-symbols-outlined text-red-500">error</span>
               </div>
 
               <div class="col-span-8 grid grid-cols-5 gap-4 items-start">
@@ -219,8 +219,8 @@
                 <label for="personal-number" class="col-start-1 col-span-3">Personnummer</label>
                 <input type="number" id="personal-number" placeholder="8501010123" class="col-span-4 dark:text-black">
                 <div class="col-1">
-                  <span id="accept-personal" class="hidden material-symbols-outlined text-green-500">check</span>
-                  <span id="error-personal" class="hidden material-symbols-outlined text-red-500">error</span>
+                  <span id="accept-personal" class="info hidden material-symbols-outlined text-green-500">check</span>
+                  <span id="error-personal" class="info hidden material-symbols-outlined text-red-500">error</span>
                 </div>
               </div>
 
@@ -240,16 +240,16 @@
                 <input type="number" id="cvc-code" class="col-span-2 dark:text-black">
               </div>
 
-              <input type="reset" value="Rensa" class="basic-button col-start-1 col-span-3">
+              <input type="reset" id="reset-order" value="Rensa" class="basic-button col-start-1 col-span-3">
               <input type="submit" id="place-order-button" value="Lägg beställning" disabled="true" class="basic-button col-start-4 col-span-5">
         </form>
       </section>
     
       <!-- ORDER CONFIRMATION PAGE -->
-      <section class="hidden successfull-order-page flex flex-col justify-center items-center p-10 bg-yellow-300 h-screen w-full dark:bg-gray-900 dark:text-white" id="confirmation-page">
-        <button id="close-confirmation" class="relative w-8 h-8 flex items-center justify-center ml-auto">
-          <span class="absolute w-6 h-0.5 bg-black transform rotate-45"></span>
-          <span class="absolute w-6 h-0.5 bg-black transform -rotate-45"></span>
+      <section class=" successfull-order-page flex flex-col justify-center items-center p-10 bg-yellow-300 h-screen w-full dark:bg-gray-900 dark:text-white" id="confirmation-page">
+        <button id="close-confirmation" class="relative w-8 h-8 flex items-center justify-center ml-auto dark:color-white">
+          <span class="absolute w-6 h-0.5 bg-black transform rotate-45 dark:bg-white"></span>
+          <span class="absolute w-6 h-0.5 bg-black transform -rotate-45 dark:bg-white"></span>
         </button>
 
         <fieldset class="flex flex-col gap-4 justify-center items-center border-dotted border-2 w-4/5 min-h-52">
