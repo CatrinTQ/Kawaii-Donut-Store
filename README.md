@@ -5,6 +5,7 @@ Kawaii Donut är en responsiv och interaktiv webbshop för fiktiva sötsaker, me
 🌐 Live-version
 🔗 ![Besök Kawaii Donut här](https://medieinstitutet.github.io/fed24d-js-intro-inl-1-webshop-CatrinTQ/)
 
+
 📸 Skärmdumpar och analyser
 ✅ Valideringsrapporter
 
