@@ -1,8 +1,6 @@
 import '/styles.css';
 import products from '/products.js';
 
-// HEJ JENNI! Jag har fortfarande inte fått min sida att publicera korrekt på live server, 
-// tänker att jag bokar in handledning för det nästa vecka...
 
 let selectedProducts = [...products];
 let cart = [];
@@ -215,7 +213,6 @@ function decreaseAmount(e) {
       amountElement.textContent = `${selectedProducts[index].amount} st`;
     }
 
-    // Uppdatera totalsumman (om nödvändigt)
     printTotalAmount();
     printCart();
     printTotalAmount();
@@ -225,7 +222,6 @@ function decreaseAmount(e) {
 
 function increaseAmount(e) {
   const index = e.target.dataset.id;
-  console.log(index); // Hämta index
   selectedProducts[index].amount += 1; // Öka antalet
   
   // Uppdatera rätt element i DOM
@@ -234,7 +230,7 @@ function increaseAmount(e) {
     amountElement.textContent = `${selectedProducts[index].amount} st`;
   }
 
-  // Uppdatera totalsumman (om nödvändigt)
+
   printTotalAmount();
   printCart();
   printTotalAmount();
