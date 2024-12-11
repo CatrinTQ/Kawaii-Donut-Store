@@ -31,6 +31,8 @@ export default {
     'uppercase',
     'm-auto',
     'mt-5',
+    'p-1',
+    'rounded-md',
   ],
   darkMode: 'class',
 }

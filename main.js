@@ -14,6 +14,7 @@ let deliveryFee = 0;
 let customerTimer = setTimeout(timeoutCustomer, 1000 * 60 * 15);
 customerTimer;
 let highlightNumber = 0;
+let discount = 0;
 
 const productListDiv = document.querySelector('#product-list');
 const orderDiv = document.querySelector('#order-products');
@@ -35,12 +36,11 @@ const productPage = document.querySelector('#product-page');
 const closeConfirmation = document.querySelector('#close-confirmation');
 const productLink = document.querySelector('#product-link');
 const resetOrder = document.querySelector('#reset-order')
-
+const spans = document.querySelectorAll('span.info');
 const toggleButton = document.getElementById('dark-mode-toggle');
 const html = document.documentElement;
 
 resetOrder.addEventListener('click', resetCart);
-const spans = document.querySelectorAll('span.info');
 
 function removeInfoMessage() {
   spans.forEach(span => {
@@ -321,8 +321,8 @@ function printCart() {
               
               <div class="flex flex-col justify-center gap-2">
                 <span>${product.name}</span>
-                <span>${product.amount}st à ${product.price}kr</span>
-                <span>${product.amount * product.price}kr</span>
+                <span>${product.amount}st à ${product.price} kr</span>
+                <span>${product.amount * product.price} kr</span>
               </div>   
             </div>
         `;
@@ -350,17 +350,17 @@ function printCart() {
     } else {
       orderDiv.innerHTML += 
     `
-      <p>Summa: ${totalAmount}</p>
+      <p>Summa: ${totalAmount} kr</p>
       `
     }
     orderDiv.innerHTML += 
     `
-    <p class="">Frakt: ${Math.round(deliveryFee)} kr</p>
-    <p>Summa att betala: ${Number(totalAmount) + Number(deliveryFee)}</p>
+    <p>Frakt: ${Math.round(deliveryFee)} kr</p>
+    <p>Summa att betala: ${Math.round(totalAmount) + Math.round(deliveryFee)} kr</p>
     <div class="flex gap-2">
       <label>Rabattkod</label>
-      <input id="discount-field" type="text" class="w-20">
-      <button>Aktivera</button>
+      <input id="discount-field" type="text" class="w-20 border-2">
+      <button class="bg-pink-300 p-1 rounded-md">Aktivera</button>
     </div>
     `;
     
@@ -406,7 +406,6 @@ function clearCart() {
 ###########################################
 */
 
-let discount = 0;
 
 function checkDiscount() {
   discount = 0;

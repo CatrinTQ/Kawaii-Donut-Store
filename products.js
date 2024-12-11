@@ -64,8 +64,8 @@ const products = [
       category: 'special',
       img: {
         url: 'photos/product-image-5.png',
-        width: 140,
-        height: 140,
+        width: 120,
+        height: 120,
         alt: 'munk med matchasmak'
       },
     },
@@ -78,8 +78,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-6.png',
-        width: 140,
-        height: 140,
+        width: 120,
+        height: 120,
         alt: 'munk med frosting som föreställer en dinosaurie'
       },
     },
@@ -92,8 +92,8 @@ const products = [
       category: 'special',
       img: {
         url: 'photos/product-image-7.png',
-        width: 140,
-        height: 140,
+        width: 120,
+        height: 120,
         alt: 'munk med persikosmak'
       },
     },
@@ -120,8 +120,8 @@ const products = [
       category: 'animal',
       img: {
         url: 'photos/product-image-9.png',
-        width: 140,
-        height: 140,
+        width: 120,
+        height: 120,
         alt: 'munk med frosting som föreställer en gris'
       },
     },
@@ -190,8 +190,8 @@ const products = [
       category: 'space',
       img: {
         url: 'photos/product-image-14.png',
-        width: 140,
-        height: 140,
+        width: 120,
+        height: 120,
         alt: 'munk med frosting som föreställer ett meteorregn'
       },
     },
