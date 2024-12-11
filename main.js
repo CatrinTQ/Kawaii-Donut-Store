@@ -1,5 +1,5 @@
-import './styles.css';
-import products from './products.js';
+import '/styles.css';
+import products from '/products.js';
 
 
 let selectedProducts = [...products];
