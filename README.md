@@ -10,11 +10,11 @@ Kawaii Donut är en responsiv och interaktiv webbshop för fiktiva sötsaker, me
 
 Alla HTML- och CSS-filer har validerats enligt W3C-standarder. Se valideringsrapporterna nedan:
 
-    HTML Validator
+![HTML Validator](public/validation/HTML-validation.png)
 
-    CSS Validator
+![CSS Validator](public/validation/CSS-validation.png)
 
-🚀 Lighthouse-analys
+🚀 ![Lighthouse-analys](public/validation/lighthouse-desktop.png)
 
 Prestanda, tillgänglighet och SEO har analyserats med hjälp av Google Lighthouse.
 
