@@ -205,13 +205,18 @@ function printRatingStar(rating) {
   return star;
 }
 function decreaseAmount(e) {
-  const index = e.currentTarget.dataset.id;
-  if (selectedProducts[index].amount <= 0) {
-    selectedProducts[index].amount = 0;
-  }
-  else {
-    selectedProducts[index].amount -= 1;
-    printDonuts();
+  const index = e.target.dataset.id; // Hämta index
+  if (selectedProducts[index].amount > 0) {
+    selectedProducts[index].amount -= 1; // Minska antalet
+    
+    // Uppdatera rätt element i DOM
+    const amountElement = document.querySelector(`[data-amount-id="${index}"]`);
+    if (amountElement) {
+      amountElement.textContent = `${selectedProducts[index].amount} st`;
+    }
+
+    // Uppdatera totalsumman (om nödvändigt)
+    printTotalAmount();
     printCart();
     printTotalAmount();
     highlightItemInCart();
@@ -219,13 +224,21 @@ function decreaseAmount(e) {
 }
 
 function increaseAmount(e) {
-  const index = e.currentTarget.dataset.id;
-  selectedProducts[index].amount += 1;
+  const index = e.target.dataset.id;
+  console.log(index); // Hämta index
+  selectedProducts[index].amount += 1; // Öka antalet
+  
+  // Uppdatera rätt element i DOM
+  const amountElement = document.querySelector(`[data-amount-id="${index}"]`);
+  if (amountElement) {
+    amountElement.textContent = `${selectedProducts[index].amount} st`;
+  }
+
+  // Uppdatera totalsumman (om nödvändigt)
+  printTotalAmount();
   printCart();
   printTotalAmount();
   highlightItemInCart();
-  printDonuts();
-  e.target.focus();
 }
 
 function highlightItemInCart() {
@@ -269,21 +282,21 @@ function printDonuts() {
 
   selectedProducts.forEach((product, index) => {
     productListDiv.innerHTML += `
-    <section class="flex items-center content-center gap-4 hover:bg-yellow-100 dark:hover:bg-gray-500">
-      <img src="${product.img.url}" class="product-image" alt="${product.img.alt}" width="${product.img.width}" height="${product.img.height}"></img>
-      <div class="gap-1">
-        <h2>${product.name}</h2>
-        <p>Pris: ${Math.round(product.price)} kr</p>
-        <p class="flex flex-row">Betyg: ${printRatingStar(product.rating)}</p>
-        <p>Kategori: ${product.category}</p>
-
-        <div class="flex items-center">
-          <button data-id="${index}" class="bg-gray-800 text-white uppercase font-bold py-2 px-4 rounded m-2 minus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Minska antal ${product.name}">-</button>
-          <p class="min-w-32">${product.amount} st</p>
-          <button data-id="${index}" class="bg-gray-800 text-white uppercase font-bold py-2 px-4 rounded m-2 plus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Öka antal ${product.name}">+</button>
+      <section class="flex items-center content-center gap-4 hover:bg-yellow-100 dark:hover:bg-gray-500">
+        <img src="${product.img.url}" class="product-image" alt="${product.img.alt}" width="${product.img.width}" height="${product.img.height}"></img>
+        <div class="gap-1">
+          <h2>${product.name}</h2>
+          <p>Pris: ${Math.round(product.price)} kr</p>
+          <p class="flex flex-row">Betyg: ${printRatingStar(product.rating)}</p>
+          <p>Kategori: ${product.category}</p>
+  
+          <div class="flex items-center">
+            <button data-id="${index}" class="bg-gray-800 text-white uppercase font-bold py-2 px-4 rounded m-2 minus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Minska antal ${product.name}">-</button>
+            <p data-amount-id="${index}" class="min-w-32">${product.amount} st</p>
+            <button data-id="${index}" class="bg-gray-800 text-white uppercase font-bold py-2 px-4 rounded m-2 plus rounded-md hover:scale-105 hover:shadow-lg" aria-label="Öka antal ${product.name}">+</button>
+          </div>
         </div>
-      </div>
-     </section>
+      </section>
     `;
   });
 
