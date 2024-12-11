@@ -25,7 +25,7 @@ jobs:
   deploy:
     environment:
       name: main
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: 'https://medieinstitutet.github.io/fed24d-js-intro-inl-1-webshop-CatrinTQ/'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
