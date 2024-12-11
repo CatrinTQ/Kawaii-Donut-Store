@@ -221,10 +221,11 @@ function decreaseAmount(e) {
 function increaseAmount(e) {
   const index = e.currentTarget.dataset.id;
   selectedProducts[index].amount += 1;
-  printDonuts();
   printCart();
   printTotalAmount();
   highlightItemInCart();
+  printDonuts();
+  e.target.focus();
 }
 
 function highlightItemInCart() {
