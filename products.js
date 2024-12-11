@@ -10,7 +10,7 @@ const products = [
         url: 'photos/product-image-1.png',
         width: 120,
         height: 120,
-        alt: 'donut looking lika tiger'
+        alt: 'munk med frosting som föreställer en tiger'
       },
     },
     {
@@ -24,7 +24,7 @@ const products = [
         url: 'photos/product-image-2.png',
         width: 120,
         height: 120,
-        alt: 'donut looking lika snow lion'
+        alt: 'munk med frosting som föreställer ett snölejon'
       },
     },
     {
@@ -38,7 +38,7 @@ const products = [
         url: 'photos/product-image-3.png',
         width: 120,
         height: 120,
-        alt: 'donut looking lika blue tiger'
+        alt: 'munk med frosting som föreställer een blå tigen'
       },
     },
     {
@@ -52,7 +52,7 @@ const products = [
         url: 'photos/product-image-4.png',
         width: 120,
         height: 120,
-        alt: 'donut looking lika rabit'
+        alt: 'munk med frosting som föreställer en kanin'
       },
     },
     {
@@ -66,7 +66,7 @@ const products = [
         url: 'photos/product-image-5.png',
         width: 140,
         height: 140,
-        alt: 'donut with matcha flavor'
+        alt: 'munk med matchasmak'
       },
     },
     {
@@ -80,7 +80,7 @@ const products = [
         url: 'photos/product-image-6.png',
         width: 140,
         height: 140,
-        alt: 'donut looking lika dinosaure'
+        alt: 'munk med frosting som föreställer en dinosaurie'
       },
     },
     {
@@ -94,7 +94,7 @@ const products = [
         url: 'photos/product-image-7.png',
         width: 140,
         height: 140,
-        alt: 'donut with peach flavor'
+        alt: 'munk med persikosmak'
       },
     },
     {
@@ -108,7 +108,7 @@ const products = [
         url: 'photos/product-image-8.png',
         width: 120,
         height: 120,
-        alt: 'donut looking lika a ghost'
+        alt: 'munk med frosting som föreställer ett spöke'
       },
     },
     {
@@ -122,7 +122,7 @@ const products = [
         url: 'photos/product-image-9.png',
         width: 140,
         height: 140,
-        alt: 'donut looking lika pig'
+        alt: 'munk med frosting som föreställer en gris'
       },
     },
     {
@@ -136,7 +136,7 @@ const products = [
         url: 'photos/product-image-10.png',
         width: 120,
         height: 120,
-        alt: 'pokémon inspired donut'
+        alt: 'pokémon inspirerad munk'
       },
     },
     {
@@ -164,7 +164,7 @@ const products = [
         url: 'photos/product-image-12.png',
         width: 120,
         height: 120,
-        alt: 'donut looking lika bear'
+        alt: 'munk med frosting som föreställer en björn'
       },
     },
     {
@@ -178,7 +178,7 @@ const products = [
         url: 'photos/product-image-13.png',
         width: 120,
         height: 120,
-        alt: 'donut looking lika milky way'
+        alt: 'munk med frosting som föreställer vintergatan'
       },
     },
     {
@@ -192,7 +192,7 @@ const products = [
         url: 'photos/product-image-14.png',
         width: 140,
         height: 140,
-        alt: 'donut looking lika a meteor rain'
+        alt: 'munk med frosting som föreställer ett meteorregn'
       },
     },
   ];
