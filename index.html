@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&">
+    <title>Kawaii donut - nybakade munkar med unik design</title>
+    <meta name="description" content="Kawaii donut - Munkar bakade från grunden med originell frosting">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Kawaii donut - Munkar bakade från grunden med originell frosting">
+    <meta property="og:description" content="Beskrivning för sociala medier">
+    <meta property="og:image" content="http:kawaiidonut.com/home-logo.jpg">
+    <meta property="og:url" content="https://kawaiidonut.com">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Konditori",
+        "name": "Kawaii donut",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Storgatan 12",
+          "addressLocality": "Stockholm",
+          "postalCode": "111 31",
+          "addressCountry": "SE"
+        },
+        "telephone": "+46 8123 45 67",
+        "url": "https://kawaiidonut.com",
+        "servesCuisine": "Bakery",
+        "priceRange": "$$",
+      }
+      </script>
+    <script type="module" crossorigin src="/fed24d-js-intro-inl-1-webshop-CatrinTQ/assets/index-Dh2j_4oR.js"></script>
+    <link rel="stylesheet" crossorigin href="/fed24d-js-intro-inl-1-webshop-CatrinTQ/assets/index-CX7Wn1Yz.css">
+  </head>
+  
+  <body class="min-h-screen flex flex-col dark:bg-gray-900">
+    <header class="flex flex-col justify-between items-center dark:bg-gray-900 dark:text-white">
+      <!-- Titel -->
+      <h1 class="text-xl font-bold uppercase text-center tracking-widest text-pink-500 ">
+        Kawaii Donut
+      </h1>
+    
+      <!-- Dark Mode Toggle -->
+      <button id="dark-mode-toggle" class="absolute top-8 right-4 sm:top-2 sm:right-2 bg-gray-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-00 transition">Dark mode</button>
+      
+    
+      <!-- Header Navigation -->
+      <div class="flex items-center justify-between w-full mt-4">
+        <!-- Logo -->
+        <img id="logo" class="logo-image hover:scale-105 cursor-pointer transition-all duration-300" 
+             src="/fed24d-js-intro-inl-1-webshop-CatrinTQ/photos/home-logo.png" alt="tecknad munk med rosa frosting som ler." width="150" height="150" loading="eager">
+    
+        <!-- Cart Button -->
+        <div class="relative flex items-center">
+          <button id="cart-button" class="relative hover:scale-110 transition-transform duration-300">
+            <span class="material-symbols-outlined text-4xl text-pink-500">
+              shopping_cart
+            </span>
+            <span id="number-of-donuts" class="hidden absolute -top-2 -right-2 bg-red-400 text-white text-sm w-6 h-6 flex items-center justify-center rounded-full">
+              0
+            </span>
+            
+            <!-- Cart Item Count -->
+          </button>
+    
+          <!-- Cart Total -->
+          <span id="amount-in-cart" class="text-lg font-semibold ml-4 text-gray-700 dark:text-white">
+            0 kr
+          </span>
+        </div>
+    
+        <!-- Menu Button -->
+        <nav>
+          <button id="menu-button" class="group relative mr-8" aria-label="Open menu button" aria-expanded="false">
+            <span id="bar-one" class="menu-span block h-1 w-6 bg-pink-500 transition-transform duration-300 group-hover:-translate-x-2"></span>
+            <span class="menu-span block h-1 w-6 bg-pink-500 mt-1 transition-opacity duration-300"></span>
+            <span id="bar-three" class="menu-span block h-1 w-6 bg-pink-500 mt-1 transition-transform duration-300 group-hover:-translate-x-4"></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+    
+    <main class="flex flex-col h-screen">
+      <!-- MENU PAGE -->
+      <div class="menu hidden flex items-start justify-center h-full pt-20 gap-8 bg-pink-300 dark:bg-gray-900" id="menu-div">
+        <ul class="uppercase text-white flex flex-col justify-center items-center gap-8">
+          <li><a href="#" id="product-link">Proukter</a></li>
+          <li><a href="#" id="cart-button-2">Varukorg</a></li>
+        </ul>
+      </div>
+      <!-- PRODUCT PAGE  -->
+      <div class="flex flex-col gap-8 dark:bg-gray-900 dark:text-white " id="product-page">
+        <div class="sort-list flex flex-row justify-end gap-1">
+          <label>Sortera på:</label>
+            <button id="sort-name-button">Namn</button>
+            <button id="sort-price-button">Pris</button>
+            <select name="category" id="sort-category" aria-label="Välj kategori" class="pl-2 pr-3 dark:bg-gray-500 dark:text-white">
+              <option value="all" selected>🗂️ Kategori:</option>
+              <option value="all">📋 Alla</option>
+              <option value="animal">🐾 Djur</option>
+              <option value="space">🌌 Space</option>
+              <option value="special">⭐ Special</option>
+            </select>
+            <Button id="sort-rating-button" class="mr-5">Betyg</Button>
+        </div>
+        <div id="product-list" class="product-div grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center mx-auto max-w-screen-lg"></div>
+      </div>
+
+      <!-- CART -->
+      <div class="hidden flex cart items-start justify-center gap-4 p-20 h-full bg-blue-200 dark:bg-gray-900 dark:text-white " id="order">
+        <fieldset id="order-fieldset" class="flex justify-center items-center border-dotted border-2 w-4/5 ">
+          <legend class="m-auto">Varukorgssammanställning</legend>
+          <div id="order-products" class="grid-2">Varukorgen är tom</div>
+        </fieldset>
+      </div>
+
+      <!-- FORM -->
+      <section id="form" class="hidden form-page flex items-start h-full justify-center bg-pink-200 dark:bg-gray-900 dark:text-white w-full relative">
+        <!-- Knapp i övre vänstra hörnet -->
+        <button id="close-form" class="absolute top-4 left-4 w-8 h-8 flex items-center justify-center">
+          <span class="block absolute top-1/2 left-0 w-3 h-0.5 bg-white transform -translate-y-1/2 rotate-45 origin-left"></span>
+          <span class="block absolute top-1/2 left-0 w-3 h-0.5 bg-white transform -translate-y-1/2 -rotate-45 origin-left"></span>
+          <span class="block absolute top-1/2 left-2 w-4 h-0.5 bg-white transform -translate-y-1/2"></span>
+        </button>
+        <form id="order-form" class="grid grid-cols-8 gap-2 p-10 sm:gap-4 max-w-2xl">
+          <h2 class="uppercase col-span-6 sm:col-start-2">Fyll i dina uppgifter</h2>
+              <label for="first-name" class="col-span-8 max-h-6 sm:text-right sm:col-start-1 sm:col-span-2">Förnamn *</label>
+              <input type="text" id="first-name" placeholder="Anna"  aria-required="true" class="col-span-7 max-h-6 sm:col-span-5 dark:text-black">
+              
+              <div class="col-1">
+                <span id="accept-name" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-name" class="info hidden material-symbols-outlined text-red-500">error</span>
+              </div>
+
+              <label for="last-name" class="col-span-8 col-span-2 sm:text-right sm:col-start-1 sm:col-span-2">Efternamn *</label>
+              <input type="text" id="last-name" placeholder="Andresson"  class="col-span-7 sm:col-span-5  dark:text-black">
+              <div class="col-1">
+                <span id="accept-last-name" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-last-name" class="info hidden material-symbols-outlined text-red-500">error</span>
+              </div>
+
+              <label for="address" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Gatuadress *</label>
+              <input type="text" id="address" placeholder="Storgatan 1"  class="col-span-7 sm:col-span-5  dark:text-black">
+              <div class="col-1">
+                <span id="accept-address" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-address" class="info hidden material-symbols-outlined text-red-500">error</span>
+              </div>
+
+              <label for="postal-number" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Postnummer *</label>
+              <input type="number" id="postal-number" placeholder="12345"  class="col-span-7 sm:col-span-5  dark:text-black">
+              <div class="col-1">
+                <span id="accept-postal-number" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-postal-number" class="info hidden material-symbols-outlined text-red-500">error</span>
+              </div>
+
+              <label for="postal-address" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Postadress *</label>
+              <input type="text" id="postal-address" placeholder="Stockholm"  class="col-span-7 sm:col-span-5  dark:text-black">
+              <div class="col-1">
+                <span id="accept-postal" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-postal" class="info hidden material-symbols-outlined text-red-500">error</span>
+              </div>
+
+              <label for="entry-code" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Portkod</label>
+              <input type="text" id="entry-code" placeholder="#1234" class="col-span-7 sm:col-span-5  dark:text-black">
+
+              <label for="phone" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">Mobil (07XXXXXXXX) *</label>
+              <input type="number" placeholder="0721234567" id="phone"  class="col-span-7 sm:col-span-5 dark:text-black">
+              <div class="col-1">
+                <span id="accept-phone" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-phone" class="info hidden material-symbols-outlined text-red-500">error</span>
+              </div>
+
+              <label for="email" class="col-span-8 sm:text-right sm:col-start-1 sm:col-span-2">E-post *</label>
+              <input type="email" id="email" placeholder="info@kawaii.com"  class="col-span-7 sm:col-span-5 dark:text-black">
+              <div class="col-1">
+                <span id="accept-email" class="info hidden material-symbols-outlined text-green-500">check</span>
+                <span id="error-email" class="info hidden material-symbols-outlined text-red-500">error</span>
+              </div>
+
+              <div class="col-span-8 grid grid-cols-5 gap-4 items-start">
+                <!-- Godkänn behandling av personuppgifter -->
+                <label for="accept-gdpr" class="col-start-1 col-span-4">Godkänn behandling av personuppgifter *</label>
+                <input type="checkbox" id="accept-gdpr" class="col-start-5 self-center dark:text-black">
+                <p id="msg-accept-gdpr" class="col-span-5"></p>
+                
+                <!-- Få vårt nyhetsbrev -->
+                <label for="news-letter" class="col-start-1 col-span-4">Få vårat nyhetsbrev</label>
+                <input type="checkbox" checked id="news-letter" class="col-start-5 self-center">
+              </div>
+
+              <div class="col-span-8 grid col-start-1 grid-span-5 gap-4">
+                <h3 class="col-span-5">Jag vill betala med *</h3>
+               
+                <label for="invoice-radio-button" class="col-start-1">Faktura</label>
+                <input type="radio" id="invoice-radio-button" name="payment" class="">
+                
+                <label for="card-radio-button" class="">Betalkort</label>
+                <input type="radio" id="card-radio-button" name="payment" class="">
+              </div>
+              
+              <div class="hidden col-span-8 grid grid-cols-8 gap-4" id="invoice-field">
+                <label for="personal-number" class="col-start-1 col-span-3 ">Personnummer</label>
+                <input type="number" id="personal-number" placeholder="8501010123" class="col-span-4 dark:text-black">
+                <div class="col-1">
+                  <span id="accept-personal" class="info hidden material-symbols-outlined text-green-500">check</span>
+                  <span id="error-personal" class="info hidden material-symbols-outlined text-red-500">error</span>
+                </div>
+              </div>
+
+              <div class="hidden col-span-8 grid grid-cols-4 gap-2" id="card-field">
+                <!-- Kortnummer -->
+                <label for="card-info" class="text-right col-start-1 col-span-1">Kortnummer</label>
+                <input type="number" id="card-info" class="col-span-2 dark:text-black">
+                <p id="msg-card-info" class="col-span-1"></p>
+                
+                <!-- Datum -->
+                <label for="month-year" class="text-right col-start-1 col-span-1">År/månad</label>
+                <input type="number" id="month-year" class="col-span-1 dark:text-black">
+                <input type="number" id="month" class="col-span-1 dark:text-black">
+                
+                <!-- CVC -->
+                <label for="cvc-code" class="text-right col-start-1 col-span-1 uppercase">Cvc</label>
+                <input type="number" id="cvc-code" class="col-span-2 dark:text-black">
+              </div>
+
+              <input type="reset" id="reset-order" value="Rensa" class="bg-gray-800 text-white uppercase font-bold py-2 px-4 rounded m-2 col-start-1 col-span-3">
+              <input type="submit" id="place-order-button" value="Lägg beställning" disabled class="bg-gray-800 uppercase font-bold py-2 px-4 rounded m-2 col-start-4 col-span-5">
+        </form>
+      </section>
+    
+      <!-- ORDER CONFIRMATION PAGE -->
+      <div class="hidden successfull-order-page bg-blue-200 h-full flex flex-col pb-72 items-center justify-center dark:bg-gray-900 dark:text-white" id="confirmation-page">
+        <button id="close-confirmation" aria-label="stäng orderbekräftelse" class="relative w-8 h-8 flex items-center justify-center ml-auto dark:color-white">
+          <span class="absolute w-6 h-0.5 bg-black transform rotate-45 dark:bg-white"></span>
+          <span class="absolute w-6 h-0.5 bg-black transform -rotate-45 dark:bg-white"></span>
+        </button>
+
+        <fieldset class="flex flex-col gap-4 justify-center p-5 m-5 items-center border-dotted border-2 w-4/5 min-h-52">
+          <legend class="text-center m-auto">Tack för din order!</legend>
+          <p>Vi har mottagit följande information:</p>
+          <div id="receiver-info"></div>
+          <p>Vi kommer att skicka din order om 1-3 dagar!</p>
+          <p>Välkommen åter!</p>
+        </fieldset>
+      </div>
+      <footer class="mt-auto flex flex-col justify-center items-center bg-blue-200 p-10 pt-24 dark:bg-gray-900 dark:text-white">
+        <h3>Kawaii Donut &copy;</h3>
+      </footer>
+    </main>  
+  </body>
+</html>
+  
